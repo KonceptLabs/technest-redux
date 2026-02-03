@@ -80,24 +80,6 @@ import Footer from '../components/Footer.astro';
   <section class="faqs-section">
     <div class="faqs-container">
       <div class="faqs-wrapper">
-        <div class="eligibility-column">
-          <h3 class="eligibility-title">ELIGIBILITY</h3>
-          <ul class="eligibility-list">
-            <li>Applicants or nominees must live or operate a small business within the Chicagoland area.</li>
-            <li>Entries may be submitted by the individual themselves or by a friend, family member, neighbor or community member.</li>
-            <li>You may only enter or nominate once per month.</li>
-            <li>If selected, you can only be a recipient once and will not be eligible for future Smart Start selections.</li>
-            <li>Only one household or business will be chosen each month.</li>
-            <li>Selected recipients must be available for a short consultation and installation scheduling.</li>
-            <li>Installations must take place in a location that the nominee owns, rents or lawfully operates.</li>
-            <li>Upgrades will be chosen by the TechNest team based on the needs and suitability of the space.</li>
-            <li>Recipients must be at least 18 years old or have a parent or guardian involved in the process.</li>
-            <li>Participants are not required to be existing TechNest customers.</li>
-            <li>Story or photo sharing is optional and not required for eligibility.</li>
-            <li>TechNest reserves the right to make final selections based on safety, suitability and program capacity.</li>
-          </ul>
-        </div>
-
         <div class="faqs-column">
           <h3 class="faqs-title">FAQs</h3>
           <div class="faqs-list">
@@ -182,6 +164,36 @@ import Footer from '../components/Footer.astro';
             </div>
           </div>
         </div>
+
+        <div class="eligibility-column">
+          <h3 class="eligibility-title">ELIGIBILITY</h3>
+          <ul class="eligibility-list">
+            <li>Applicants or nominees must live or operate a small business within the Chicagoland area.</li>
+            <li>Entries may be submitted by the individual themselves or by a friend, family member, neighbor or community member.</li>
+            <li>You may only enter or nominate once per month.</li>
+            <li>If selected, you can only be a recipient once and will not be eligible for future Smart Start selections.</li>
+            <li>Only one household or business will be chosen each month.</li>
+            <li>Selected recipients must be available for a short consultation and installation scheduling.</li>
+            <li>Installations must take place in a location that the nominee owns, rents or lawfully operates.</li>
+            <li>Upgrades will be chosen by the TechNest team based on the needs and suitability of the space.</li>
+            <li>Recipients must be at least 18 years old or have a parent or guardian involved in the process.</li>
+            <li>Participants are not required to be existing TechNest customers.</li>
+            <li>Story or photo sharing is optional and not required for eligibility.</li>
+            <li>TechNest reserves the right to make final selections based on safety, suitability and program capacity.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="second-cta-section">
+    <div class="second-cta-container">
+      <div class="second-cta-content">
+        <h2 class="second-cta-title">Nominate to make<br/>someone's day or<br/>Enter to win!</h2>
+        <a href="/smart-start-form" class="second-cta-button">Enter or Nominate</a>
+      </div>
+      <div class="second-cta-image-wrapper">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Website%20Smart%20Start%202nd%20CTA%20image-WcUesh6JAm2yjyWEDqm6X5W3kAaT4B.jpg" alt="Happy couple in modern kitchen" class="second-cta-image" />
       </div>
     </div>
   </section>
@@ -502,11 +514,6 @@ import Footer from '../components/Footer.astro';
     letter-spacing: 0.5px;
   }
 
-  .faqs-list {
-    display: grid;
-    gap: 0;
-  }
-
   .faq-item {
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   }
@@ -721,6 +728,32 @@ import Footer from '../components/Footer.astro';
 
     .faq-answer {
       font-size: 0.9rem;
+    }
+
+    .second-cta-section {
+      padding: 3rem 1rem;
+    }
+
+    .second-cta-container {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .second-cta-content {
+      align-items: center;
+      text-align: center;
+    }
+
+    .second-cta-title {
+      font-size: 1.75rem;
+    }
+
+    .second-cta-image-wrapper {
+      max-width: 300px;
+    }
+
+    .second-cta-image {
+      max-width: 100%;
     }
   }
 </style>
