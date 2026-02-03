@@ -17,8 +17,7 @@ const currentPath = new URL(Astro.request.url).pathname;
 <nav class="navbar">
   <div class="nav-container">
     <a href="/" class="logo">
-      <span class="logo-icon">⬡</span>
-      <span class="logo-text">TechNest</span>
+      <img src="/technest-logo.svg" alt="TechNest" class="logo-image" />
     </a>
     <ul class="nav-menu">
       {navItems.map((item) => (
@@ -57,26 +56,18 @@ const currentPath = new URL(Astro.request.url).pathname;
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
     transition: opacity 0.3s ease;
+    height: auto;
   }
 
   .logo:hover {
     opacity: 0.8;
-    color: var(--text-primary);
   }
 
-  .logo-icon {
-    color: var(--accent);
-    font-size: 1.75rem;
-  }
-
-  .logo-text {
-    color: var(--accent);
-    font-weight: 700;
-    letter-spacing: 0.05em;
+  .logo-image {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
   }
 
   .nav-menu {
