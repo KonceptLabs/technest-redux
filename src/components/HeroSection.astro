@@ -122,6 +122,7 @@ let currentSlide = 0;
     justify-content: center;
     position: relative;
     overflow: hidden;
+    background-color: #f5f5f5;
   }
 
   .carousel-container {
@@ -137,7 +138,7 @@ let currentSlide = 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4rem 2rem;
+    padding: 3rem 4rem;
     max-width: 1400px;
     margin: 0 auto;
     left: 50%;
@@ -145,6 +146,7 @@ let currentSlide = 0;
     opacity: 0;
     transition: opacity 0.8s ease-in-out;
     pointer-events: none;
+    gap: 3rem;
   }
 
   .carousel-slide.active {
@@ -153,68 +155,72 @@ let currentSlide = 0;
   }
 
   .slide-image {
-    flex: 1;
+    flex: 0 0 45%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: 2rem;
+    order: -1;
   }
 
   .slide-image img {
     width: 100%;
-    max-width: 450px;
     height: auto;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
 
   .slide-content {
-    flex: 1;
+    flex: 0 0 50%;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   .slide-content h2 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin: 0;
-    line-height: 1.2;
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-light) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    line-height: 1.15;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 
   .slide-content p {
-    font-size: 1.125rem;
-    color: var(--text-secondary);
+    font-size: 1.25rem;
+    color: var(--accent);
     margin: 0;
     line-height: 1.6;
-    max-width: 500px;
+    font-weight: 500;
   }
 
   .btn {
     padding: 0.875rem 2rem;
     font-size: 1rem;
     font-weight: 600;
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
+    border: none;
     cursor: pointer;
     display: inline-block;
     width: fit-content;
+    text-align: center;
   }
 
   .btn-primary {
     background-color: var(--accent);
     color: white;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.25rem;
   }
 
   .btn-primary:hover {
-    background-color: var(--accent-light);
-    transform: translateY(-2px);
+    background-color: var(--accent-dark);
+    transform: none;
   }
 
   .carousel-controls {
@@ -229,7 +235,7 @@ let currentSlide = 0;
   }
 
   .carousel-btn {
-    background: rgba(59, 130, 246, 0.2);
+    background: rgba(0, 102, 204, 0.15);
     border: 2px solid var(--accent);
     color: var(--accent);
     width: 48px;
@@ -270,43 +276,45 @@ let currentSlide = 0;
   }
 
   .dot:hover {
-    background: rgba(59, 130, 246, 0.5);
+    background: rgba(0, 102, 204, 0.3);
   }
 
   @media (max-width: 1024px) {
     .carousel-slide {
       flex-direction: column;
-      padding: 3rem 1rem;
+      padding: 2rem;
+      gap: 2rem;
     }
 
     .slide-image {
-      padding-right: 0;
-      padding-bottom: 2rem;
+      flex: 1;
       height: auto;
-      min-height: 300px;
-    }
-
-    .slide-image img {
-      max-width: 350px;
+      min-height: 350px;
+      order: 0;
     }
 
     .slide-content {
-      padding-left: 0;
+      flex: 1;
+      padding-right: 0;
     }
 
     .slide-content h2 {
-      font-size: 2rem;
+      font-size: 2.5rem;
+    }
+
+    .slide-content p {
+      font-size: 1.1rem;
     }
   }
 
   @media (max-width: 640px) {
     .carousel-slide {
-      padding: 2rem 1rem;
+      padding: 1.5rem;
+      gap: 1.5rem;
     }
 
     .slide-image {
       min-height: 250px;
-      padding-bottom: 1.5rem;
     }
 
     .slide-image img {
@@ -314,7 +322,7 @@ let currentSlide = 0;
     }
 
     .slide-content h2 {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
     }
 
     .slide-content p {

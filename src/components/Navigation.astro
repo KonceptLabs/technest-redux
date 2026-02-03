@@ -37,8 +37,8 @@ const currentPath = new URL(Astro.request.url).pathname;
 
 <style>
   .navbar {
-    background-color: var(--secondary);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    background-color: var(--primary);
+    border-bottom: 1px solid #e0e0e0;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -74,10 +74,9 @@ const currentPath = new URL(Astro.request.url).pathname;
   }
 
   .logo-text {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.05em;
   }
 
   .nav-menu {
@@ -93,7 +92,7 @@ const currentPath = new URL(Astro.request.url).pathname;
   }
 
   .nav-link {
-    color: var(--text-secondary);
+    color: var(--text-primary);
     font-weight: 500;
     font-size: 0.95rem;
     transition: all 0.3s ease;
@@ -101,7 +100,7 @@ const currentPath = new URL(Astro.request.url).pathname;
   }
 
   .nav-link:hover {
-    color: var(--accent-light);
+    color: var(--accent);
   }
 
   .nav-link.active {
