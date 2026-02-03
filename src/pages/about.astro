@@ -1,0 +1,204 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <h1>About Us</h1>
+      <p>Pioneering technology solutions since 2015</p>
+    </div>
+  </section>
+
+  <section class="page-content">
+    <div class="content-container">
+      <div class="about-section">
+        <h2>Our Mission</h2>
+        <p>
+          At TechNest, we believe that great technology should be accessible to every business.
+          We're committed to delivering intelligent solutions that drive transformation, foster innovation,
+          and create lasting value for our partners.
+        </p>
+      </div>
+
+      <div class="about-section">
+        <h2>Our Values</h2>
+        <div class="values-grid">
+          <div class="value-item">
+            <h3>Innovation</h3>
+            <p>We constantly push boundaries to create cutting-edge solutions.</p>
+          </div>
+          <div class="value-item">
+            <h3>Integrity</h3>
+            <p>We do what we say and build lasting relationships based on trust.</p>
+          </div>
+          <div class="value-item">
+            <h3>Impact</h3>
+            <p>We measure success by the positive change we create for our clients.</p>
+          </div>
+          <div class="value-item">
+            <h3>Excellence</h3>
+            <p>We deliver nothing but the highest quality in everything we do.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h2>By The Numbers</h2>
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Happy Clients</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">1000+</div>
+            <div class="stat-label">Projects Delivered</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Team Members</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">9 yrs</div>
+            <div class="stat-label">Industry Experience</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--secondary) 0%, rgba(59, 130, 246, 0.05) 100%);
+    padding: 4rem 2rem;
+  }
+
+  .page-hero-content {
+    text-align: center;
+    max-width: 600px;
+  }
+
+  .page-hero-content h1 {
+    font-size: 3rem;
+    margin: 0 0 1rem 0;
+    color: var(--text-primary);
+  }
+
+  .page-hero-content p {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .page-content {
+    padding: 6rem 2rem;
+  }
+
+  .content-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .about-section {
+    margin-bottom: 4rem;
+  }
+
+  .about-section h2 {
+    font-size: 2rem;
+    margin: 0 0 1.5rem 0;
+    color: var(--text-primary);
+  }
+
+  .about-section p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .value-item h3 {
+    color: var(--accent-light);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .value-item p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(96, 165, 250, 0.02) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    border-radius: 0.75rem;
+  }
+
+  .stat-number {
+    font-size: 2.25rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      min-height: 40vh;
+      padding: 3rem 1rem;
+    }
+
+    .page-hero-content h1 {
+      font-size: 2rem;
+    }
+
+    .page-content {
+      padding: 4rem 1rem;
+    }
+
+    .about-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .about-section h2 {
+      font-size: 1.5rem;
+    }
+
+    .about-section p {
+      font-size: 1rem;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

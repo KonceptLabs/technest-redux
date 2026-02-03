@@ -1,0 +1,140 @@
+---
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+const navItems: NavItem[] = [
+  { label: 'Home', href: '/' },
+  { label: 'What We Do', href: '/what-we-do' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Resources', href: '/resources' },
+  { label: 'Smart Start', href: '/smart-start' },
+];
+
+const currentPath = new URL(Astro.request.url).pathname;
+---
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="/" class="logo">
+      <span class="logo-icon">⬡</span>
+      <span class="logo-text">TechNest</span>
+    </a>
+    <ul class="nav-menu">
+      {navItems.map((item) => (
+        <li class="nav-item">
+          <a 
+            href={item.href} 
+            class={`nav-link ${currentPath === item.href ? 'active' : ''}`}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    background-color: var(--secondary);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    transition: opacity 0.3s ease;
+  }
+
+  .logo:hover {
+    opacity: 0.8;
+    color: var(--text-primary);
+  }
+
+  .logo-icon {
+    color: var(--accent);
+    font-size: 1.75rem;
+  }
+
+  .logo-text {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+  }
+
+  .nav-item {
+    margin: 0;
+  }
+
+  .nav-link {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .nav-link:hover {
+    color: var(--accent-light);
+  }
+
+  .nav-link.active {
+    color: var(--accent);
+  }
+
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -0.25rem;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .nav-container {
+      padding: 1rem;
+    }
+
+    .nav-menu {
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+    }
+
+    .logo-icon {
+      font-size: 1.5rem;
+    }
+  }
+</style>

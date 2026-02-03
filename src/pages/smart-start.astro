@@ -1,0 +1,311 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <h1>Smart Start</h1>
+      <p>Get your digital transformation initiative off the ground</p>
+    </div>
+  </section>
+
+  <section class="page-content">
+    <div class="content-container">
+      <div class="intro-section">
+        <h2>Your Journey to Digital Excellence Starts Here</h2>
+        <p>
+          Smart Start is our comprehensive onboarding program designed to help your organization
+          quickly identify opportunities and implement solutions that drive real business value.
+        </p>
+      </div>
+
+      <div class="steps-section">
+        <h2>How Smart Start Works</h2>
+        <div class="steps-grid">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Assessment</h3>
+            <p>
+              We conduct a thorough evaluation of your current technology landscape, 
+              identifying gaps and opportunities.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Strategy</h3>
+            <p>
+              Our experts develop a tailored roadmap aligned with your business goals 
+              and technical requirements.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Implementation</h3>
+            <p>
+              We execute the plan with precision, delivering solutions that integrate 
+              seamlessly with your operations.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <h3>Optimization</h3>
+            <p>
+              Continuous monitoring and refinement ensure you get maximum ROI 
+              from your technology investments.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="benefits-section">
+        <h2>What You Get</h2>
+        <div class="benefits-list">
+          <div class="benefit-item">
+            <span class="benefit-icon">✓</span>
+            <div>
+              <h4>Dedicated Team</h4>
+              <p>Expert consultants and engineers committed to your success</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">✓</span>
+            <div>
+              <h4>Custom Roadmap</h4>
+              <p>A detailed plan tailored to your specific business needs</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">✓</span>
+            <div>
+              <h4>Ongoing Support</h4>
+              <p>Continuous optimization and support throughout your journey</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">✓</span>
+            <div>
+              <h4>Training & Documentation</h4>
+              <p>Comprehensive resources to empower your team</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <h3>Ready to Begin Your Transformation?</h3>
+        <p>Contact our team today to schedule your Smart Start consultation.</p>
+        <a href="mailto:hello@technest.com" class="cta-button">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--secondary) 0%, rgba(59, 130, 246, 0.05) 100%);
+    padding: 4rem 2rem;
+  }
+
+  .page-hero-content {
+    text-align: center;
+    max-width: 600px;
+  }
+
+  .page-hero-content h1 {
+    font-size: 3rem;
+    margin: 0 0 1rem 0;
+    color: var(--text-primary);
+  }
+
+  .page-hero-content p {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .page-content {
+    padding: 6rem 2rem;
+  }
+
+  .content-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .intro-section,
+  .steps-section,
+  .benefits-section {
+    margin-bottom: 5rem;
+  }
+
+  .intro-section h2,
+  .steps-section h2,
+  .benefits-section h2 {
+    font-size: 2rem;
+    margin: 0 0 1.5rem 0;
+    color: var(--text-primary);
+  }
+
+  .intro-section p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .step {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(96, 165, 250, 0.02) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    text-align: center;
+  }
+
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+    color: white;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .step h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.75rem 0;
+    color: var(--text-primary);
+  }
+
+  .step p {
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .benefits-list {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .benefit-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .benefit-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--accent-light);
+    border-radius: 50%;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .benefit-item h4 {
+    margin: 0 0 0.25rem 0;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+  }
+
+  .benefit-item p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .cta-section {
+    background: linear-gradient(135deg, var(--secondary) 0%, rgba(59, 130, 246, 0.1) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    padding: 3rem;
+    border-radius: 0.75rem;
+    text-align: center;
+  }
+
+  .cta-section h3 {
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--text-primary);
+  }
+
+  .cta-section p {
+    color: var(--text-secondary);
+    margin: 0 0 1.5rem 0;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+    color: white;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      min-height: 40vh;
+      padding: 3rem 1rem;
+    }
+
+    .page-hero-content h1 {
+      font-size: 2rem;
+    }
+
+    .page-content {
+      padding: 4rem 1rem;
+    }
+
+    .intro-section,
+    .steps-section,
+    .benefits-section {
+      margin-bottom: 3rem;
+    }
+
+    .intro-section h2,
+    .steps-section h2,
+    .benefits-section h2 {
+      font-size: 1.5rem;
+    }
+
+    .steps-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-section {
+      padding: 2rem;
+    }
+  }
+</style>
