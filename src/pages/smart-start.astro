@@ -23,6 +23,48 @@ import Footer from '../components/Footer.astro';
     </div>
   </section>
 
+  <section class="how-it-works">
+    <div class="how-it-works-container">
+      <h2 class="how-it-works-title">HOW IT WORKS</h2>
+      
+      <div class="how-it-works-intro">
+        <p>Smart Start is designed to be simple for everyone in the Chicagoland community. Each month, we select one household or small business to receive a complimentary smart technology upgrade that makes a real difference in their everyday life. Anyone can enter or nominate someone else, and the process is straightforward from start to finish.</p>
+      </div>
+
+      <div class="steps-container">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3 class="step-title">Enter or nominate</h3>
+          <p class="step-description">Complete a short form about yourself or someone you would like to nominate and explain how a smart upgrade would make everyday life easier.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3 class="step-title">Review and selection</h3>
+          <p class="step-description">Every entry is carefully reviewed. Each month we select one household or small business where technology can genuinely improve comfort, safety or convenience.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3 class="step-title">Plan the solution</h3>
+          <p class="step-description">We speak with the selected recipient, assess their space and design the right smart solution. We take care of the products and planning.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3 class="step-title">Install and support</h3>
+          <p class="step-description">Our team installs everything with care and makes sure it works properly, leaving the recipient confident and comfortable using it.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">5</div>
+          <h3 class="step-title">Share the impact</h3>
+          <p class="step-description">With your permission, we share the story to show how thoughtful technology can make a real difference.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <Footer />
 </Layout>
 
@@ -105,6 +147,95 @@ import Footer from '../components/Footer.astro';
     font-weight: 400;
   }
 
+  .how-it-works {
+    background: linear-gradient(135deg, #0072cc 0%, #0052a3 100%);
+    padding: 6rem 2rem;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+
+  .how-it-works-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .how-it-works-title {
+    font-size: 2.5rem;
+    color: #fafafa;
+    text-align: left;
+    margin: 0 0 1.5rem 0;
+    font-family: 'Anek Latin', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .how-it-works-intro {
+    color: #fafafa;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    font-family: 'Anek Latin', sans-serif;
+    font-weight: 400;
+    max-width: 900px;
+  }
+
+  .how-it-works-intro p {
+    margin: 0;
+  }
+
+  .steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .step-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .step-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-4px);
+  }
+
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.25);
+    color: #fafafa;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    font-family: 'Anek Latin', sans-serif;
+  }
+
+  .step-title {
+    font-size: 1.1rem;
+    color: #fafafa;
+    margin: 0 0 0.75rem 0;
+    font-family: 'Anek Latin', sans-serif;
+    font-weight: 600;
+  }
+
+  .step-description {
+    font-size: 0.95rem;
+    color: #fafafa;
+    margin: 0;
+    line-height: 1.7;
+    font-family: 'Anek Latin', sans-serif;
+    font-weight: 400;
+  }
+
   @media (max-width: 1024px) {
     .smart-start-hero-content {
       flex-direction: column;
@@ -163,6 +294,24 @@ import Footer from '../components/Footer.astro';
 
     .description-text {
       font-size: 1rem;
+    }
+
+    .how-it-works {
+      padding: 4rem 1rem;
+    }
+
+    .how-it-works-title {
+      font-size: 2rem;
+    }
+
+    .how-it-works-intro {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .steps-container {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
     }
   }
 </style>
