@@ -73,6 +73,63 @@ import Footer from '../components/Footer.astro';
       <div class="cta-content">
         <h2 class="cta-title">Enter or Nominate an individual, couple, family or small business</h2>
         <a href="/smart-start-form" class="cta-button">Enter or Nominate</a>
+  <section class="faqs-section">
+    <div class="faqs-container">
+      <div class="faqs-header">
+        <h2 class="faqs-title">FAQs</h2>
+        <img src="/technest-logo-icon-white.svg" alt="TechNest" class="faqs-logo" />
+      </div>
+
+      <div class="faqs-list">
+        <div class="faq-item">
+          <h3 class="faq-question">Who can apply or be nominated?</h3>
+          <p class="faq-answer">Anyone living or operating a small business in the Chicagoland area can be entered. You do not need to be a TechNest customer.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">Does the person I nominate need to know about it?</h3>
+          <p class="faq-answer">No. You can nominate someone privately, and we will only contact them if they are selected.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">Is Smart Start only for people in need?</h3>
+          <p class="faq-answer">No. The program is open to everyone. Whether someone has moved into a new home, wants to improve comfort or security or could benefit from a more reliable setup, Smart Start is for the whole community.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">What type of upgrades are included?</h3>
+          <p class="faq-answer">Upgrades may include smart security, lighting, networking, audio, smart automation or a combination of services that meaningfully improve daily life or business operations.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">How often is someone selected?</h3>
+          <p class="faq-answer">We select one household or small business every month.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">Is there any cost to take part?</h3>
+          <p class="faq-answer">No. If you are selected, the upgrade and installation are provided at no cost as part of our commitment to giving back to the community.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">What happens after someone is chosen?</h3>
+          <p class="faq-answer">We contact the selected household or business, learn more about their needs and plan the upgrade. We handle all installation and setup.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">Will my story or photos be shared publicly?</h3>
+          <p class="faq-answer">We only share stories, photos or videos with your permission. You can still participate without agreeing to public sharing.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">How long does the process take?</h3>
+          <p class="faq-answer">Most Smart Start upgrades are scheduled and completed within the month after selection.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">Can businesses participate?</h3>
+          <p class="faq-answer">Yes. Small businesses in the Chicagoland area are encouraged to enter or be nominated.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -320,6 +377,74 @@ import Footer from '../components/Footer.astro';
     transform: translateY(-2px);
   }
 
+  .faqs-section {
+    background: linear-gradient(135deg, #0072cc 0%, #0052a3 100%);
+    padding: 6rem 2rem;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+
+  .faqs-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .faqs-header {
+    position: relative;
+    margin-bottom: 3rem;
+  }
+
+  .faqs-title {
+    font-size: 2.2rem;
+    color: #fafafa;
+    margin: 0;
+    font-family: 'Anek Latin', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .faqs-logo {
+    position: absolute;
+    top: -2rem;
+    right: 0;
+    width: 120px;
+    height: auto;
+    opacity: 0.9;
+  }
+
+  .faqs-list {
+    display: grid;
+    gap: 1.75rem;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 1.75rem;
+  }
+
+  .faq-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .faq-question {
+    font-size: 1.05rem;
+    color: #fafafa;
+    margin: 0 0 0.5rem 0;
+    font-family: 'Anek Latin', sans-serif;
+    font-weight: 600;
+  }
+
+  .faq-answer {
+    font-size: 0.95rem;
+    color: #fafafa;
+    margin: 0;
+    line-height: 1.8;
+    font-family: 'Anek Latin', sans-serif;
+    font-weight: 400;
+    opacity: 0.95;
+  }
+
   @media (max-width: 1024px) {
     .smart-start-hero-content {
       flex-direction: column;
@@ -422,6 +547,35 @@ import Footer from '../components/Footer.astro';
 
     .cta-title {
       font-size: 1.5rem;
+    }
+
+    .faqs-section {
+      padding: 4rem 1rem;
+    }
+
+    .faqs-title {
+      font-size: 1.75rem;
+    }
+
+    .faqs-logo {
+      position: relative;
+      top: auto;
+      right: auto;
+      width: 90px;
+      margin-top: 1rem;
+      display: block;
+    }
+
+    .faq-item {
+      padding-bottom: 1.5rem;
+    }
+
+    .faq-question {
+      font-size: 0.95rem;
+    }
+
+    .faq-answer {
+      font-size: 0.9rem;
     }
   }
 </style>
