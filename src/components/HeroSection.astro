@@ -1,0 +1,358 @@
+---
+import type { ImageMetadata } from 'astro';
+
+interface Slide {
+  title: string;
+  description: string;
+  buttonText: string;
+  buttonHref: string;
+  image: string;
+}
+
+const slides: Slide[] = [
+  {
+    title: 'UPGRADE YOUR HOME TO QUIET LUXURY',
+    description: 'Discreet, reliable smart technology that blends into your life and works without effort.',
+    buttonText: 'Learn More',
+    buttonHref: '/what-we-do',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WEB%20Homepage%20Header%20carousel%201-uuWKTY0d2m6eK415s19BODgWZIQ6wR.jpg',
+  },
+  {
+    title: 'MODERN COMFORT MADE SIMPLE',
+    description: 'Easy to use technology that helps you feel secure at home and connected to the people you love.',
+    buttonText: 'Learn More',
+    buttonHref: '/what-we-do',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WEB%20Homepage%20Header%20carousel%202-2tINmeiswBOB6xhtJclVjbLuC3Dv0m.jpg',
+  },
+  {
+    title: 'SMART TECH THAT WORKS AS HARD AS YOU DO',
+    description: 'Simple, reliable solutions that improve security, save time and keep your business running smoothly.',
+    buttonText: 'Learn More',
+    buttonHref: '/what-we-do',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WEB%20Homepage%20Header%20carousel%203.JPG-GIs29BYjOm0Ox5hZ73eM4CRj3SSffz.jpeg',
+  },
+  {
+    title: 'SUPPORT THAT HELPS YOU STAY INDEPENDENT',
+    description: 'Safety, accessibility and monitoring solutions that adapt to your needs and help you live confidently at home.',
+    buttonText: 'Learn More',
+    buttonHref: '/what-we-do',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WEB%20Homepage%20header%20carousel%204-uO9NAsp0sLJjQkf2FYGSgpqxZ1PWYO.jpg',
+  },
+];
+
+let currentSlide = 0;
+---
+
+<section class="carousel-hero">
+  <div class="carousel-container">
+    {slides.map((slide, index) => (
+      <div class={`carousel-slide ${index === currentSlide ? 'active' : ''}`} data-index={index}>
+        <div class="slide-image">
+          <img src={slide.image} alt={slide.title} />
+        </div>
+        <div class="slide-content">
+          <h2>{slide.title}</h2>
+          <p>{slide.description}</p>
+          <a href={slide.buttonHref} class="btn btn-primary">{slide.buttonText}</a>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="carousel-controls">
+    <button class="carousel-btn prev" aria-label="Previous slide">❮</button>
+    <div class="carousel-dots">
+      {slides.map((_, index) => (
+        <button 
+          class={`dot ${index === currentSlide ? 'active' : ''}`}
+          aria-label={`Go to slide ${index + 1}`}
+          data-index={index}
+        ></button>
+      ))}
+    </div>
+    <button class="carousel-btn next" aria-label="Next slide">❯</button>
+  </div>
+</section>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dots = document.querySelectorAll('.dot');
+  const totalSlides = slides.length;
+
+  function showSlide(index: number) {
+    slides.forEach((slide) => slide.classList.remove('active'));
+    dots.forEach((dot) => dot.classList.remove('active'));
+    
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+    currentSlide = index;
+  }
+
+  function nextSlide() {
+    showSlide((currentSlide + 1) % totalSlides);
+  }
+
+  function prevSlide() {
+    showSlide((currentSlide - 1 + totalSlides) % totalSlides);
+  }
+
+  const prevBtn = document.querySelector('.carousel-btn.prev') as HTMLElement;
+  const nextBtn = document.querySelector('.carousel-btn.next') as HTMLElement;
+
+  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const index = parseInt(dot.getAttribute('data-index') || '0');
+      showSlide(index);
+    });
+  });
+
+  // Auto-advance slides every 7 seconds
+  setInterval(nextSlide, 7000);
+</script>
+
+<style>
+  .carousel-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    background-image: url('/background-shapes.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-top: 70px;
+  }
+
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .carousel-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    pointer-events: none;
+    gap: 2rem;
+  }
+
+  .carousel-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .slide-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: -1;
+    min-width: 0;
+  }
+
+  .slide-image img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    border-radius: 0.5rem;
+    object-fit: contain;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .slide-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-right: 1rem;
+  }
+
+  .slide-content h2 {
+    font-size: 55.4px;
+    margin: 0;
+    line-height: 1.15;
+    color: #0072cc;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .slide-content p {
+    font-size: 25px;
+    color: #0072cc;
+    margin: 0;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  .btn {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    width: fit-content;
+    text-align: center;
+  }
+
+  .btn-primary {
+    background-color: var(--accent);
+    color: #fafafa;
+    padding: 1rem 2.5rem;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 0.25rem;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--accent-dark);
+    transform: none;
+  }
+
+  .carousel-controls {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    z-index: 100;
+  }
+
+  .carousel-btn {
+    background: rgba(0, 102, 204, 0.15);
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-btn:hover {
+    background: var(--accent);
+    color: white;
+  }
+
+  .carousel-dots {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .dot.active {
+    background: var(--accent);
+    width: 32px;
+    border-radius: 6px;
+  }
+
+  .dot:hover {
+    background: rgba(0, 102, 204, 0.3);
+  }
+
+  @media (max-width: 1024px) {
+    .carousel-slide {
+      flex-direction: column;
+      padding: 2rem;
+      gap: 2rem;
+    }
+
+    .slide-image {
+      flex: 1;
+      height: auto;
+      min-height: 350px;
+      order: 0;
+    }
+
+    .slide-content {
+      flex: 1;
+      padding-right: 0;
+    }
+
+    .slide-content h2 {
+      font-size: 2.5rem;
+    }
+
+    .slide-content p {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .carousel-slide {
+      padding: 1.5rem;
+      gap: 1.5rem;
+    }
+
+    .slide-image {
+      min-height: 250px;
+    }
+
+    .slide-image img {
+      max-width: 100%;
+    }
+
+    .slide-content h2 {
+      font-size: 1.75rem;
+    }
+
+    .slide-content p {
+      font-size: 1rem;
+    }
+
+    .carousel-controls {
+      bottom: 1rem;
+      gap: 1rem;
+    }
+
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+
+    .dot.active {
+      width: 24px;
+    }
+  }
+</style>
