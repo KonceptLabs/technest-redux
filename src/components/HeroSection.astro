@@ -1,47 +1,185 @@
 ---
+import type { ImageMetadata } from 'astro';
+
+interface Slide {
+  title: string;
+  description: string;
+  buttonText: string;
+  buttonHref: string;
+  image: string;
+}
+
+const slides: Slide[] = [
+  {
+    title: 'Intelligent Cloud Solutions',
+    description: 'Build scalable, secure cloud infrastructure that grows with your business. Our experts deliver enterprise-grade solutions tailored to your needs.',
+    buttonText: 'Explore Cloud Services',
+    buttonHref: '/what-we-do',
+    image: '/placeholder.svg?height=500&width=500',
+  },
+  {
+    title: 'AI-Powered Analytics',
+    description: 'Transform raw data into actionable insights. Leverage machine learning to make smarter decisions and unlock hidden opportunities.',
+    buttonText: 'Discover Analytics',
+    buttonHref: '/what-we-do',
+    image: '/placeholder.svg?height=500&width=500',
+  },
+  {
+    title: 'Enterprise Security',
+    description: 'Protect your assets with comprehensive security strategies. We implement multi-layered defense systems to safeguard your digital infrastructure.',
+    buttonText: 'Learn About Security',
+    buttonHref: '/what-we-do',
+    image: '/placeholder.svg?height=500&width=500',
+  },
+  {
+    title: 'Digital Transformation',
+    description: 'Modernize your operations with cutting-edge technology. We guide you through every step of your digital journey.',
+    buttonText: 'Start Your Journey',
+    buttonHref: '/smart-start',
+    image: '/placeholder.svg?height=500&width=500',
+  },
+];
+
+let currentSlide = 0;
 ---
 
-<section class="hero">
-  <div class="hero-content">
-    <h1>Where Innovation Meets Intelligence</h1>
-    <p>
-      TechNest is your partner in building intelligent, scalable solutions that transform your business. 
-      We combine cutting-edge technology with human-centered design.
-    </p>
-    <div class="cta-buttons">
-      <a href="/smart-start" class="btn btn-primary">Get Started</a>
-      <a href="/what-we-do" class="btn btn-secondary">Learn More</a>
-    </div>
+<section class="carousel-hero">
+  <div class="carousel-container">
+    {slides.map((slide, index) => (
+      <div class={`carousel-slide ${index === currentSlide ? 'active' : ''}`} data-index={index}>
+        <div class="slide-image">
+          <img src={slide.image} alt={slide.title} />
+        </div>
+        <div class="slide-content">
+          <h2>{slide.title}</h2>
+          <p>{slide.description}</p>
+          <a href={slide.buttonHref} class="btn btn-primary">{slide.buttonText}</a>
+        </div>
+      </div>
+    ))}
   </div>
-  <div class="hero-visual">
-    <div class="floating-element element-1"></div>
-    <div class="floating-element element-2"></div>
-    <div class="floating-element element-3"></div>
+
+  <div class="carousel-controls">
+    <button class="carousel-btn prev" aria-label="Previous slide">❮</button>
+    <div class="carousel-dots">
+      {slides.map((_, index) => (
+        <button 
+          class={`dot ${index === currentSlide ? 'active' : ''}`}
+          aria-label={`Go to slide ${index + 1}`}
+          data-index={index}
+        ></button>
+      ))}
+    </div>
+    <button class="carousel-btn next" aria-label="Next slide">❯</button>
   </div>
 </section>
 
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dots = document.querySelectorAll('.dot');
+  const totalSlides = slides.length;
+
+  function showSlide(index: number) {
+    slides.forEach((slide) => slide.classList.remove('active'));
+    dots.forEach((dot) => dot.classList.remove('active'));
+    
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+    currentSlide = index;
+  }
+
+  function nextSlide() {
+    showSlide((currentSlide + 1) % totalSlides);
+  }
+
+  function prevSlide() {
+    showSlide((currentSlide - 1 + totalSlides) % totalSlides);
+  }
+
+  const prevBtn = document.querySelector('.carousel-btn.prev') as HTMLElement;
+  const nextBtn = document.querySelector('.carousel-btn.next') as HTMLElement;
+
+  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const index = parseInt(dot.getAttribute('data-index') || '0');
+      showSlide(index);
+    });
+  });
+
+  // Auto-advance slides every 7 seconds
+  setInterval(nextSlide, 7000);
+</script>
+
 <style>
-  .hero {
+  .carousel-hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 4rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 4rem;
+    justify-content: center;
     position: relative;
     overflow: hidden;
   }
 
-  .hero-content {
-    flex: 1;
-    z-index: 10;
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
   }
 
-  .hero-content h1 {
-    font-size: 3.5rem;
-    margin: 0 0 1.5rem 0;
+  .carousel-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    pointer-events: none;
+  }
+
+  .carousel-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .slide-image {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 2rem;
+  }
+
+  .slide-image img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+
+  .slide-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-left: 2rem;
+  }
+
+  .slide-content h2 {
+    font-size: 3rem;
+    margin: 0;
     line-height: 1.2;
     background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-light) 100%);
     -webkit-background-clip: text;
@@ -49,18 +187,12 @@
     background-clip: text;
   }
 
-  .hero-content p {
+  .slide-content p {
     font-size: 1.125rem;
     color: var(--text-secondary);
-    margin: 0 0 2rem 0;
+    margin: 0;
     line-height: 1.6;
     max-width: 500px;
-  }
-
-  .cta-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
   }
 
   .btn {
@@ -72,6 +204,7 @@
     border: 2px solid transparent;
     cursor: pointer;
     display: inline-block;
+    width: fit-content;
   }
 
   .btn-primary {
@@ -84,89 +217,123 @@
     transform: translateY(-2px);
   }
 
-  .btn-secondary {
-    background-color: transparent;
-    color: var(--accent-light);
-    border-color: var(--accent);
-  }
-
-  .btn-secondary:hover {
-    background-color: rgba(59, 130, 246, 0.1);
-    color: var(--accent);
-  }
-
-  .hero-visual {
-    flex: 1;
-    position: relative;
-    height: 400px;
-  }
-
-  .floating-element {
+  .carousel-controls {
     position: absolute;
-    border-radius: 1rem;
-    opacity: 0.1;
-    animation: float 6s ease-in-out infinite;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    z-index: 100;
   }
 
-  .element-1 {
-    width: 300px;
-    height: 300px;
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-    top: 0;
-    right: 0;
-    animation-delay: 0s;
+  .carousel-btn {
+    background: rgba(59, 130, 246, 0.2);
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
   }
 
-  .element-2 {
-    width: 200px;
-    height: 200px;
+  .carousel-btn:hover {
     background: var(--accent);
-    bottom: 50px;
-    right: 100px;
-    animation-delay: 1s;
+    color: white;
   }
 
-  .element-3 {
-    width: 150px;
-    height: 150px;
-    background: var(--accent-light);
-    top: 50px;
-    right: 250px;
-    animation-delay: 2s;
+  .carousel-dots {
+    display: flex;
+    gap: 0.75rem;
   }
 
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
 
-  @media (max-width: 768px) {
-    .hero {
-      min-height: auto;
+  .dot.active {
+    background: var(--accent);
+    width: 32px;
+    border-radius: 6px;
+  }
+
+  .dot:hover {
+    background: rgba(59, 130, 246, 0.5);
+  }
+
+  @media (max-width: 1024px) {
+    .carousel-slide {
       flex-direction: column;
       padding: 3rem 1rem;
-      gap: 2rem;
     }
 
-    .hero-content h1 {
+    .slide-image {
+      padding-right: 0;
+      padding-bottom: 2rem;
+      height: auto;
+      min-height: 300px;
+    }
+
+    .slide-image img {
+      max-width: 350px;
+    }
+
+    .slide-content {
+      padding-left: 0;
+    }
+
+    .slide-content h2 {
       font-size: 2rem;
     }
+  }
 
-    .hero-content p {
+  @media (max-width: 640px) {
+    .carousel-slide {
+      padding: 2rem 1rem;
+    }
+
+    .slide-image {
+      min-height: 250px;
+      padding-bottom: 1.5rem;
+    }
+
+    .slide-image img {
+      max-width: 100%;
+    }
+
+    .slide-content h2 {
+      font-size: 1.5rem;
+    }
+
+    .slide-content p {
       font-size: 1rem;
     }
 
-    .hero-visual {
-      height: 300px;
-      order: -1;
+    .carousel-controls {
+      bottom: 1rem;
+      gap: 1rem;
     }
 
-    .floating-element {
-      opacity: 0.05;
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+
+    .dot.active {
+      width: 24px;
     }
   }
 </style>
