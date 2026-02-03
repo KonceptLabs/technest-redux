@@ -3,100 +3,212 @@
 
 <footer class="footer">
   <div class="footer-container">
-    <div class="footer-section">
-      <h4>TechNest</h4>
-      <p>Building intelligent solutions for the modern enterprise.</p>
+    <div class="footer-left">
+      <a href="/" class="footer-logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+        <img src="/technest-logo.svg" alt="TechNest" />
+      </a>
+      <p class="footer-tagline">Clarity, Control, and Peace of Mind for Your Connected Home.</p>
+      <p class="footer-serving">Serving Chicagoland with trusted smart home guidance.</p>
     </div>
-    <div class="footer-section">
-      <h4>Product</h4>
-      <ul>
-        <li><a href="/what-we-do">What We Do</a></li>
-        <li><a href="/resources">Resources</a></li>
-        <li><a href="/smart-start">Smart Start</a></li>
-      </ul>
+
+    <div class="footer-middle">
+      <h4>Contact Info</h4>
+      <div class="contact-item">
+        <span class="contact-icon">📞</span>
+        <a href="tel:708-824-6378">(708) TCH-NEST</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">✉️</span>
+        <a href="mailto:info@technestpros.com">info@technestpros.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">📍</span>
+        <span>Chicagoland Area</span>
+      </div>
     </div>
-    <div class="footer-section">
-      <h4>Company</h4>
-      <ul>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/">Home</a></li>
+
+    <div class="footer-right">
+      <h4>Our Promise</h4>
+      <ul class="promise-list">
+        <li>Vendor-agnostic recommendations</li>
+        <li>Clear privacy protection</li>
+        <li>No pushy sales tactics</li>
+        <li>Local, personal service</li>
       </ul>
     </div>
   </div>
+
   <div class="footer-bottom">
-    <p>&copy; 2024 TechNest. All rights reserved.</p>
+    <p>&copy; 2024 TechNest LLC. All rights reserved. | <a href="/privacy-policy">Privacy Policy</a> | <a href="/terms-of-service">Terms of Service</a></p>
   </div>
 </footer>
 
 <style>
   .footer {
-    background-color: var(--secondary);
-    border-top: 1px solid rgba(148, 163, 184, 0.1);
-    padding: 3rem 2rem 1rem;
+    background-color: #3d3d3d;
+    padding: 3.5rem 2rem 2rem;
   }
 
   .footer-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
     margin-bottom: 2rem;
   }
 
-  .footer-section h4 {
-    font-size: 1rem;
-    margin: 0 0 1rem 0;
-    color: var(--text-primary);
+  .footer-left {
+    flex: 1;
+    min-width: 300px;
   }
 
-  .footer-section p {
-    color: var(--text-secondary);
-    margin: 0;
-    font-size: 0.9rem;
+  .footer-logo {
+    display: inline-block;
+    height: 50px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .footer-logo img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .footer-tagline {
+    color: #fafafa;
+    font-size: 0.95rem;
     line-height: 1.6;
+    margin: 1rem 0 1.5rem 0;
+    font-family: 'Anek Latin', sans-serif;
   }
 
-  .footer-section ul {
+  .footer-serving {
+    color: #999999;
+    font-size: 0.85rem;
+    margin: 0;
+    font-family: 'Anek Latin', sans-serif;
+  }
+
+  .footer-middle,
+  .footer-right {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  .footer-middle h4,
+  .footer-right h4 {
+    color: #fafafa;
+    font-size: 1.1rem;
+    margin: 0 0 1.5rem 0;
+    font-family: 'Anek Latin', sans-serif;
+    font-weight: 600;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .contact-icon {
+    color: #0072cc;
+    font-size: 1.2rem;
+  }
+
+  .contact-item a {
+    color: #fafafa;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-family: 'Anek Latin', sans-serif;
+    transition: color 0.3s ease;
+  }
+
+  .contact-item a:hover {
+    color: #0072cc;
+  }
+
+  .contact-item span {
+    color: #fafafa;
+    font-size: 0.95rem;
+    font-family: 'Anek Latin', sans-serif;
+  }
+
+  .promise-list {
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
-  .footer-section ul li {
-    margin-bottom: 0.5rem;
+  .promise-list li {
+    color: #fafafa;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    font-family: 'Anek Latin', sans-serif;
   }
 
-  .footer-section a {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
-  }
-
-  .footer-section a:hover {
-    color: var(--accent-light);
+  .promise-list li:before {
+    content: "•";
+    color: #0072cc;
+    font-weight: bold;
+    margin-right: 0.75rem;
+    font-size: 1.2rem;
   }
 
   .footer-bottom {
     text-align: center;
     padding-top: 2rem;
-    border-top: 1px solid rgba(148, 163, 184, 0.1);
-    color: var(--text-secondary);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #999999;
     font-size: 0.85rem;
+    font-family: 'Anek Latin', sans-serif;
   }
 
   .footer-bottom p {
     margin: 0;
   }
 
-  @media (max-width: 768px) {
+  .footer-bottom a {
+    color: #999999;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-bottom a:hover {
+    color: #0072cc;
+  }
+
+  @media (max-width: 1024px) {
+    .footer-container {
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-middle,
+    .footer-right {
+      flex: 0 0 45%;
+    }
+  }
+
+  @media (max-width: 640px) {
     .footer {
-      padding: 2rem 1rem 1rem;
+      padding: 2rem 1rem;
     }
 
     .footer-container {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .footer-left,
+    .footer-middle,
+    .footer-right {
+      min-width: auto;
     }
   }
 </style>
