@@ -4,10 +4,14 @@ import Footer from '../components/Footer.astro';
 ---
 
 <Layout>
-  <section class="page-hero">
-    <div class="page-hero-content">
-      <h1>Smart Start</h1>
-      <p>Get your digital transformation initiative off the ground</p>
+  <section class="smart-start-hero">
+    <div class="smart-start-hero-content">
+      <div class="smart-start-image-wrapper">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Website%20Smart%20start%20header-o3O0F42PMslRXtuA00yX6sTZGZdpeL.jpg" alt="Multi-generational family" class="family-image" />
+      </div>
+      <div class="smart-start-branding">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo_Smart%20Start%20-%20White%402x-XsgqCSJBhoO4brk80RcacqCWNvp7mx.png" alt="Smart Start" class="smart-start-logo" />
+      </div>
     </div>
   </section>
 
@@ -105,30 +109,57 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style>
-  .page-hero {
-    min-height: 50vh;
+  .smart-start-hero {
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--secondary) 0%, rgba(59, 130, 246, 0.05) 100%);
+    background: linear-gradient(135deg, #0072cc 0%, #0052a3 100%);
     padding: 4rem 2rem;
-  }
-
-  .page-hero-content {
-    text-align: center;
-    max-width: 600px;
-  }
-
-  .page-hero-content h1 {
-    font-size: 3rem;
-    margin: 0 0 1rem 0;
-    color: var(--text-primary);
-  }
-
-  .page-hero-content p {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
     margin: 0;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-top: 70px;
+  }
+
+  .smart-start-hero-content {
+    max-width: 1400px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .smart-start-image-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .family-image {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    aspect-ratio: 1;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+
+  .smart-start-branding {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .smart-start-logo {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    object-fit: contain;
   }
 
   .page-content {
@@ -274,14 +305,56 @@ import Footer from '../components/Footer.astro';
     box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
   }
 
-  @media (max-width: 768px) {
-    .page-hero {
-      min-height: 40vh;
-      padding: 3rem 1rem;
+  @media (max-width: 1024px) {
+    .smart-start-hero-content {
+      flex-direction: column;
+      gap: 2rem;
     }
 
-    .page-hero-content h1 {
-      font-size: 2rem;
+    .smart-start-image-wrapper {
+      flex: 1;
+      max-width: 350px;
+    }
+
+    .family-image {
+      max-width: 100%;
+    }
+
+    .smart-start-branding {
+      flex: 1;
+    }
+
+    .smart-start-logo {
+      max-width: 500px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .smart-start-hero {
+      min-height: auto;
+      padding: 2rem 1rem;
+      margin-top: 70px;
+    }
+
+    .smart-start-hero-content {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .smart-start-image-wrapper {
+      max-width: 300px;
+    }
+
+    .family-image {
+      max-width: 100%;
+    }
+
+    .smart-start-branding {
+      width: 100%;
+    }
+
+    .smart-start-logo {
+      max-width: 400px;
     }
 
     .page-content {
