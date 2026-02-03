@@ -420,6 +420,7 @@ import Footer from '../components/Footer.astro';
 
   .faqs-list {
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 0;
   }
 
@@ -617,9 +618,26 @@ import Footer from '../components/Footer.astro';
       font-size: 0.95rem;
     }
 
+    .faqs-section {
+      padding: 4rem 1rem;
+    }
+
+    .faqs-list {
+      grid-template-columns: 1fr;
+    }
+
+    .faq-toggle {
+      padding: 1.25rem 0;
+    }
+
+    .faq-question {
+      font-size: 0.95rem;
+    }
+
     .faq-answer {
       font-size: 0.9rem;
     }
+  }
 
     .faq-toggle {
       padding: 1.25rem 0;
