@@ -79,85 +79,108 @@ import Footer from '../components/Footer.astro';
 
   <section class="faqs-section">
     <div class="faqs-container">
-      <div class="faqs-list">
-        <div class="faq-item">
-          <button class="faq-toggle" aria-expanded="false">
-            <span class="faq-question">Who can apply or be nominated?</span>
-            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <p class="faq-answer">Anyone living or operating a small business in the Chicagoland area can be entered. You do not need to be a TechNest customer.</p>
+      <div class="faqs-wrapper">
+        <div class="eligibility-column">
+          <h3 class="eligibility-title">ELIGIBILITY</h3>
+          <ul class="eligibility-list">
+            <li>Applicants or nominees must live or operate a small business within the Chicagoland area.</li>
+            <li>Entries may be submitted by the individual themselves or by a friend, family member, neighbor or community member.</li>
+            <li>You may only enter or nominate once per month.</li>
+            <li>If selected, you can only be a recipient once and will not be eligible for future Smart Start selections.</li>
+            <li>Only one household or business will be chosen each month.</li>
+            <li>Selected recipients must be available for a short consultation and installation scheduling.</li>
+            <li>Installations must take place in a location that the nominee owns, rents or lawfully operates.</li>
+            <li>Upgrades will be chosen by the TechNest team based on the needs and suitability of the space.</li>
+            <li>Recipients must be at least 18 years old or have a parent or guardian involved in the process.</li>
+            <li>Participants are not required to be existing TechNest customers.</li>
+            <li>Story or photo sharing is optional and not required for eligibility.</li>
+            <li>TechNest reserves the right to make final selections based on safety, suitability and program capacity.</li>
+          </ul>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-toggle" aria-expanded="false">
-            <span class="faq-question">Does the person I nominate need to know about it?</span>
-            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <p class="faq-answer">No. You can nominate someone privately, and we will only contact them if they are selected.</p>
-        </div>
+        <div class="faqs-column">
+          <h3 class="faqs-title">FAQs</h3>
+          <div class="faqs-list">
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span class="faq-question">Who can apply or be nominated?</span>
+                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <p class="faq-answer">Anyone living or operating a small business in the Chicagoland area can be entered. You do not need to be a TechNest customer.</p>
+            </div>
 
-        <div class="faq-item">
-          <button class="faq-toggle" aria-expanded="false">
-            <span class="faq-question">Is Smart Start only for people in need?</span>
-            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <p class="faq-answer">No. The program is open to everyone. Whether someone has moved into a new home, wants to improve comfort or security or could benefit from a more reliable setup, Smart Start is for the whole community.</p>
-        </div>
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span class="faq-question">Does the person I nominate need to know about it?</span>
+                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <p class="faq-answer">No. You can nominate someone privately, and we will only contact them if they are selected.</p>
+            </div>
 
-        <div class="faq-item">
-          <button class="faq-toggle" aria-expanded="false">
-            <span class="faq-question">What type of upgrades are included?</span>
-            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <p class="faq-answer">Upgrades may include smart security, lighting, networking, audio, smart automation or a combination of services that meaningfully improve daily life or business operations.</p>
-        </div>
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span class="faq-question">Is Smart Start only for people in need?</span>
+                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <p class="faq-answer">No. The program is open to everyone. Whether someone has moved into a new home, wants to improve comfort or security or could benefit from a more reliable setup, Smart Start is for the whole community.</p>
+            </div>
 
-        <div class="faq-item">
-          <button class="faq-toggle" aria-expanded="false">
-            <span class="faq-question">How often is someone selected?</span>
-            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <p class="faq-answer">We select one household or small business every month.</p>
-        </div>
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span class="faq-question">What type of upgrades are included?</span>
+                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <p class="faq-answer">Upgrades may include smart security, lighting, networking, audio, smart automation or a combination of services that meaningfully improve daily life or business operations.</p>
+            </div>
 
-        <div class="faq-item">
-          <button class="faq-toggle" aria-expanded="false">
-            <span class="faq-question">Is there any cost to take part?</span>
-            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <p class="faq-answer">No. If you are selected, the upgrade and installation are provided at no cost as part of our commitment to giving back to the community.</p>
-        </div>
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span class="faq-question">How often is someone selected?</span>
+                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <p class="faq-answer">We select one household or small business every month.</p>
+            </div>
 
-        <div class="faq-item">
-          <button class="faq-toggle" aria-expanded="false">
-            <span class="faq-question">What happens after someone is chosen?</span>
-            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <p class="faq-answer">We contact the selected household or business, learn more about their needs and plan the upgrade. We handle all installation and setup.</p>
-        </div>
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span class="faq-question">Is there any cost to take part?</span>
+                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <p class="faq-answer">No. If you are selected, the upgrade and installation are provided at no cost as part of our commitment to giving back to the community.</p>
+            </div>
 
-        <div class="faq-item">
-          <button class="faq-toggle" aria-expanded="false">
-            <span class="faq-question">Will my story or photos be shared publicly?</span>
-            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <p class="faq-answer">We only share stories, photos or videos with your permission. You can still participate without agreeing to public sharing.</p>
-        </div>
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span class="faq-question">What happens after someone is chosen?</span>
+                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <p class="faq-answer">We contact the selected household or business, learn more about their needs and plan the upgrade. We handle all installation and setup.</p>
+            </div>
 
-        <div class="faq-item">
-          <button class="faq-toggle" aria-expanded="false">
-            <span class="faq-question">How long does the process take?</span>
-            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <p class="faq-answer">Most Smart Start upgrades are scheduled and completed within the month after selection.</p>
-        </div>
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span class="faq-question">Will my story or photos be shared publicly?</span>
+                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <p class="faq-answer">We only share stories, photos or videos with your permission. You can still participate without agreeing to public sharing.</p>
+            </div>
 
-        <div class="faq-item">
-          <button class="faq-toggle" aria-expanded="false">
-            <span class="faq-question">Can businesses participate?</span>
-            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          <p class="faq-answer">Yes. Small businesses in the Chicagoland area are encouraged to enter or be nominated.</p>
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span class="faq-question">How long does the process take?</span>
+                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <p class="faq-answer">Most Smart Start upgrades are scheduled and completed within the month after selection.</p>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-toggle" aria-expanded="false">
+                <span class="faq-question">Can businesses participate?</span>
+                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </button>
+              <p class="faq-answer">Yes. Small businesses in the Chicagoland area are encouraged to enter or be nominated.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -418,9 +441,69 @@ import Footer from '../components/Footer.astro';
     margin: 0 auto;
   }
 
+  .faqs-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .eligibility-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .eligibility-title {
+    font-size: 1.2rem;
+    color: #fafafa;
+    margin: 0 0 1.5rem 0;
+    font-family: 'Anek Latin', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .eligibility-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .eligibility-list li {
+    font-size: 0.95rem;
+    color: #fafafa;
+    line-height: 1.7;
+    font-family: 'Anek Latin', sans-serif;
+    font-weight: 400;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .eligibility-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #fafafa;
+    font-weight: bold;
+  }
+
+  .faqs-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .faqs-title {
+    font-size: 1.2rem;
+    color: #fafafa;
+    margin: 0 0 1.5rem 0;
+    font-family: 'Anek Latin', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
   .faqs-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: 0;
   }
 
@@ -622,16 +705,18 @@ import Footer from '../components/Footer.astro';
       padding: 4rem 1rem;
     }
 
-    .faqs-list {
+    .faqs-wrapper {
       grid-template-columns: 1fr;
+      gap: 2rem;
     }
 
-    .faq-toggle {
-      padding: 1.25rem 0;
+    .eligibility-title,
+    .faqs-title {
+      font-size: 1.1rem;
     }
 
-    .faq-question {
-      font-size: 0.95rem;
+    .eligibility-list li {
+      font-size: 0.9rem;
     }
 
     .faq-answer {
