@@ -3,6 +3,8 @@ export async function POST({ request }) {
     console.log('[v0] POST request received');
     console.log('[v0] Request method:', request.method);
     console.log('[v0] Request URL:', request.url);
+    console.log('[v0] Content-Type header:', request.headers.get('content-type'));
+    console.log('[v0] All headers:', Array.from(request.headers.entries()));
     
     // Clone the request to safely read the body
     const clonedRequest = request.clone();
