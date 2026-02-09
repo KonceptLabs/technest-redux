@@ -4,10 +4,16 @@ import Footer from '../components/Footer.astro';
 ---
 
 <Layout>
-  <section class="page-hero">
-    <div class="page-hero-content">
-      <h1>What We Do</h1>
-      <p>Comprehensive technology solutions tailored to your business needs</p>
+  <section class="hero-section">
+    <div class="hero-content-wrapper">
+      <div class="hero-content-box">
+        <h1>What We Do</h1>
+        <p>TechNest designs and installs smart technology for Chicagoland homes and small businesses, from security and WiFi to automation and connected systems that simply work.</p>
+        <a href="/contact" class="hero-button">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-image-wrapper">
+      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a-tablet-with-smart-home-screen-2024-10-18-09-41-09-utc-gp9wFGqIU3jUQMQwp1GbxvekEBRkJW.jpg" alt="Smart home tablet interface" class="hero-image" />
     </div>
   </section>
 
@@ -50,30 +56,78 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style>
-  .page-hero {
-    min-height: 50vh;
+  .hero-section {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: stretch;
+    margin-top: 70px;
+    overflow: hidden;
+  }
+
+  .hero-content-wrapper {
+    flex: 0 0 50%;
+    background-color: #0072cc;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--secondary) 0%, rgba(59, 130, 246, 0.05) 100%);
     padding: 4rem 2rem;
+    z-index: 10;
   }
 
-  .page-hero-content {
-    text-align: center;
-    max-width: 600px;
+  .hero-content-box {
+    max-width: 500px;
   }
 
-  .page-hero-content h1 {
-    font-size: 3rem;
-    margin: 0 0 1rem 0;
-    color: var(--text-primary);
+  .hero-content-box h1 {
+    font-size: 3.5rem;
+    color: #fafafa;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.2;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
   }
 
-  .page-hero-content p {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    margin: 0;
+  .hero-content-box p {
+    font-size: 1.125rem;
+    color: #fafafa;
+    margin: 0 0 2rem 0;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .hero-button {
+    display: inline-block;
+    background-color: #0052a3;
+    color: #fafafa;
+    padding: 1rem 2rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .hero-button:hover {
+    background-color: #003d7a;
+  }
+
+  .hero-image-wrapper {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   .page-content {
@@ -104,13 +158,28 @@ import Footer from '../components/Footer.astro';
   }
 
   @media (max-width: 768px) {
-    .page-hero {
-      min-height: 40vh;
-      padding: 3rem 1rem;
+    .hero-section {
+      flex-direction: column;
+      min-height: auto;
     }
 
-    .page-hero-content h1 {
+    .hero-content-wrapper {
+      flex: 1;
+      padding: 3rem 1.5rem;
+      min-height: 50vh;
+    }
+
+    .hero-content-box h1 {
       font-size: 2rem;
+    }
+
+    .hero-content-box p {
+      font-size: 1rem;
+    }
+
+    .hero-image-wrapper {
+      flex: 1;
+      min-height: 50vh;
     }
 
     .page-content {
