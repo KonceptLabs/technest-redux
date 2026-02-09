@@ -112,7 +112,7 @@ import Footer from '../components/Footer.astro';
 
           <div class="services-full-width">
             <h3 class="services-subheading">General Assistance</h3>
-            <div class="checkbox-group">
+            <div class="checkbox-group inline">
               <div class="form-group checkbox">
                 <input type="checkbox" id="service-troubleshoot" name="service-troubleshoot" />
                 <label for="service-troubleshoot">Tech Troubleshooting</label>
@@ -317,6 +317,12 @@ import Footer from '../components/Footer.astro';
     margin: 0;
   }
 
+  fieldset:has(.checkbox-group) {
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 0.375rem;
+  }
+
   fieldset legend {
     font-size: 0.95rem;
     font-weight: 600;
@@ -331,6 +337,9 @@ import Footer from '../components/Footer.astro';
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 0.375rem;
   }
 
   .services-column {
@@ -343,13 +352,16 @@ import Footer from '../components/Footer.astro';
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 0.375rem;
   }
 
   .services-subheading {
     font-size: 0.9rem;
     font-weight: 600;
     color: #666;
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 0.25rem 0;
     font-family: 'Anek Latin', sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.5px;

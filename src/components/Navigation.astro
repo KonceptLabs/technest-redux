@@ -51,7 +51,7 @@ const currentPath = new URL(Astro.request.url).pathname;
     padding: 1rem 2rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 2rem;
   }
 
   .logo {
@@ -79,6 +79,7 @@ const currentPath = new URL(Astro.request.url).pathname;
     padding: 0;
     gap: 2rem;
     flex: 1;
+    justify-content: center;
   }
 
   .nav-item {
@@ -123,6 +124,7 @@ const currentPath = new URL(Astro.request.url).pathname;
     transition: background-color 0.3s ease;
     display: inline-block;
     white-space: nowrap;
+    margin-left: auto;
   }
 
   .lets-chat-button:hover {
