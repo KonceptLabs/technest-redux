@@ -22,15 +22,25 @@ const currentPath = new URL(Astro.request.url).pathname;
     <ul class="nav-menu">
       {navItems.map((item) => (
         <li class="nav-item">
-          <a 
-            href={item.href} 
-            class={`nav-link ${currentPath === item.href ? 'active' : ''}`}
-          >
-            {item.label}
-          </a>
+          {item.label === 'Resources' ? (
+            <span 
+              class="nav-link nav-link-disabled"
+              title="Coming Soon"
+            >
+              {item.label}
+            </span>
+          ) : (
+            <a 
+              href={item.href} 
+              class={`nav-link ${currentPath === item.href ? 'active' : ''}`}
+            >
+              {item.label}
+            </a>
+          )}
         </li>
       ))}
     </ul>
+    <a href="/contact" class="lets-chat-button">Let's Chat</a>
   </div>
 </nav>
 
@@ -50,7 +60,7 @@ const currentPath = new URL(Astro.request.url).pathname;
     padding: 1rem 2rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 1rem;
   }
 
   .logo {
@@ -77,6 +87,8 @@ const currentPath = new URL(Astro.request.url).pathname;
     margin: 0;
     padding: 0;
     gap: 2rem;
+    flex: 1;
+    justify-content: center;
   }
 
   .nav-item {
@@ -107,6 +119,64 @@ const currentPath = new URL(Astro.request.url).pathname;
     right: 0;
     height: 2px;
     background: var(--accent);
+  }
+
+  .nav-link-disabled {
+    cursor: not-allowed;
+    display: inline-block;
+    position: relative;
+  }
+
+  .nav-link-disabled:hover {
+    color: var(--accent);
+  }
+
+  .nav-link-disabled::after {
+    content: 'Coming Soon';
+    position: absolute;
+    bottom: -3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #0072cc;
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1001;
+    pointer-events: none;
+  }
+
+  .nav-link-disabled:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .lets-chat-button {
+    background-color: #0072cc;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: 'Anek Latin', sans-serif;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    white-space: nowrap;
+    margin-left: auto;
+  }
+
+  .lets-chat-button:hover {
+    background-color: #004499;
+  }
+
+  .lets-chat-button:active {
+    background-color: #003366;
   }
 
   @media (max-width: 768px) {

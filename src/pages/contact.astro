@@ -6,14 +6,14 @@ import Footer from '../components/Footer.astro';
 <Layout>
   <section class="form-hero">
     <div class="form-hero-content">
-      <h1 class="form-title">Smart Start Nomination</h1>
-      <p class="form-subtitle">Complete a short form about yourself or someone you would like to nominate and explain how a smart upgrade would make everyday life easier.</p>
+      <h1 class="form-title">Let's Chat</h1>
+      <p class="form-subtitle">We'd love to hear from you. Get in touch with TechNest to discuss your smart technology needs and how we can help.</p>
     </div>
   </section>
 
   <section class="form-section">
     <div class="form-container">
-      <form class="smart-start-form" onsubmit="return handleSubmit(event)">
+      <form class="contact-form" onsubmit="return handleSubmit(event)">
         <!-- Hidden metadata fields -->
         <input type="hidden" id="metadata-ip" name="metadata-ip" />
         <input type="hidden" id="metadata-referrer" name="metadata-referrer" />
@@ -23,98 +23,143 @@ import Footer from '../components/Footer.astro';
         <input type="hidden" id="metadata-region" name="metadata-region" />
         <input type="hidden" id="metadata-zip" name="metadata-zip" />
 
-        <!-- About You Section -->
-        <div class="form-section-block">
-          <h2 class="section-title">About You</h2>
-          <div class="section-divider"></div>
-
-          <div class="form-group">
-            <label for="your-name">Your name <span class="required">*</span></label>
-            <input type="text" id="your-name" name="your-name" required />
-            <div class="error-message"></div>
-          </div>
-
-          <div class="form-group">
-            <label for="your-email">Your email <span class="required">*</span></label>
-            <input type="email" id="your-email" name="your-email" required />
-            <div class="error-message"></div>
-          </div>
-
-          <div class="form-group">
-            <label for="your-phone">Your phone number <span class="required">*</span></label>
-            <input type="tel" id="your-phone" name="your-phone" required />
-            <div class="error-message"></div>
-          </div>
-
-          <div class="form-group">
-            <label for="hear-about">Where did you hear about TechNest? <span class="required">*</span></label>
-            <select id="hear-about" name="hear-about" required>
-              <option value="">Select one...</option>
-              <option value="social-media">Social Media</option>
-              <option value="word-of-mouth">Word of Mouth</option>
-              <option value="website">Website</option>
-              <option value="community-event">Community Event</option>
-              <option value="local-partner">Local Partner</option>
-              <option value="search-engine">Search Engine</option>
-              <option value="other">Other</option>
-            </select>
-            <div class="error-message"></div>
-          </div>
+        <!-- Contact Information -->
+        <div class="form-group">
+          <label for="name">Name <span class="required">*</span></label>
+          <input type="text" id="name" name="name" required />
+          <div class="error-message"></div>
         </div>
 
-        <!-- About Them Section -->
-        <div class="form-section-block">
-          <h2 class="section-title">About Them</h2>
-          <div class="section-divider"></div>
-
-          <div class="form-group">
-            <label for="their-name">Their name <span class="required">*</span></label>
-            <input type="text" id="their-name" name="their-name" required />
-            <div class="error-message"></div>
-          </div>
-
-          <div class="form-group">
-            <label for="their-city">Their city <span class="required">*</span></label>
-            <input type="text" id="their-city" name="their-city" required />
-            <div class="error-message"></div>
-          </div>
-
-          <div class="form-group">
-            <label for="how-know-them">How do you know them? <span class="required">*</span></label>
-            <select id="how-know-them" name="how-know-them" required>
-              <option value="">Select one...</option>
-              <option value="business-relationship">Business Relationship</option>
-              <option value="coworker">Coworker</option>
-              <option value="family">Family</option>
-              <option value="friend">Friend</option>
-              <option value="other">Other</option>
-            </select>
-            <div class="error-message"></div>
-          </div>
-
-          <div class="form-group">
-            <label for="why-nominating">Why are you nominating them? <span class="required">*</span></label>
-            <textarea id="why-nominating" name="why-nominating" rows="6" required placeholder="Please provide at least 50 characters explaining why you're nominating this person or company..." oninput="updateCharCounter(this)"></textarea>
-            <div class="char-counter"><span id="char-count">0</span>/50</div>
-            <div class="error-message"></div>
-          </div>
+        <div class="form-group">
+          <label for="email">Email <span class="required">*</span></label>
+          <input type="email" id="email" name="email" required />
+          <div class="error-message"></div>
         </div>
 
-        <!-- Consent Section -->
-        <div class="form-section-block">
-          <div class="form-group checkbox">
-            <input type="checkbox" id="privacy-consent" name="privacy-consent" required />
-            <label for="privacy-consent">I agree to TechNest's <a href="/privacy-policy">Privacy Policy</a> and understand my information will be used to review my application. <span class="required">*</span></label>
-            <div class="error-message"></div>
-          </div>
-
-          <div class="form-group checkbox">
-            <input type="checkbox" id="share-story" name="share-story" />
-            <label for="share-story">If selected, I give permission for TechNest to share my story to showcase the impact of the Smart Start program.</label>
-          </div>
+        <div class="form-group">
+          <label for="phone">Phone <span class="required">*</span></label>
+          <input type="tel" id="phone" name="phone" required />
+          <div class="error-message"></div>
         </div>
 
-        <button type="submit" class="submit-button" id="submit-button">Nominate</button>
+        <!-- Preferred Contact Method -->
+        <fieldset class="form-group">
+          <legend>Preferred contact method</legend>
+          <div class="checkbox-group inline shaded-group">
+            <div class="form-group checkbox">
+              <input type="checkbox" id="contact-call" name="contact-call" />
+              <label for="contact-call">Call</label>
+            </div>
+            <div class="form-group checkbox">
+              <input type="checkbox" id="contact-email" name="contact-email" />
+              <label for="contact-email">Email</label>
+            </div>
+            <div class="form-group checkbox">
+              <input type="checkbox" id="contact-text" name="contact-text" />
+              <label for="contact-text">Text</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Services Needed -->
+        <fieldset class="form-group">
+          <legend>Services needed <span class="required">*</span></legend>
+          <div class="shaded-group">
+            <div class="services-section">
+              <div class="services-column">
+                <h3 class="services-subheading">Standard Services</h3>
+                <div class="checkbox-group">
+                  <div class="form-group checkbox">
+                    <input type="checkbox" id="service-soundbar" name="service-soundbar" />
+                    <label for="service-soundbar">Soundbar Setup</label>
+                  </div>
+                  <div class="form-group checkbox">
+                    <input type="checkbox" id="service-thermostat" name="service-thermostat" />
+                    <label for="service-thermostat">Smart Thermostat Installation</label>
+                  </div>
+                  <div class="form-group checkbox">
+                    <input type="checkbox" id="service-tv-mount" name="service-tv-mount" />
+                    <label for="service-tv-mount">TV Mounting</label>
+                  </div>
+                  <div class="form-group checkbox">
+                    <input type="checkbox" id="service-doorbell" name="service-doorbell" />
+                    <label for="service-doorbell">Video Doorbell Installation</label>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="services-column">
+                <h3 class="services-subheading">Projects</h3>
+                <div class="checkbox-group">
+                  <div class="form-group checkbox">
+                    <input type="checkbox" id="service-theater" name="service-theater" />
+                    <label for="service-theater">Home Theater Upgrade</label>
+                  </div>
+                  <div class="form-group checkbox">
+                    <input type="checkbox" id="service-network" name="service-network" />
+                    <label for="service-network">Network/Wifi Upgrade</label>
+                  </div>
+                  <div class="form-group checkbox">
+                    <input type="checkbox" id="service-camera" name="service-camera" />
+                    <label for="service-camera">Security Camera Installation</label>
+                  </div>
+                  <div class="form-group checkbox">
+                    <input type="checkbox" id="service-automation" name="service-automation" />
+                    <label for="service-automation">Smart Home Automation</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="services-full-width">
+              <h3 class="services-subheading">General Assistance</h3>
+              <div class="checkbox-group inline">
+                <div class="form-group checkbox">
+                  <input type="checkbox" id="service-troubleshoot" name="service-troubleshoot" />
+                  <label for="service-troubleshoot">Tech Troubleshooting</label>
+                </div>
+                <div class="form-group checkbox">
+                  <input type="checkbox" id="service-wifi-opt" name="service-wifi-opt" />
+                  <label for="service-wifi-opt">Wifi Optimization</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="error-message" id="services-error"></div>
+        </fieldset>
+
+        <!-- Additional Notes -->
+        <div class="form-group">
+          <label for="notes">Additional notes</label>
+          <textarea id="notes" name="notes" rows="4" placeholder="Tell us anything else you'd like us to know..."></textarea>
+          <div class="error-message"></div>
+        </div>
+
+        <!-- Where did you hear about us -->
+        <div class="form-group">
+          <label for="hear-about">Where did you hear about us?</label>
+          <select id="hear-about" name="hear-about">
+            <option value="">Select one...</option>
+            <option value="social-media">Social Media</option>
+            <option value="word-of-mouth">Word of Mouth</option>
+            <option value="website">Website</option>
+            <option value="community-event">Community Event</option>
+            <option value="local-partner">Local Partner</option>
+            <option value="search-engine">Search Engine</option>
+            <option value="other">Other</option>
+          </select>
+          <div class="error-message"></div>
+        </div>
+
+        <!-- Privacy Policy Consent -->
+        <div class="form-group checkbox">
+          <input type="checkbox" id="privacy-consent" name="privacy-consent" required />
+          <label for="privacy-consent">I agree to TechNest's <a href="/privacy-policy">Privacy Policy</a> and understand my information will be used to respond to my inquiry. <span class="required">*</span></label>
+          <div class="error-message"></div>
+        </div>
+
+        <button type="submit" class="submit-button" id="submit-button">Send Message</button>
       </form>
 
       <!-- Modal for success/error messages -->
@@ -133,27 +178,6 @@ import Footer from '../components/Footer.astro';
   </section>
 
   <Footer />
-
-      <form class="smart-start-form" onsubmit="return handleSubmit(event)">
-      </form>
-
-      <!-- Modal for success/error messages -->
-      <div id="form-modal" class="modal hidden">
-        <div class="modal-overlay" onclick="closeModal()"></div>
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 id="modal-title" class="modal-title"></h2>
-            <button type="button" class="modal-close" onclick="closeModal()">×</button>
-          </div>
-          <p id="modal-message" class="modal-message"></p>
-          <button type="button" class="modal-button" onclick="closeModal()">Close</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <Footer />
-</Layout>
 
 <style>
   .form-hero {
@@ -205,31 +229,10 @@ import Footer from '../components/Footer.astro';
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   }
 
-  .smart-start-form {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .form-section-block {
+  .contact-form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-  }
-
-  .section-title {
-    font-size: 1.4rem;
-    color: #1a2a3a;
-    margin: 0;
-    font-family: 'Anek Latin', sans-serif;
-    font-weight: 700;
-  }
-
-  .section-divider {
-    height: 3px;
-    background: #0072cc;
-    margin: 0.5rem 0 0 0;
-    width: 100%;
   }
 
   .form-group {
@@ -279,22 +282,6 @@ import Footer from '../components/Footer.astro';
     min-height: 120px;
   }
 
-  .char-counter {
-    font-size: 0.85rem;
-    color: #666;
-    text-align: right;
-    margin-top: 0.25rem;
-    font-family: 'Anek Latin', sans-serif;
-  }
-
-  .char-counter.warning {
-    color: #f59e0b;
-  }
-
-  .char-counter.success {
-    color: #22c55e;
-  }
-
   .form-group.checkbox {
     flex-direction: row;
     align-items: flex-start;
@@ -312,6 +299,95 @@ import Footer from '../components/Footer.astro';
     font-weight: 400;
     margin: 0;
     font-size: 0.9rem;
+  }
+
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0;
+  }
+
+  .checkbox-group.inline {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  fieldset.form-group {
+    padding: 0;
+    background: none;
+  }
+
+  fieldset:has(.checkbox-group) > .checkbox-group {
+    padding: 1rem 1rem;
+    background-color: #f9f9f9;
+    border-radius: 0.375rem;
+    margin-top: 0;
+  }
+
+  .shaded-group {
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 0.375rem;
+    margin-top: 0;
+  }
+
+  fieldset legend {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1a2a3a;
+    font-family: 'Anek Latin', sans-serif;
+    padding: 0;
+    margin: 0;
+  }
+
+  .services-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .services-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .services-full-width {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .services-subheading {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #666;
+    margin: 0 0 0.25rem 0;
+    font-family: 'Anek Latin', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 768px) {
+    .services-section {
+      grid-template-columns: 1fr;
+    }
+
+    .checkbox-group.inline {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
   }
 
   .form-group.checkbox a {
@@ -495,17 +571,13 @@ import Footer from '../components/Footer.astro';
 <script is:inline>
   // Form validation rules
   const validationRules = {
-    'your-name': (value) => value.trim().length > 0,
-    'your-email': (value) => /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value),
-    'your-phone': (value) => {
+    'name': (value) => value.trim().length > 0,
+    'email': (value) => /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value),
+    'phone': (value) => {
       const phoneRegex = /^(?:\d{10}|\d{3}-\d{3}-\d{4}|\(\d{3}\)\d{3}-\d{4}|\(\d{3}\) \d{3}-\d{4}|\d{3}\.\d{3}\.\d{4}|\d{3} \d{3} \d{4})$/;
       return phoneRegex.test(value.replace(/\s/g, ''));
     },
-    'hear-about': (value) => value !== '',
-    'their-name': (value) => value.trim().length > 0,
-    'their-city': (value) => value.trim().length > 0,
-    'how-know-them': (value) => value !== '',
-    'why-nominating': (value) => value.trim().length >= 50,
+    'services': (value) => Array.isArray(value) ? value.length > 0 : (value && value.length > 0),
     'privacy-consent': (checked) => checked,
   };
 
@@ -553,14 +625,10 @@ import Footer from '../components/Footer.astro';
     
     // Validate each field
     const fields = [
-      'your-name',
-      'your-email',
-      'your-phone',
-      'hear-about',
-      'their-name',
-      'their-city',
-      'how-know-them',
-      'why-nominating',
+      'name',
+      'email',
+      'phone',
+      'services',
       'privacy-consent'
     ];
 
@@ -577,29 +645,17 @@ import Footer from '../components/Footer.astro';
         let errorMsg = '';
         
         switch (fieldName) {
-          case 'your-name':
-            errorMsg = 'Your name is required';
+          case 'name':
+            errorMsg = 'Name is required';
             break;
-          case 'your-email':
+          case 'email':
             errorMsg = 'Please enter a valid email address with a domain (e.g., user@example.com)';
             break;
-          case 'your-phone':
+          case 'phone':
             errorMsg = 'Please enter a valid phone number';
             break;
-          case 'hear-about':
-            errorMsg = 'Please select how you heard about TechNest';
-            break;
-          case 'their-name':
-            errorMsg = 'Their name is required';
-            break;
-          case 'their-city':
-            errorMsg = 'Their city is required';
-            break;
-          case 'how-know-them':
-            errorMsg = 'Please select how you know them';
-            break;
-          case 'why-nominating':
-            errorMsg = 'Please provide at least 50 characters';
+          case 'services':
+            errorMsg = 'Please select at least one service';
             break;
           case 'privacy-consent':
             errorMsg = 'You must agree to the privacy policy';
@@ -648,24 +704,61 @@ import Footer from '../components/Footer.astro';
 
     try {
       submitButton.disabled = true;
-      submitButton.textContent = 'Submitting...';
+      submitButton.textContent = 'Sending...';
 
       // Collect form data
       const formData = new FormData(form);
-      const rawPhone = formData.get('your-phone') || '';
+      const rawPhone = formData.get('phone') || '';
       const cleanPhone = rawPhone.replace(/\D/g, ''); // Remove all non-numeric characters
       
+      // Collect selected services from checkboxes
+      const serviceCheckboxes = [
+        'service-soundbar',
+        'service-thermostat',
+        'service-tv-mount',
+        'service-doorbell',
+        'service-theater',
+        'service-network',
+        'service-camera',
+        'service-automation',
+        'service-troubleshoot',
+        'service-wifi-opt'
+      ];
+      const selectedServices = serviceCheckboxes
+        .filter(id => document.getElementById(id)?.checked)
+        .map(id => {
+          const labels = {
+            'service-soundbar': 'Soundbar Setup',
+            'service-thermostat': 'Smart Thermostat Installation',
+            'service-tv-mount': 'TV Mounting',
+            'service-doorbell': 'Video Doorbell Installation',
+            'service-theater': 'Home Theater Upgrade',
+            'service-network': 'Network/Wifi Upgrade',
+            'service-camera': 'Security Camera Installation',
+            'service-automation': 'Smart Home Automation',
+            'service-troubleshoot': 'Tech Troubleshooting',
+            'service-wifi-opt': 'Wifi Optimization'
+          };
+          return labels[id];
+        })
+        .join(', ');
+      
+      // Collect contact preferences
+      const contactCall = formData.get('contact-call') === 'on';
+      const contactEmail = formData.get('contact-email') === 'on';
+      const contactText = formData.get('contact-text') === 'on';
+      
       const data = {
-        yourName: formData.get('your-name'),
-        yourEmail: formData.get('your-email'),
-        yourPhone: cleanPhone,
-        hearAbout: formData.get('hear-about'),
-        theirName: formData.get('their-name'),
-        theirCity: formData.get('their-city'),
-        howKnowThem: formData.get('how-know-them'),
-        whyNominating: formData.get('why-nominating'),
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: cleanPhone,
+        contactCall,
+        contactEmail,
+        contactText,
+        servicesNeeded: selectedServices,
+        additionalNotes: formData.get('notes') || '',
+        hearAbout: formData.get('hear-about') || '',
         privacyConsent: formData.get('privacy-consent') === 'on',
-        shareStory: formData.get('share-story') === 'on',
         submittedAt: new Date().toISOString(),
         // Metadata
         metadata: {
@@ -680,7 +773,7 @@ import Footer from '../components/Footer.astro';
       };
 
       // Submit to API
-      const response = await fetch('/api/submit-application', {
+      const response = await fetch('/api/submit-contact', {
         method: 'POST',
         mode: 'cors',
         credentials: 'same-origin',
@@ -706,41 +799,20 @@ import Footer from '../components/Footer.astro';
       }
 
       if (response.ok && result.success) {
-        showModal('success', 'Success!', 'Thank you for your nomination! We will review your submission and contact you soon.');
+        showModal('success', 'Success!', 'Thank you for reaching out! We will get back to you as soon as possible.');
         form.reset();
       } else {
-        showModal('error', 'Submission Error', result.message || 'There was an error submitting your nomination.');
+        showModal('error', 'Submission Error', result.message || 'There was an error submitting your message.');
       }
     } catch (error) {
       console.error('[v0] Form submission error:', error);
-      showModal('error', 'Error', 'There was an error submitting your nomination. Please try again.');
+      showModal('error', 'Error', 'There was an error submitting your message. Please try again.');
     } finally {
       submitButton.disabled = false;
       submitButton.textContent = originalText;
     }
 
     return false;
-  }
-
-  // Update character counter for textarea
-  function updateCharCounter(textarea) {
-    const charCount = textarea.value.length;
-    const charCountElement = document.getElementById('char-count');
-    const charCounterElement = charCountElement.closest('.char-counter');
-
-    if (charCountElement) {
-      charCountElement.textContent = charCount;
-    }
-
-    // Add visual feedback with color coding
-    if (charCounterElement) {
-      charCounterElement.classList.remove('warning', 'success');
-      if (charCount >= 50) {
-        charCounterElement.classList.add('success');
-      } else if (charCount >= 35) {
-        charCounterElement.classList.add('warning');
-      }
-    }
   }
 
   // Collect browser metadata
@@ -776,7 +848,7 @@ import Footer from '../components/Footer.astro';
     // Collect metadata on page load
     collectMetadata();
 
-    const form = document.querySelector('.smart-start-form');
+    const form = document.querySelector('.contact-form');
     if (form) {
       form.addEventListener('change', (e) => {
         if (e.target.id) {
