@@ -17,6 +17,16 @@ import Footer from '../components/Footer.astro';
     </div>
   </section>
 
+  <section class="what-we-do-info">
+    <div class="what-we-do-container">
+      <p>TechNest helps homeowners and small businesses across Chicagoland design and install smart technology that makes spaces more secure, comfortable, and easy to manage. We focus on solutions that fit naturally into how you live or work, with clear guidance and reliable systems you can use with confidence.</p>
+      
+      <p>Our services include home security systems, smart home devices, WiFi improvements, automated lighting and entertainment setups, as well as business security, access control, network upgrades, and point of sale connectivity.</p>
+      
+      <p>From stronger WiFi to safer entry points and more connected spaces, TechNest delivers clean installation and dependable local support you can rely on.</p>
+    </div>
+  </section>
+
   <section class="page-content">
     <div class="content-container">
       <div class="content-grid">
@@ -82,7 +92,7 @@ import Footer from '../components/Footer.astro';
     position: relative;
     z-index: 10;
     background-color: #0072cc;
-    padding: 0;
+    padding: 2rem 2rem;
     max-width: 580px;
     margin-left: 2rem;
     display: flex;
@@ -125,6 +135,34 @@ import Footer from '../components/Footer.astro';
 
   .hero-button:hover {
     background-color: #003d7a;
+  }
+
+  .what-we-do-info {
+    background: linear-gradient(135deg, #f5f7fa 0%, #f0f3f8 100%);
+    background-image: url('/background-shapes.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 6rem 2rem;
+  }
+
+  .what-we-do-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .what-we-do-container p {
+    font-size: 1.125rem;
+    color: #0072cc;
+    line-height: 1.8;
+    margin: 0 0 2.5rem 0;
+    font-weight: 500;
+  }
+
+  .what-we-do-container p:last-child {
+    margin-bottom: 0;
   }
 
   .page-content {
@@ -171,6 +209,19 @@ import Footer from '../components/Footer.astro';
 
     .hero-content-overlay p {
       font-size: 1rem;
+    }
+
+    .what-we-do-info {
+      padding: 3rem 1rem !important;
+    }
+
+    .what-we-do-container {
+      padding: 0 !important;
+    }
+
+    .what-we-do-container p {
+      font-size: 1rem !important;
+      margin-bottom: 1.5rem !important;
     }
 
     .page-content {
