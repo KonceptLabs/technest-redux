@@ -42,6 +42,7 @@ export async function POST({ request }: { request: Request }): Promise<Response>
       'hearAbout',
       'theirName',
       'theirCity',
+      'howKnowThem',
       'whyNominating',
       'privacyConsent'
     ];
@@ -63,6 +64,30 @@ export async function POST({ request }: { request: Request }): Promise<Response>
         );
       }
     }
+
+    // Enhance metadata from request headers (server-side detection)
+    if (!data.metadata) {
+      data.metadata = {};
+    }
+
+    // Get client IP from various possible headers (for server-side IP detection)
+    const clientIp = 
+      request.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
+      request.headers.get('x-real-ip') ||
+      request.headers.get('cf-connecting-ip') ||
+      'unknown';
+
+    if (!data.metadata.ipAddress) {
+      data.metadata.ipAddress = clientIp;
+    }
+
+    // Log metadata being sent
+    console.log('[v0] Metadata to be sent:', {
+      ip: data.metadata.ipAddress,
+      country: data.metadata.country,
+      region: data.metadata.region,
+      zipCode: data.metadata.zipCode
+    });
 
     // Get Zapier webhook URL from environment
     const zapierWebhookUrl = import.meta.env.ZAPIER_WEBHOOK_URL;

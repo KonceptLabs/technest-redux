@@ -14,25 +14,34 @@ import Footer from '../components/Footer.astro';
   <section class="form-section">
     <div class="form-container">
       <form class="smart-start-form" onsubmit="return handleSubmit(event)">
+        <!-- Hidden metadata fields -->
+        <input type="hidden" id="metadata-ip" name="metadata-ip" />
+        <input type="hidden" id="metadata-referrer" name="metadata-referrer" />
+        <input type="hidden" id="metadata-user-agent" name="metadata-user-agent" />
+        <input type="hidden" id="metadata-language" name="metadata-language" />
+        <input type="hidden" id="metadata-country" name="metadata-country" />
+        <input type="hidden" id="metadata-region" name="metadata-region" />
+        <input type="hidden" id="metadata-zip" name="metadata-zip" />
+
         <!-- About You Section -->
         <div class="form-section-block">
           <h2 class="section-title">About You</h2>
           <div class="section-divider"></div>
 
           <div class="form-group">
-            <label for="your-name">Your Name <span class="required">*</span></label>
+            <label for="your-name">Your name <span class="required">*</span></label>
             <input type="text" id="your-name" name="your-name" required />
             <div class="error-message"></div>
           </div>
 
           <div class="form-group">
-            <label for="your-email">Your Email <span class="required">*</span></label>
+            <label for="your-email">Your email <span class="required">*</span></label>
             <input type="email" id="your-email" name="your-email" required />
             <div class="error-message"></div>
           </div>
 
           <div class="form-group">
-            <label for="your-phone">Your Phone <span class="required">*</span></label>
+            <label for="your-phone">Your phone number <span class="required">*</span></label>
             <input type="tel" id="your-phone" name="your-phone" required />
             <div class="error-message"></div>
           </div>
@@ -59,20 +68,34 @@ import Footer from '../components/Footer.astro';
           <div class="section-divider"></div>
 
           <div class="form-group">
-            <label for="their-name">Their Name <span class="required">*</span></label>
+            <label for="their-name">Their name <span class="required">*</span></label>
             <input type="text" id="their-name" name="their-name" required />
             <div class="error-message"></div>
           </div>
 
           <div class="form-group">
-            <label for="their-city">Their City <span class="required">*</span></label>
+            <label for="their-city">Their city <span class="required">*</span></label>
             <input type="text" id="their-city" name="their-city" required />
             <div class="error-message"></div>
           </div>
 
           <div class="form-group">
-            <label for="why-nominating">Why are you nominating this person/company? <span class="required">*</span></label>
-            <textarea id="why-nominating" name="why-nominating" rows="6" required></textarea>
+            <label for="how-know-them">How do you know them? <span class="required">*</span></label>
+            <select id="how-know-them" name="how-know-them" required>
+              <option value="">Select one...</option>
+              <option value="business-relationship">Business Relationship</option>
+              <option value="coworker">Coworker</option>
+              <option value="family">Family</option>
+              <option value="friend">Friend</option>
+              <option value="other">Other</option>
+            </select>
+            <div class="error-message"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="why-nominating">Why are you nominating them? <span class="required">*</span></label>
+            <textarea id="why-nominating" name="why-nominating" rows="6" required placeholder="Please provide at least 50 characters explaining why you're nominating this person or company..." oninput="updateCharCounter(this)"></textarea>
+            <div class="char-counter"><span id="char-count">0</span>/50</div>
             <div class="error-message"></div>
           </div>
         </div>
@@ -87,11 +110,11 @@ import Footer from '../components/Footer.astro';
 
           <div class="form-group checkbox">
             <input type="checkbox" id="share-story" name="share-story" />
-            <label for="share-story">I give permission for TechNest to share my story and photos (if selected) to showcase the impact of the Smart Start program.</label>
+            <label for="share-story">If selected, I give permission for TechNest to share my story to showcase the impact of the Smart Start program.</label>
           </div>
         </div>
 
-        <button type="submit" class="submit-button" id="submit-button">Submit Nomination</button>
+        <button type="submit" class="submit-button" id="submit-button">Nominate</button>
       </form>
 
       <!-- Modal for success/error messages -->
@@ -254,6 +277,22 @@ import Footer from '../components/Footer.astro';
   .form-group textarea {
     resize: vertical;
     min-height: 120px;
+  }
+
+  .char-counter {
+    font-size: 0.85rem;
+    color: #666;
+    text-align: right;
+    margin-top: 0.25rem;
+    font-family: 'Anek Latin', sans-serif;
+  }
+
+  .char-counter.warning {
+    color: #f59e0b;
+  }
+
+  .char-counter.success {
+    color: #22c55e;
   }
 
   .form-group.checkbox {
@@ -457,12 +496,16 @@ import Footer from '../components/Footer.astro';
   // Form validation rules
   const validationRules = {
     'your-name': (value) => value.trim().length > 0,
-    'your-email': (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
-    'your-phone': (value) => /^\d{10}$|^\d{3}-\d{3}-\d{4}$/.test(value.replace(/\D/g, '')),
+    'your-email': (value) => /^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value),
+    'your-phone': (value) => {
+      const phoneRegex = /^(?:\d{10}|\d{3}-\d{3}-\d{4}|\(\d{3}\)\d{3}-\d{4}|\(\d{3}\) \d{3}-\d{4}|\d{3}\.\d{3}\.\d{4}|\d{3} \d{3} \d{4})$/;
+      return phoneRegex.test(value.replace(/\s/g, ''));
+    },
     'hear-about': (value) => value !== '',
     'their-name': (value) => value.trim().length > 0,
     'their-city': (value) => value.trim().length > 0,
-    'why-nominating': (value) => value.trim().length > 10,
+    'how-know-them': (value) => value !== '',
+    'why-nominating': (value) => value.trim().length >= 50,
     'privacy-consent': (checked) => checked,
   };
 
@@ -516,6 +559,7 @@ import Footer from '../components/Footer.astro';
       'hear-about',
       'their-name',
       'their-city',
+      'how-know-them',
       'why-nominating',
       'privacy-consent'
     ];
@@ -539,8 +583,11 @@ import Footer from '../components/Footer.astro';
           case 'your-email':
             errorMsg = 'Please enter a valid email address';
             break;
+          case 'your-email':
+            errorMsg = 'Please enter a valid email address with a domain (e.g., user@example.com)';
+            break;
           case 'your-phone':
-            errorMsg = 'Please enter a valid phone number';
+            errorMsg = 'Please enter a valid phone number (555-555-5555, (555)555-5555, 555.555.5555, or 5555555555)';
             break;
           case 'hear-about':
             errorMsg = 'Please select how you heard about TechNest';
@@ -551,8 +598,11 @@ import Footer from '../components/Footer.astro';
           case 'their-city':
             errorMsg = 'Their city is required';
             break;
+          case 'how-know-them':
+            errorMsg = 'Please select how you know them';
+            break;
           case 'why-nominating':
-            errorMsg = 'Please provide more details (at least 10 characters)';
+            errorMsg = 'Please provide at least 50 characters';
             break;
           case 'privacy-consent':
             errorMsg = 'You must agree to the privacy policy';
@@ -612,10 +662,21 @@ import Footer from '../components/Footer.astro';
         hearAbout: formData.get('hear-about'),
         theirName: formData.get('their-name'),
         theirCity: formData.get('their-city'),
+        howKnowThem: formData.get('how-know-them'),
         whyNominating: formData.get('why-nominating'),
         privacyConsent: formData.get('privacy-consent') === 'on',
         shareStory: formData.get('share-story') === 'on',
-        submittedAt: new Date().toISOString()
+        submittedAt: new Date().toISOString(),
+        // Metadata
+        metadata: {
+          ipAddress: formData.get('metadata-ip') || '',
+          referrerUrl: formData.get('metadata-referrer') || '',
+          userAgent: formData.get('metadata-user-agent') || '',
+          acceptLanguage: formData.get('metadata-language') || '',
+          country: formData.get('metadata-country') || '',
+          region: formData.get('metadata-region') || '',
+          zipCode: formData.get('metadata-zip') || ''
+        }
       };
 
       // Submit to API
@@ -661,8 +722,60 @@ import Footer from '../components/Footer.astro';
     return false;
   }
 
+  // Update character counter for textarea
+  function updateCharCounter(textarea) {
+    const charCount = textarea.value.length;
+    const charCountElement = document.getElementById('char-count');
+    const charCounterElement = charCountElement.closest('.char-counter');
+
+    if (charCountElement) {
+      charCountElement.textContent = charCount;
+    }
+
+    // Add visual feedback with color coding
+    if (charCounterElement) {
+      charCounterElement.classList.remove('warning', 'success');
+      if (charCount >= 50) {
+        charCounterElement.classList.add('success');
+      } else if (charCount >= 35) {
+        charCounterElement.classList.add('warning');
+      }
+    }
+  }
+
+  // Collect browser metadata
+  async function collectMetadata() {
+    try {
+      // Collect browser-available metadata
+      document.getElementById('metadata-referrer').value = document.referrer || '';
+      document.getElementById('metadata-user-agent').value = navigator.userAgent || '';
+      document.getElementById('metadata-language').value = navigator.language || '';
+
+      // Fetch geolocation data from IP (server-side will override this if needed)
+      try {
+        const geoResponse = await fetch('https://ipapi.co/json/');
+        if (geoResponse.ok) {
+          const geoData = await geoResponse.json();
+          document.getElementById('metadata-ip').value = geoData.ip || '';
+          document.getElementById('metadata-country').value = geoData.country_name || '';
+          document.getElementById('metadata-region').value = geoData.region || '';
+          document.getElementById('metadata-zip').value = geoData.postal || '';
+          console.log('[v0] Metadata collected successfully');
+        }
+      } catch (geoError) {
+        console.log('[v0] Could not fetch geolocation data:', geoError);
+        // Continue without geolocation - not critical
+      }
+    } catch (error) {
+      console.error('[v0] Error collecting metadata:', error);
+    }
+  }
+
   // Add real-time validation listeners
   document.addEventListener('DOMContentLoaded', () => {
+    // Collect metadata on page load
+    collectMetadata();
+
     const form = document.querySelector('.smart-start-form');
     if (form) {
       form.addEventListener('change', (e) => {
