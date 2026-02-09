@@ -9,10 +9,10 @@ importers:
   .:
     dependencies:
       '@astrojs/vercel':
-        specifier: 9.0.4
+        specifier: ^9.0.4
         version: 9.0.4(astro@6.0.0-beta.10(@types/node@25.2.2)(@vercel/functions@2.2.13)(rollup@4.57.1)(typescript@5.9.3))(next@16.1.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)(rollup@4.57.1)
       astro:
-        specifier: ^6.0.0-beta.6
+        specifier: ^6.0.0-beta.10
         version: 6.0.0-beta.10(@types/node@25.2.2)(@vercel/functions@2.2.13)(rollup@4.57.1)(typescript@5.9.3)
       class-variance-authority:
         specifier: 0.7.1
