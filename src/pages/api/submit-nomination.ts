@@ -1,25 +1,27 @@
 export async function POST({ request }) {
   try {
-    // First, get the raw text to debug
-    const text = await request.text();
-    console.log('[v0] Raw request body:', text);
+    console.log('[v0] POST request received');
+    console.log('[v0] Request method:', request.method);
+    console.log('[v0] Request headers:', Object.fromEntries(request.headers));
     
-    if (!text) {
-      throw new Error('Request body is empty');
-    }
-    
-    // Parse the JSON
+    // Parse JSON directly
     let data;
     try {
-      data = JSON.parse(text);
-    } catch (parseError) {
-      console.error('[v0] JSON parse error:', parseError);
-      throw new Error(`Invalid JSON in request: ${parseError instanceof Error ? parseError.message : 'Unknown error'}`);
+      data = await request.json();
+      console.log('[v0] Successfully parsed JSON data:', JSON.stringify(data, null, 2));
+    } catch (jsonError) {
+      console.error('[v0] Failed to parse JSON:', jsonError);
+      return new Response(JSON.stringify({ 
+        success: false, 
+        message: `Failed to parse JSON: ${jsonError instanceof Error ? jsonError.message : 'Unknown error'}` 
+      }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
     
     const webhookUrl = 'https://hooks.zapier.com/hooks/catch/25458326/ueh3olu/';
-    
-    console.log('[v0] Received nomination data:', JSON.stringify(data, null, 2));
+    console.log('[v0] Sending to Zapier webhook...');
     
     // Send data to Zapier webhook from server
     const response = await fetch(webhookUrl, {
@@ -30,23 +32,25 @@ export async function POST({ request }) {
       body: JSON.stringify(data)
     });
 
-    console.log('[v0] Zapier webhook response status:', response.status);
-    const responseText = await response.text();
-    console.log('[v0] Zapier webhook response:', responseText);
+    console.log('[v0] Zapier response status:', response.status);
+    const zapierResponse = await response.text();
+    console.log('[v0] Zapier response text:', zapierResponse);
 
     if (response.ok) {
+      console.log('[v0] Successfully submitted to Zapier');
       return new Response(JSON.stringify({ success: true, message: 'Nomination submitted successfully' }), {
         status: 200,
         headers: { 'Content-Type': 'application/json' }
       });
     } else {
-      throw new Error(`Webhook response error: ${response.status} - ${responseText}`);
+      throw new Error(`Zapier webhook returned ${response.status}: ${zapierResponse}`);
     }
   } catch (error) {
     console.error('[v0] Error in submit-nomination API:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return new Response(JSON.stringify({ 
       success: false, 
-      message: error instanceof Error ? error.message : 'Error submitting nomination' 
+      message: errorMessage
     }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
