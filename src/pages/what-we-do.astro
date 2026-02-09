@@ -5,15 +5,11 @@ import Footer from '../components/Footer.astro';
 
 <Layout>
   <section class="hero-section">
-    <div class="hero-content-wrapper">
-      <div class="hero-content-box">
-        <h1>What We Do</h1>
-        <p>TechNest designs and installs smart technology for Chicagoland homes and small businesses, from security and WiFi to automation and connected systems that simply work.</p>
-        <a href="/contact" class="hero-button">Get in touch</a>
-      </div>
-    </div>
-    <div class="hero-image-wrapper">
-      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a-tablet-with-smart-home-screen-2024-10-18-09-41-09-utc-gp9wFGqIU3jUQMQwp1GbxvekEBRkJW.jpg" alt="Smart home tablet interface" class="hero-image" />
+    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a-tablet-with-smart-home-screen-2024-10-18-09-41-09-utc-gp9wFGqIU3jUQMQwp1GbxvekEBRkJW.jpg" alt="Smart home tablet interface" class="hero-background" />
+    <div class="hero-content-box">
+      <h1>What We Do</h1>
+      <p>TechNest designs and installs smart technology for Chicagoland homes and small businesses, from security and WiFi to automation and connected systems that simply work.</p>
+      <a href="/contact" class="hero-button">Get in touch</a>
     </div>
   </section>
 
@@ -59,24 +55,30 @@ import Footer from '../components/Footer.astro';
   .hero-section {
     position: relative;
     min-height: 80vh;
-    display: flex;
-    align-items: stretch;
     margin-top: 70px;
     overflow: hidden;
-  }
-
-  .hero-content-wrapper {
-    flex: 0 0 50%;
-    background-color: #0072cc;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 4rem 2rem;
-    z-index: 10;
+  }
+
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
   }
 
   .hero-content-box {
-    max-width: 500px;
+    position: relative;
+    z-index: 10;
+    background-color: #0072cc;
+    max-width: 550px;
+    padding: 3rem 2.5rem;
+    margin-left: 3rem;
   }
 
   .hero-content-box h1 {
@@ -115,21 +117,6 @@ import Footer from '../components/Footer.astro';
     background-color: #003d7a;
   }
 
-  .hero-image-wrapper {
-    flex: 1;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-
   .page-content {
     padding: 6rem 2rem;
   }
@@ -159,14 +146,13 @@ import Footer from '../components/Footer.astro';
 
   @media (max-width: 768px) {
     .hero-section {
-      flex-direction: column;
-      min-height: auto;
+      min-height: 60vh;
     }
 
-    .hero-content-wrapper {
-      flex: 1;
-      padding: 3rem 1.5rem;
-      min-height: 50vh;
+    .hero-content-box {
+      max-width: 90%;
+      padding: 2rem 1.5rem;
+      margin-left: 1rem;
     }
 
     .hero-content-box h1 {
@@ -175,11 +161,6 @@ import Footer from '../components/Footer.astro';
 
     .hero-content-box p {
       font-size: 1rem;
-    }
-
-    .hero-image-wrapper {
-      flex: 1;
-      min-height: 50vh;
     }
 
     .page-content {
