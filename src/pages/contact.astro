@@ -45,7 +45,7 @@ import Footer from '../components/Footer.astro';
         <!-- Preferred Contact Method -->
         <fieldset class="form-group">
           <legend>Preferred contact method</legend>
-          <div class="checkbox-group">
+          <div class="checkbox-group inline">
             <div class="form-group checkbox">
               <input type="checkbox" id="contact-call" name="contact-call" />
               <label for="contact-call">Call</label>
@@ -62,22 +62,70 @@ import Footer from '../components/Footer.astro';
         </fieldset>
 
         <!-- Services Needed -->
-        <div class="form-group">
-          <label for="services">Services needed <span class="required">*</span></label>
-          <select id="services" name="services" multiple required>
-            <option value="">-- Select services --</option>
-            <option value="soundbar-setup">Soundbar Setup</option>
-            <option value="thermostat-installation">Smart Thermostat Installation</option>
-            <option value="tv-mounting">TV Mounting</option>
-            <option value="doorbell-installation">Video Doorbell Installation</option>
-            <option value="home-theater">Home Theater Upgrade</option>
-            <option value="network-wifi">Network/Wifi Upgrade</option>
-            <option value="camera-installation">Security Camera Installation</option>
-            <option value="tech-troubleshooting">General Tech Troubleshooting</option>
-            <option value="wifi-optimization">Wifi Optimization</option>
-          </select>
-          <div class="error-message"></div>
-        </div>
+        <fieldset class="form-group">
+          <legend>Services needed <span class="required">*</span></legend>
+          <div class="services-section">
+            <div class="services-column">
+              <h3 class="services-subheading">Standard Services</h3>
+              <div class="checkbox-group">
+                <div class="form-group checkbox">
+                  <input type="checkbox" id="service-soundbar" name="service-soundbar" />
+                  <label for="service-soundbar">Soundbar Setup</label>
+                </div>
+                <div class="form-group checkbox">
+                  <input type="checkbox" id="service-thermostat" name="service-thermostat" />
+                  <label for="service-thermostat">Smart Thermostat Installation</label>
+                </div>
+                <div class="form-group checkbox">
+                  <input type="checkbox" id="service-tv-mount" name="service-tv-mount" />
+                  <label for="service-tv-mount">TV Mounting</label>
+                </div>
+                <div class="form-group checkbox">
+                  <input type="checkbox" id="service-doorbell" name="service-doorbell" />
+                  <label for="service-doorbell">Video Doorbell Installation</label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="services-column">
+              <h3 class="services-subheading">Projects</h3>
+              <div class="checkbox-group">
+                <div class="form-group checkbox">
+                  <input type="checkbox" id="service-theater" name="service-theater" />
+                  <label for="service-theater">Home Theater Upgrade</label>
+                </div>
+                <div class="form-group checkbox">
+                  <input type="checkbox" id="service-network" name="service-network" />
+                  <label for="service-network">Network/Wifi Upgrade</label>
+                </div>
+                <div class="form-group checkbox">
+                  <input type="checkbox" id="service-camera" name="service-camera" />
+                  <label for="service-camera">Security Camera Installation</label>
+                </div>
+                <div class="form-group checkbox">
+                  <input type="checkbox" id="service-automation" name="service-automation" />
+                  <label for="service-automation">Smart Home Automation</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="services-full-width">
+            <h3 class="services-subheading">General Assistance</h3>
+            <div class="checkbox-group">
+              <div class="form-group checkbox">
+                <input type="checkbox" id="service-troubleshoot" name="service-troubleshoot" />
+                <label for="service-troubleshoot">Tech Troubleshooting</label>
+              </div>
+              <div class="form-group checkbox">
+                <input type="checkbox" id="service-wifi-opt" name="service-wifi-opt" />
+                <label for="service-wifi-opt">Wifi Optimization</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="error-message" id="services-error"></div>
+        </fieldset>
 
         <!-- Additional Notes -->
         <div class="form-group">
@@ -105,7 +153,7 @@ import Footer from '../components/Footer.astro';
         <!-- Privacy Policy Consent -->
         <div class="form-group checkbox">
           <input type="checkbox" id="privacy-consent" name="privacy-consent" required />
-          <label for="privacy-consent">I agree to TechNest's Privacy Policy and understand my information will be used to respond to my inquiry. <span class="required">*</span></label>
+          <label for="privacy-consent">I agree to TechNest's <a href="/privacy-policy">Privacy Policy</a> and understand my information will be used to respond to my inquiry. <span class="required">*</span></label>
           <div class="error-message"></div>
         </div>
 
@@ -258,6 +306,11 @@ import Footer from '../components/Footer.astro';
     margin-top: 0.5rem;
   }
 
+  .checkbox-group.inline {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
   fieldset {
     border: none;
     padding: 0;
@@ -273,14 +326,44 @@ import Footer from '../components/Footer.astro';
     margin-bottom: 0.5rem;
   }
 
-  .form-group select[multiple] {
-    padding: 0.5rem;
-    min-height: 120px;
+  .services-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
   }
 
-  .form-group select[multiple] option {
-    padding: 0.5rem;
-    margin-bottom: 0.25rem;
+  .services-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .services-full-width {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .services-subheading {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #666;
+    margin: 0 0 0.5rem 0;
+    font-family: 'Anek Latin', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 768px) {
+    .services-section {
+      grid-template-columns: 1fr;
+    }
+
+    .checkbox-group.inline {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
   }
 
   .form-group.checkbox a {
@@ -604,9 +687,37 @@ import Footer from '../components/Footer.astro';
       const rawPhone = formData.get('phone') || '';
       const cleanPhone = rawPhone.replace(/\D/g, ''); // Remove all non-numeric characters
       
-      // Collect selected services
-      const servicesSelect = document.getElementById('services');
-      const selectedServices = Array.from(servicesSelect.selectedOptions).map(option => option.value).join(', ');
+      // Collect selected services from checkboxes
+      const serviceCheckboxes = [
+        'service-soundbar',
+        'service-thermostat',
+        'service-tv-mount',
+        'service-doorbell',
+        'service-theater',
+        'service-network',
+        'service-camera',
+        'service-automation',
+        'service-troubleshoot',
+        'service-wifi-opt'
+      ];
+      const selectedServices = serviceCheckboxes
+        .filter(id => document.getElementById(id)?.checked)
+        .map(id => {
+          const labels = {
+            'service-soundbar': 'Soundbar Setup',
+            'service-thermostat': 'Smart Thermostat Installation',
+            'service-tv-mount': 'TV Mounting',
+            'service-doorbell': 'Video Doorbell Installation',
+            'service-theater': 'Home Theater Upgrade',
+            'service-network': 'Network/Wifi Upgrade',
+            'service-camera': 'Security Camera Installation',
+            'service-automation': 'Smart Home Automation',
+            'service-troubleshoot': 'Tech Troubleshooting',
+            'service-wifi-opt': 'Wifi Optimization'
+          };
+          return labels[id];
+        })
+        .join(', ');
       
       // Collect contact preferences
       const contactCall = formData.get('contact-call') === 'on';
@@ -637,8 +748,8 @@ import Footer from '../components/Footer.astro';
         }
       };
 
-      // Submit to API (for now using the same endpoint)
-      const response = await fetch('/api/submit-application', {
+      // Submit to API
+      const response = await fetch('/api/submit-contact', {
         method: 'POST',
         mode: 'cors',
         credentials: 'same-origin',
