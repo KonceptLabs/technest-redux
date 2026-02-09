@@ -170,9 +170,10 @@ import Footer from '../components/Footer.astro';
     padding: 4rem 3rem;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto 1fr auto;
-    gap: 1.5rem;
-    align-content: center;
+    grid-template-rows: auto auto auto auto;
+    gap: 1rem;
+    align-items: center;
+    justify-items: center;
   }
 
   .services-column-light {
@@ -228,6 +229,8 @@ import Footer from '../components/Footer.astro';
     padding: 0;
     display: inline-block;
     text-align: left;
+    align-self: center;
+    justify-self: center;
   }
 
   .services-column li {
@@ -257,6 +260,8 @@ import Footer from '../components/Footer.astro';
     cursor: pointer;
     text-align: center;
     width: fit-content;
+    justify-self: center;
+  }
   }
 
   .services-button-primary {
