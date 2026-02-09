@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PillarsSection from '../components/PillarsSection.astro';
 import Footer from '../components/Footer.astro';
 ---
 
@@ -51,29 +52,7 @@ import Footer from '../components/Footer.astro';
     </div>
   </section>
 
-  <section class="pillars">
-    <div class="pillars-container">
-      <div class="pillar-item">
-        <img src="/icon-tech-works-blue.svg" alt="Bespoke Service" class="pillar-icon" />
-        <h3>Bespoke Service</h3>
-      </div>
-
-      <div class="pillar-item">
-        <img src="/icon-personalized-blue.svg" alt="People-centric" class="pillar-icon" />
-        <h3>People-centric</h3>
-      </div>
-
-      <div class="pillar-item">
-        <img src="/icon-security-privacy-blue.svg" alt="Privacy-focused" class="pillar-icon" />
-        <h3>Privacy-focused</h3>
-      </div>
-
-      <div class="pillar-item">
-        <img src="/icon-service-excellence-blue.svg" alt="Value Delivered" class="pillar-icon" />
-        <h3>Value Delivered</h3>
-      </div>
-    </div>
-  </section>
+  <PillarsSection />
 
   <Footer />
 </Layout>
@@ -186,104 +165,6 @@ import Footer from '../components/Footer.astro';
     margin: 0;
   }
 
-  .page-content {
-    padding: 6rem 2rem;
-  }
-
-  .content-container {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .pillars {
-    background-color: #f5f7fa;
-    background-image: url('/background-shapes.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    padding: 5rem 2rem;
-  }
-
-  .pillars-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-  }
-
-  .pillar-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .pillar-icon {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 1.5rem;
-  }
-
-  .pillar-item h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #0072cc;
-    margin: 0;
-  }
-
-  .about-section {
-    margin-bottom: 4rem;
-  }
-
-  .about-section h2 {
-    font-size: 2rem;
-    margin: 0 0 1.5rem 0;
-    color: #0072cc;
-  }
-
-  .about-section p {
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.8;
-    margin: 0;
-  }
-
-  .values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-
-  .stat {
-    text-align: center;
-    padding: 2rem;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(96, 165, 250, 0.02) 100%);
-    border: 1px solid rgba(59, 130, 246, 0.1);
-    border-radius: 0.75rem;
-  }
-
-  .stat-number {
-    font-size: 2.25rem;
-    font-weight: 700;
-    color: #0072cc;
-    margin-bottom: 0.5rem;
-  }
-
-  .stat-label {
-    color: #555;
-    font-size: 0.9rem;
-  }
-
   @media (max-width: 768px) {
     .page-hero {
       min-height: 50vh;
@@ -326,25 +207,6 @@ import Footer from '../components/Footer.astro';
     }
 
     .value-item p {
-      font-size: 1rem;
-    }
-
-    .pillars {
-      padding: 3rem 1.5rem;
-    }
-
-    .pillars-container {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-
-    .pillar-icon {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 1rem;
-    }
-
-    .pillar-item h3 {
       font-size: 1rem;
     }
   }
