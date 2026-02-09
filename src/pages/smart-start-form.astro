@@ -85,6 +85,17 @@ import Footer from '../components/Footer.astro';
 
         <button type="submit" class="submit-button">Submit Nomination</button>
       </form>
+
+      <!-- Success/Error Modal -->
+      <div id="submission-modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+          <div id="modal-icon" class="modal-icon"></div>
+          <h2 id="modal-title" class="modal-title"></h2>
+          <p id="modal-message" class="modal-message"></p>
+          <button id="modal-close-button" class="modal-button" onclick="closeModal()">Close</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -251,7 +262,98 @@ import Footer from '../components/Footer.astro';
     transform: translateY(0);
   }
 
-  @media (max-width: 768px) {
+  .submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* Modal Styles */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  .modal.hidden {
+    display: none;
+  }
+
+  .modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .modal-content {
+    position: relative;
+    background-color: #fafafa;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .modal-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    height: 60px;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+    color: #1a2a3a;
+    font-family: 'Anek Latin', sans-serif;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .modal-message {
+    font-size: 1rem;
+    color: #4a5a6a;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.6;
+  }
+
+  .modal-button {
+    padding: 0.75rem 2rem;
+    background-color: #0072cc;
+    color: #fafafa;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Anek Latin', sans-serif;
+  }
+
+  .modal-button:hover {
+    background-color: #004499;
+    transform: translateY(-2px);
+  }
+
+  .modal-success .modal-icon::before {
+    content: "✓";
+    color: #22c55e;
+    display: block;
+  }
+
+  .modal-error .modal-icon::before {
+    content: "⚠";
+    color: #ef4444;
+    display: block;
+  }
     .form-hero {
       padding: 2rem 1rem;
     }
@@ -314,6 +416,11 @@ import Footer from '../components/Footer.astro';
     const form = event.target;
     const formData = new FormData(form);
     const webhookUrl = 'https://hooks.zapier.com/hooks/catch/25458326/ueh3olu/';
+    const submitButton = form.querySelector('.submit-button');
+    
+    // Disable submit button during submission
+    submitButton.disabled = true;
+    submitButton.textContent = 'Submitting...';
     
     // Convert form data to JSON object
     const data = {
@@ -356,7 +463,7 @@ import Footer from '../components/Footer.astro';
       .then(response => {
         if (response.ok) {
           console.log('[v0] Form successfully sent to webhook');
-          alert('Thank you for your nomination! We will review your submission and contact you soon.');
+          showModal('success', 'Thank You!', 'Your nomination has been submitted successfully. We will review your submission and contact you soon.');
           form.reset();
         } else {
           throw new Error('Webhook response error');
@@ -364,9 +471,47 @@ import Footer from '../components/Footer.astro';
       })
       .catch(error => {
         console.error('[v0] Error sending to webhook:', error);
-        alert('There was an error submitting your nomination. Please try again.');
+        showModal('error', 'Submission Error', 'There was an error submitting your nomination. Please try again.');
+      })
+      .finally(() => {
+        // Re-enable submit button
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit Nomination';
       });
     
     return false;
   }
+
+  function showModal(type, title, message) {
+    const modal = document.getElementById('submission-modal');
+    const modalIcon = document.getElementById('modal-icon');
+    const modalTitle = document.getElementById('modal-title');
+    const modalMessage = document.getElementById('modal-message');
+    const modalContent = modal.querySelector('.modal-content');
+
+    // Set content
+    modalTitle.textContent = title;
+    modalMessage.textContent = message;
+
+    // Set styling based on type
+    modalContent.classList.remove('modal-success', 'modal-error');
+    modalContent.classList.add(`modal-${type}`);
+
+    // Show modal
+    modal.classList.remove('hidden');
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('submission-modal');
+    modal.classList.add('hidden');
+  }
+
+  // Close modal when clicking outside of it
+  document.addEventListener('click', (event) => {
+    const modal = document.getElementById('submission-modal');
+    const modalContent = modal.querySelector('.modal-content');
+    if (event.target === modal.querySelector('.modal-overlay')) {
+      closeModal();
+    }
+  });
 </script>
