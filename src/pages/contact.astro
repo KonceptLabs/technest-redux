@@ -23,55 +23,90 @@ import Footer from '../components/Footer.astro';
         <input type="hidden" id="metadata-region" name="metadata-region" />
         <input type="hidden" id="metadata-zip" name="metadata-zip" />
 
-        <!-- Contact Information Section -->
-        <div class="form-section-block">
-          <h2 class="section-title">Your information</h2>
-          <div class="section-divider"></div>
-
-          <div class="form-group">
-            <label for="name">Your name <span class="required">*</span></label>
-            <input type="text" id="name" name="name" required />
-            <div class="error-message"></div>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Your email <span class="required">*</span></label>
-            <input type="email" id="email" name="email" required />
-            <div class="error-message"></div>
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Your phone number <span class="required">*</span></label>
-            <input type="tel" id="phone" name="phone" required />
-            <div class="error-message"></div>
-          </div>
+        <!-- Contact Information -->
+        <div class="form-group">
+          <label for="name">Name <span class="required">*</span></label>
+          <input type="text" id="name" name="name" required />
+          <div class="error-message"></div>
         </div>
 
-        <!-- Message Section -->
-        <div class="form-section-block">
-          <h2 class="section-title">Your message</h2>
-          <div class="section-divider"></div>
-
-          <div class="form-group">
-            <label for="subject">Subject <span class="required">*</span></label>
-            <input type="text" id="subject" name="subject" required />
-            <div class="error-message"></div>
-          </div>
-
-          <div class="form-group">
-            <label for="message">Message <span class="required">*</span></label>
-            <textarea id="message" name="message" rows="6" required placeholder="Tell us more about your inquiry..."></textarea>
-            <div class="error-message"></div>
-          </div>
+        <div class="form-group">
+          <label for="email">Email <span class="required">*</span></label>
+          <input type="email" id="email" name="email" required />
+          <div class="error-message"></div>
         </div>
 
-        <!-- Consent Section -->
-        <div class="form-section-block">
-          <div class="form-group checkbox">
-            <input type="checkbox" id="privacy-consent" name="privacy-consent" required />
-            <label for="privacy-consent">I agree to TechNest's <a href="/privacy-policy">Privacy Policy</a> and understand my information will be used to respond to my inquiry. <span class="required">*</span></label>
-            <div class="error-message"></div>
+        <div class="form-group">
+          <label for="phone">Phone <span class="required">*</span></label>
+          <input type="tel" id="phone" name="phone" required />
+          <div class="error-message"></div>
+        </div>
+
+        <!-- Preferred Contact Method -->
+        <fieldset class="form-group">
+          <legend>Preferred contact method</legend>
+          <div class="checkbox-group">
+            <div class="form-group checkbox">
+              <input type="checkbox" id="contact-call" name="contact-call" />
+              <label for="contact-call">Call</label>
+            </div>
+            <div class="form-group checkbox">
+              <input type="checkbox" id="contact-email" name="contact-email" />
+              <label for="contact-email">Email</label>
+            </div>
+            <div class="form-group checkbox">
+              <input type="checkbox" id="contact-text" name="contact-text" />
+              <label for="contact-text">Text</label>
+            </div>
           </div>
+        </fieldset>
+
+        <!-- Services Needed -->
+        <div class="form-group">
+          <label for="services">Services needed <span class="required">*</span></label>
+          <select id="services" name="services" multiple required>
+            <option value="">-- Select services --</option>
+            <option value="soundbar-setup">Soundbar Setup</option>
+            <option value="thermostat-installation">Smart Thermostat Installation</option>
+            <option value="tv-mounting">TV Mounting</option>
+            <option value="doorbell-installation">Video Doorbell Installation</option>
+            <option value="home-theater">Home Theater Upgrade</option>
+            <option value="network-wifi">Network/Wifi Upgrade</option>
+            <option value="camera-installation">Security Camera Installation</option>
+            <option value="tech-troubleshooting">General Tech Troubleshooting</option>
+            <option value="wifi-optimization">Wifi Optimization</option>
+          </select>
+          <div class="error-message"></div>
+        </div>
+
+        <!-- Additional Notes -->
+        <div class="form-group">
+          <label for="notes">Additional notes</label>
+          <textarea id="notes" name="notes" rows="4" placeholder="Tell us anything else you'd like us to know..."></textarea>
+          <div class="error-message"></div>
+        </div>
+
+        <!-- Where did you hear about us -->
+        <div class="form-group">
+          <label for="hear-about">Where did you hear about us?</label>
+          <select id="hear-about" name="hear-about">
+            <option value="">Select one...</option>
+            <option value="social-media">Social Media</option>
+            <option value="word-of-mouth">Word of Mouth</option>
+            <option value="website">Website</option>
+            <option value="community-event">Community Event</option>
+            <option value="local-partner">Local Partner</option>
+            <option value="search-engine">Search Engine</option>
+            <option value="other">Other</option>
+          </select>
+          <div class="error-message"></div>
+        </div>
+
+        <!-- Privacy Policy Consent -->
+        <div class="form-group checkbox">
+          <input type="checkbox" id="privacy-consent" name="privacy-consent" required />
+          <label for="privacy-consent">I agree to TechNest's Privacy Policy and understand my information will be used to respond to my inquiry. <span class="required">*</span></label>
+          <div class="error-message"></div>
         </div>
 
         <button type="submit" class="submit-button" id="submit-button">Send Message</button>
@@ -147,28 +182,7 @@ import Footer from '../components/Footer.astro';
   .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-  }
-
-  .form-section-block {
-    display: flex;
-    flex-direction: column;
     gap: 1.5rem;
-  }
-
-  .section-title {
-    font-size: 1.4rem;
-    color: #1a2a3a;
-    margin: 0;
-    font-family: 'Anek Latin', sans-serif;
-    font-weight: 700;
-  }
-
-  .section-divider {
-    height: 3px;
-    background: #0072cc;
-    margin: 0.5rem 0 0 0;
-    width: 100%;
   }
 
   .form-group {
@@ -235,6 +249,38 @@ import Footer from '../components/Footer.astro';
     font-weight: 400;
     margin: 0;
     font-size: 0.9rem;
+  }
+
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  fieldset legend {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1a2a3a;
+    font-family: 'Anek Latin', sans-serif;
+    padding: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group select[multiple] {
+    padding: 0.5rem;
+    min-height: 120px;
+  }
+
+  .form-group select[multiple] option {
+    padding: 0.5rem;
+    margin-bottom: 0.25rem;
   }
 
   .form-group.checkbox a {
@@ -424,8 +470,7 @@ import Footer from '../components/Footer.astro';
       const phoneRegex = /^(?:\d{10}|\d{3}-\d{3}-\d{4}|\(\d{3}\)\d{3}-\d{4}|\(\d{3}\) \d{3}-\d{4}|\d{3}\.\d{3}\.\d{4}|\d{3} \d{3} \d{4})$/;
       return phoneRegex.test(value.replace(/\s/g, ''));
     },
-    'subject': (value) => value.trim().length > 0,
-    'message': (value) => value.trim().length > 10,
+    'services': (value) => Array.isArray(value) ? value.length > 0 : (value && value.length > 0),
     'privacy-consent': (checked) => checked,
   };
 
@@ -476,8 +521,7 @@ import Footer from '../components/Footer.astro';
       'name',
       'email',
       'phone',
-      'subject',
-      'message',
+      'services',
       'privacy-consent'
     ];
 
@@ -495,7 +539,7 @@ import Footer from '../components/Footer.astro';
         
         switch (fieldName) {
           case 'name':
-            errorMsg = 'Your name is required';
+            errorMsg = 'Name is required';
             break;
           case 'email':
             errorMsg = 'Please enter a valid email address with a domain (e.g., user@example.com)';
@@ -503,11 +547,8 @@ import Footer from '../components/Footer.astro';
           case 'phone':
             errorMsg = 'Please enter a valid phone number';
             break;
-          case 'subject':
-            errorMsg = 'Subject is required';
-            break;
-          case 'message':
-            errorMsg = 'Please provide more details in your message';
+          case 'services':
+            errorMsg = 'Please select at least one service';
             break;
           case 'privacy-consent':
             errorMsg = 'You must agree to the privacy policy';
@@ -563,12 +604,25 @@ import Footer from '../components/Footer.astro';
       const rawPhone = formData.get('phone') || '';
       const cleanPhone = rawPhone.replace(/\D/g, ''); // Remove all non-numeric characters
       
+      // Collect selected services
+      const servicesSelect = document.getElementById('services');
+      const selectedServices = Array.from(servicesSelect.selectedOptions).map(option => option.value).join(', ');
+      
+      // Collect contact preferences
+      const contactCall = formData.get('contact-call') === 'on';
+      const contactEmail = formData.get('contact-email') === 'on';
+      const contactText = formData.get('contact-text') === 'on';
+      
       const data = {
         name: formData.get('name'),
         email: formData.get('email'),
         phone: cleanPhone,
-        subject: formData.get('subject'),
-        message: formData.get('message'),
+        contactCall,
+        contactEmail,
+        contactText,
+        servicesNeeded: selectedServices,
+        additionalNotes: formData.get('notes') || '',
+        hearAbout: formData.get('hear-about') || '',
         privacyConsent: formData.get('privacy-consent') === 'on',
         submittedAt: new Date().toISOString(),
         // Metadata

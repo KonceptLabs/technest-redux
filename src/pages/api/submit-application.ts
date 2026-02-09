@@ -34,18 +34,33 @@ export async function POST({ request }: { request: Request }): Promise<Response>
       );
     }
 
-    // Validate all required fields
-    const requiredFields = [
-      'yourName',
-      'yourEmail',
-      'yourPhone',
-      'hearAbout',
-      'theirName',
-      'theirCity',
-      'howKnowThem',
-      'whyNominating',
-      'privacyConsent'
-    ];
+    // Validate all required fields (handle both Smart Start and Contact forms)
+    let requiredFields = [];
+    
+    // Check if this is a Smart Start nomination or Contact form
+    if (data.theirName) {
+      // Smart Start nomination form
+      requiredFields = [
+        'yourName',
+        'yourEmail',
+        'yourPhone',
+        'hearAbout',
+        'theirName',
+        'theirCity',
+        'howKnowThem',
+        'whyNominating',
+        'privacyConsent'
+      ];
+    } else {
+      // Contact form
+      requiredFields = [
+        'name',
+        'email',
+        'phone',
+        'servicesNeeded',
+        'privacyConsent'
+      ];
+    }
 
     for (const field of requiredFields) {
       if (!data[field] || (typeof data[field] === 'string' && data[field].trim() === '')) {
