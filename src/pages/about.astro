@@ -7,7 +7,6 @@ import Footer from '../components/Footer.astro';
   <section class="page-hero">
     <div class="page-hero-content">
       <h1>About Us</h1>
-      <p>Pioneering technology solutions since 2015</p>
     </div>
   </section>
 
@@ -73,29 +72,37 @@ import Footer from '../components/Footer.astro';
 
 <style>
   .page-hero {
-    min-height: 50vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--secondary) 0%, rgba(59, 130, 246, 0.05) 100%);
-    padding: 4rem 2rem;
+    justify-content: flex-start;
+    background-color: #0072cc;
+    background-image: url('/background-shapes-blue.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 4rem 2rem 4rem 5rem;
+    margin-top: 70px;
   }
 
   .page-hero-content {
-    text-align: center;
+    text-align: left;
     max-width: 600px;
   }
 
   .page-hero-content h1 {
-    font-size: 3rem;
-    margin: 0 0 1rem 0;
-    color: var(--text-primary);
+    font-size: 4.5rem;
+    margin: 0;
+    color: #fafafa;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
   }
 
   .page-hero-content p {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    margin: 0;
+    display: none;
   }
 
   .page-content {
@@ -173,12 +180,17 @@ import Footer from '../components/Footer.astro';
 
   @media (max-width: 768px) {
     .page-hero {
-      min-height: 40vh;
-      padding: 3rem 1rem;
+      min-height: 50vh;
+      padding: 3rem 1.5rem;
+      justify-content: center;
+    }
+
+    .page-hero-content {
+      text-align: center;
     }
 
     .page-hero-content h1 {
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
 
     .page-content {
