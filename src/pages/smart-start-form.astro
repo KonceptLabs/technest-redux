@@ -6,30 +6,30 @@ import Footer from '../components/Footer.astro';
 <Layout>
   <section class="form-hero">
     <div class="form-hero-content">
-      <h1 class="form-title">Smart Start Application</h1>
-      <p class="form-subtitle">Enter or nominate someone to receive a complimentary smart technology upgrade</p>
+      <h1 class="form-title">Smart Start Nomination</h1>
+      <p class="form-subtitle">Complete a short form about yourself or someone you would like to nominate and explain how a smart upgrade would make everyday life easier.</p>
     </div>
   </section>
 
   <section class="form-section">
     <div class="form-container">
       <form class="smart-start-form" onsubmit="return handleSubmit(event)">
-        <!-- Submitter Information Section -->
-        <div class="form-section-title">About You (Submitter)</div>
+        <!-- Your Information Section -->
+        <div class="form-section-title">About You</div>
 
         <div class="form-group">
-          <label for="submitter-name">Submitter Name *</label>
-          <input type="text" id="submitter-name" name="submitter-name" required />
+          <label for="your-name">Your Name *</label>
+          <input type="text" id="your-name" name="your-name" required />
         </div>
 
         <div class="form-group">
-          <label for="submitter-email">Submitter Email *</label>
-          <input type="email" id="submitter-email" name="submitter-email" required />
+          <label for="your-email">Your Email *</label>
+          <input type="email" id="your-email" name="your-email" required />
         </div>
 
         <div class="form-group">
-          <label for="submitter-phone">Submitter Phone *</label>
-          <input type="tel" id="submitter-phone" name="submitter-phone" required />
+          <label for="your-phone">Your Phone *</label>
+          <input type="tel" id="your-phone" name="your-phone" required />
         </div>
 
         <div class="form-group">
@@ -46,17 +46,17 @@ import Footer from '../components/Footer.astro';
           </select>
         </div>
 
-        <!-- Nominated Person/Business Section -->
-        <div class="form-section-title">About the Nominee</div>
+        <!-- Their Information Section -->
+        <div class="form-section-title">About Them</div>
 
         <div class="form-group">
-          <label for="nominated-name">Nominated Name *</label>
-          <input type="text" id="nominated-name" name="nominated-name" required />
+          <label for="their-name">Their Name *</label>
+          <input type="text" id="their-name" name="their-name" required />
         </div>
 
         <div class="form-group">
-          <label for="nominated-city">Nominated City *</label>
-          <input type="text" id="nominated-city" name="nominated-city" required />
+          <label for="their-city">Their City *</label>
+          <input type="text" id="their-city" name="their-city" required />
         </div>
 
         <div class="form-group">
@@ -82,7 +82,7 @@ import Footer from '../components/Footer.astro';
           <label for="share-story">I give permission for TechNest to share my story and photos (if selected) to showcase the impact of the Smart Start program.</label>
         </div>
 
-        <button type="submit" class="submit-button">Submit Application</button>
+        <button type="submit" class="submit-button">Submit Nomination</button>
       </form>
     </div>
   </section>
