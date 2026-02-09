@@ -54,31 +54,29 @@ import Footer from '../components/Footer.astro';
 <style>
   .hero-section {
     position: relative;
-    min-height: 50vh;
+    min-height: 55vh;
     margin-top: 70px;
     overflow: hidden;
     display: flex;
     align-items: center;
+    background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a-tablet-with-smart-home-screen-2024-10-18-09-41-09-utc-gp9wFGqIU3jUQMQwp1GbxvekEBRkJW.jpg');
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
   }
 
   .hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: right bottom;
-    z-index: 0;
+    display: none;
   }
 
   .hero-content-box {
     position: relative;
     z-index: 10;
     background-color: #0072cc;
-    max-width: 550px;
+    max-width: 600px;
     padding: 3rem 2.5rem;
-    margin-left: 3rem;
+    margin-left: 2rem;
+    flex-shrink: 0;
   }
 
   .hero-content-box h1 {
@@ -146,11 +144,12 @@ import Footer from '../components/Footer.astro';
 
   @media (max-width: 768px) {
     .hero-section {
-      min-height: 60vh;
+      min-height: 50vh;
+      background-position: center bottom;
     }
 
     .hero-content-box {
-      max-width: 90%;
+      max-width: 85%;
       padding: 2rem 1.5rem;
       margin-left: 1rem;
     }
