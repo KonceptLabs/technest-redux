@@ -414,14 +414,11 @@ import Footer from '../components/Footer.astro';
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log('[v0] Form submission prevented');
     
     const form = event.target;
     const formData = new FormData(form);
     const webhookUrl = 'https://hooks.zapier.com/hooks/catch/25458326/ueh3olu/';
     const submitButton = form.querySelector('.submit-button');
-    
-    console.log('[v0] Starting form submission');
     
     // Disable submit button during submission
     submitButton.disabled = true;
@@ -457,25 +454,31 @@ import Footer from '../components/Footer.astro';
       submittedAt: new Date().toISOString()
     };
     
-    console.log('[v0] Form data:', data);
-    
     // Send data to Zapier webhook
     fetch(webhookUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify(data)
     })
       .then(response => {
-        console.log('[v0] Webhook response status:', response.status);
         if (response.ok) {
-          console.log('[v0] Form successfully sent to webhook');
           showModal('success', 'Thank You!', 'Your nomination has been submitted successfully. We will review your submission and contact you soon.');
           form.reset();
         } else {
           throw new Error('Webhook response error: ' + response.status);
         }
+      })
+      .catch(error => {
+        console.error('[v0] Error sending to webhook:', error);
+        showModal('error', 'Submission Error', 'There was an error submitting your nomination. Please try again.');
+      })
+      .finally(() => {
+        // Re-enable submit button
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit Nomination';
+      });
+    
+    return false;
+  }
       })
       .catch(error => {
         console.error('[v0] Error sending to webhook:', error);
