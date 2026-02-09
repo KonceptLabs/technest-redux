@@ -581,13 +581,10 @@ import Footer from '../components/Footer.astro';
             errorMsg = 'Your name is required';
             break;
           case 'your-email':
-            errorMsg = 'Please enter a valid email address';
-            break;
-          case 'your-email':
             errorMsg = 'Please enter a valid email address with a domain (e.g., user@example.com)';
             break;
           case 'your-phone':
-            errorMsg = 'Please enter a valid phone number (555-555-5555, (555)555-5555, 555.555.5555, or 5555555555)';
+            errorMsg = 'Please enter a valid phone number';
             break;
           case 'hear-about':
             errorMsg = 'Please select how you heard about TechNest';
@@ -655,10 +652,13 @@ import Footer from '../components/Footer.astro';
 
       // Collect form data
       const formData = new FormData(form);
+      const rawPhone = formData.get('your-phone') || '';
+      const cleanPhone = rawPhone.replace(/\D/g, ''); // Remove all non-numeric characters
+      
       const data = {
         yourName: formData.get('your-name'),
         yourEmail: formData.get('your-email'),
-        yourPhone: formData.get('your-phone'),
+        yourPhone: cleanPhone,
         hearAbout: formData.get('hear-about'),
         theirName: formData.get('their-name'),
         theirCity: formData.get('their-city'),
