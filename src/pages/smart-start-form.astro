@@ -395,14 +395,7 @@ import Footer from '../components/Footer.astro';
       // Get Accept-Language
       document.getElementById('accept-language').value = navigator.language || '';
       
-      // Fetch IP geolocation data from ipapi.co
-      const response = await fetch('https://ipapi.co/json/');
-      const data = await response.json();
-      
-      document.getElementById('ip-address').value = data.ip || '';
-      document.getElementById('ip-country').value = data.country_name || '';
-      document.getElementById('ip-city').value = data.city || '';
-      document.getElementById('ip-zip').value = data.postal || '';
+      // Note: IP geolocation will be fetched server-side to avoid CORS issues
     } catch (error) {
       console.error('[v0] Error collecting metadata:', error);
       // Continue even if metadata collection fails
