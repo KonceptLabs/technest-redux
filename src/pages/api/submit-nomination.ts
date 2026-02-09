@@ -1,6 +1,22 @@
 export async function POST({ request }) {
   try {
-    const data = await request.json();
+    // First, get the raw text to debug
+    const text = await request.text();
+    console.log('[v0] Raw request body:', text);
+    
+    if (!text) {
+      throw new Error('Request body is empty');
+    }
+    
+    // Parse the JSON
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch (parseError) {
+      console.error('[v0] JSON parse error:', parseError);
+      throw new Error(`Invalid JSON in request: ${parseError instanceof Error ? parseError.message : 'Unknown error'}`);
+    }
+    
     const webhookUrl = 'https://hooks.zapier.com/hooks/catch/25458326/ueh3olu/';
     
     console.log('[v0] Received nomination data:', JSON.stringify(data, null, 2));
