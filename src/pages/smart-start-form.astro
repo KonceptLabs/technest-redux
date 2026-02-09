@@ -71,6 +71,7 @@ import Footer from '../components/Footer.astro';
         <input type="hidden" id="ip-country" name="ip-country" />
         <input type="hidden" id="ip-city" name="ip-city" />
         <input type="hidden" id="ip-zip" name="ip-zip" />
+        <input type="hidden" id="user-agent" name="user-agent" />
 
         <div class="form-group checkbox">
           <input type="checkbox" id="privacy-consent" name="privacy-consent" required />
@@ -281,6 +282,9 @@ import Footer from '../components/Footer.astro';
   // Collect metadata and populate hidden fields
   async function collectMetadata() {
     try {
+      // Get User-Agent
+      document.getElementById('user-agent').value = navigator.userAgent || '';
+      
       // Get referrer URL
       document.getElementById('referrer-url').value = document.referrer || '';
       
@@ -326,6 +330,7 @@ import Footer from '../components/Footer.astro';
       
       // Metadata
       ipAddress: formData.get('ip-address'),
+      userAgent: formData.get('user-agent'),
       referrerUrl: formData.get('referrer-url'),
       acceptLanguage: formData.get('accept-language'),
       ipCountry: formData.get('ip-country'),
