@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 
 <Layout>
   <section class="hero-section">
-    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a-tablet-with-smart-home-screen-2024-10-18-09-41-09-utc-gp9wFGqIU3jUQMQwp1GbxvekEBRkJW.jpg" alt="Smart home tablet interface" class="hero-background" />
+    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a-tablet-with-smart-home-screen-2024-10-18-09-41-09-utc.png-BnSyueumHX0eneutaMY6UpTEIiOBOb.jpeg" alt="Smart home tablet interface" class="hero-background" />
     <div class="hero-content-box">
       <h1>What We Do</h1>
       <p>TechNest designs and installs smart technology for Chicagoland homes and small businesses, from security and WiFi to automation and connected systems that simply work.</p>
@@ -54,29 +54,32 @@ import Footer from '../components/Footer.astro';
 <style>
   .hero-section {
     position: relative;
-    min-height: 55vh;
+    min-height: 50vh;
     margin-top: 70px;
     overflow: hidden;
     display: flex;
     align-items: center;
-    background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/a-tablet-with-smart-home-screen-2024-10-18-09-41-09-utc-gp9wFGqIU3jUQMQwp1GbxvekEBRkJW.jpg');
-    background-size: cover;
-    background-position: center right;
-    background-repeat: no-repeat;
+    justify-content: center;
   }
 
   .hero-background {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
   }
 
   .hero-content-box {
     position: relative;
     z-index: 10;
     background-color: #0072cc;
-    max-width: 600px;
-    padding: 3rem 2.5rem;
-    margin-left: 2rem;
-    flex-shrink: 0;
+    max-width: 450px;
+    padding: 2.5rem 2rem;
+    text-align: center;
   }
 
   .hero-content-box h1 {
@@ -109,6 +112,7 @@ import Footer from '../components/Footer.astro';
     transition: background-color 0.3s ease;
     border: none;
     cursor: pointer;
+    margin-top: 0.5rem;
   }
 
   .hero-button:hover {
