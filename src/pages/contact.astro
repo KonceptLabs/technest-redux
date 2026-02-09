@@ -45,7 +45,7 @@ import Footer from '../components/Footer.astro';
         <!-- Preferred Contact Method -->
         <fieldset class="form-group">
           <legend>Preferred contact method</legend>
-          <div class="checkbox-group inline">
+          <div class="checkbox-group inline shaded-group">
             <div class="form-group checkbox">
               <input type="checkbox" id="contact-call" name="contact-call" />
               <label for="contact-call">Call</label>
@@ -64,62 +64,64 @@ import Footer from '../components/Footer.astro';
         <!-- Services Needed -->
         <fieldset class="form-group">
           <legend>Services needed <span class="required">*</span></legend>
-          <div class="services-section">
-            <div class="services-column">
-              <h3 class="services-subheading">Standard Services</h3>
-              <div class="checkbox-group">
-                <div class="form-group checkbox">
-                  <input type="checkbox" id="service-soundbar" name="service-soundbar" />
-                  <label for="service-soundbar">Soundbar Setup</label>
+          <div class="shaded-group">
+            <div class="services-section">
+              <div class="services-column">
+                <h3 class="services-subheading">Standard Services</h3>
+                <div class="checkbox-group">
+                  <div class="form-group checkbox">
+                    <input type="checkbox" id="service-soundbar" name="service-soundbar" />
+                    <label for="service-soundbar">Soundbar Setup</label>
+                  </div>
+                  <div class="form-group checkbox">
+                    <input type="checkbox" id="service-thermostat" name="service-thermostat" />
+                    <label for="service-thermostat">Smart Thermostat Installation</label>
+                  </div>
+                  <div class="form-group checkbox">
+                    <input type="checkbox" id="service-tv-mount" name="service-tv-mount" />
+                    <label for="service-tv-mount">TV Mounting</label>
+                  </div>
+                  <div class="form-group checkbox">
+                    <input type="checkbox" id="service-doorbell" name="service-doorbell" />
+                    <label for="service-doorbell">Video Doorbell Installation</label>
+                  </div>
                 </div>
-                <div class="form-group checkbox">
-                  <input type="checkbox" id="service-thermostat" name="service-thermostat" />
-                  <label for="service-thermostat">Smart Thermostat Installation</label>
-                </div>
-                <div class="form-group checkbox">
-                  <input type="checkbox" id="service-tv-mount" name="service-tv-mount" />
-                  <label for="service-tv-mount">TV Mounting</label>
-                </div>
-                <div class="form-group checkbox">
-                  <input type="checkbox" id="service-doorbell" name="service-doorbell" />
-                  <label for="service-doorbell">Video Doorbell Installation</label>
+              </div>
+              
+              <div class="services-column">
+                <h3 class="services-subheading">Projects</h3>
+                <div class="checkbox-group">
+                  <div class="form-group checkbox">
+                    <input type="checkbox" id="service-theater" name="service-theater" />
+                    <label for="service-theater">Home Theater Upgrade</label>
+                  </div>
+                  <div class="form-group checkbox">
+                    <input type="checkbox" id="service-network" name="service-network" />
+                    <label for="service-network">Network/Wifi Upgrade</label>
+                  </div>
+                  <div class="form-group checkbox">
+                    <input type="checkbox" id="service-camera" name="service-camera" />
+                    <label for="service-camera">Security Camera Installation</label>
+                  </div>
+                  <div class="form-group checkbox">
+                    <input type="checkbox" id="service-automation" name="service-automation" />
+                    <label for="service-automation">Smart Home Automation</label>
+                  </div>
                 </div>
               </div>
             </div>
-            
-            <div class="services-column">
-              <h3 class="services-subheading">Projects</h3>
-              <div class="checkbox-group">
-                <div class="form-group checkbox">
-                  <input type="checkbox" id="service-theater" name="service-theater" />
-                  <label for="service-theater">Home Theater Upgrade</label>
-                </div>
-                <div class="form-group checkbox">
-                  <input type="checkbox" id="service-network" name="service-network" />
-                  <label for="service-network">Network/Wifi Upgrade</label>
-                </div>
-                <div class="form-group checkbox">
-                  <input type="checkbox" id="service-camera" name="service-camera" />
-                  <label for="service-camera">Security Camera Installation</label>
-                </div>
-                <div class="form-group checkbox">
-                  <input type="checkbox" id="service-automation" name="service-automation" />
-                  <label for="service-automation">Smart Home Automation</label>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="services-full-width">
-            <h3 class="services-subheading">General Assistance</h3>
-            <div class="checkbox-group inline">
-              <div class="form-group checkbox">
-                <input type="checkbox" id="service-troubleshoot" name="service-troubleshoot" />
-                <label for="service-troubleshoot">Tech Troubleshooting</label>
-              </div>
-              <div class="form-group checkbox">
-                <input type="checkbox" id="service-wifi-opt" name="service-wifi-opt" />
-                <label for="service-wifi-opt">Wifi Optimization</label>
+            <div class="services-full-width">
+              <h3 class="services-subheading">General Assistance</h3>
+              <div class="checkbox-group inline">
+                <div class="form-group checkbox">
+                  <input type="checkbox" id="service-troubleshoot" name="service-troubleshoot" />
+                  <label for="service-troubleshoot">Tech Troubleshooting</label>
+                </div>
+                <div class="form-group checkbox">
+                  <input type="checkbox" id="service-wifi-opt" name="service-wifi-opt" />
+                  <label for="service-wifi-opt">Wifi Optimization</label>
+                </div>
               </div>
             </div>
           </div>
@@ -332,6 +334,13 @@ import Footer from '../components/Footer.astro';
     margin-top: 0;
   }
 
+  .shaded-group {
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 0.375rem;
+    margin-top: 0;
+  }
+
   fieldset legend {
     font-size: 0.95rem;
     font-weight: 600;
@@ -345,9 +354,7 @@ import Footer from '../components/Footer.astro';
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    padding: 1rem 1rem;
-    background-color: #f9f9f9;
-    border-radius: 0.375rem;
+    margin-bottom: 1rem;
   }
 
   .services-column {
@@ -360,9 +367,6 @@ import Footer from '../components/Footer.astro';
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    padding: 1rem 1rem;
-    background-color: #f9f9f9;
-    border-radius: 0.375rem;
   }
 
   .services-subheading {
