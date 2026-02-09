@@ -20,6 +20,37 @@ import Footer from '../components/Footer.astro';
     </div>
   </section>
 
+  <section class="our-values">
+    <div class="values-container">
+      <h2>Our Values</h2>
+      
+      <div class="value-item">
+        <h3>Authenticity and reliability</h3>
+        <p>We show up as real people who do what we say we will. Every installation, recommendation and interaction is built on honesty, consistency and trust.</p>
+      </div>
+
+      <div class="value-item">
+        <h3>Simplicity and clarity</h3>
+        <p>We make technology feel easy to understand and simple to live with. No jargon, no confusion, just clear guidance and solutions that work.</p>
+      </div>
+
+      <div class="value-item">
+        <h3>Genuine care and empathy</h3>
+        <p>We treat every job as if it was our own home or business. We take the time to patiently listen, understand and support people at every level of tech comfort.</p>
+      </div>
+
+      <div class="value-item">
+        <h3>Local and community focused</h3>
+        <p>Chicago is our home, and we take pride in serving our neighbors. Our work strengthens the community and supports the people who make it special.</p>
+      </div>
+
+      <div class="value-item">
+        <h3>Technology and service excellence</h3>
+        <p>We hold ourselves to high standards. From workmanship to customer care, we focus on quality, attention to detail and long term support.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="page-content">
     <div class="content-container">
       <div class="about-section">
@@ -142,6 +173,52 @@ import Footer from '../components/Footer.astro';
     margin-bottom: 0;
   }
 
+  .our-values {
+    background-color: #0072cc;
+    background-image: url('/background-shapes-blue.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 5rem 2rem;
+  }
+
+  .values-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .values-container h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fafafa;
+    margin: 0 0 3rem 0;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .value-item {
+    margin-bottom: 2.5rem;
+  }
+
+  .value-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .value-item h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fafafa;
+    margin: 0 0 0.75rem 0;
+  }
+
+  .value-item p {
+    font-size: 1.0625rem;
+    color: #fafafa;
+    line-height: 1.7;
+    margin: 0;
+  }
+
   .page-content {
     padding: 6rem 2rem;
   }
@@ -237,6 +314,27 @@ import Footer from '../components/Footer.astro';
     .story-container p {
       font-size: 1rem;
       margin-bottom: 1.5rem;
+    }
+
+    .our-values {
+      padding: 3rem 1.5rem;
+    }
+
+    .values-container h2 {
+      font-size: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .value-item {
+      margin-bottom: 2rem;
+    }
+
+    .value-item h3 {
+      font-size: 1.125rem;
+    }
+
+    .value-item p {
+      font-size: 1rem;
     }
 
     .page-content {
