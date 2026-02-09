@@ -2,18 +2,37 @@ export async function POST({ request }) {
   try {
     console.log('[v0] POST request received');
     console.log('[v0] Request method:', request.method);
-    console.log('[v0] Request headers:', Object.fromEntries(request.headers));
+    console.log('[v0] Request URL:', request.url);
+    console.log('[v0] Content-Type:', request.headers.get('content-type'));
     
-    // Parse JSON directly
-    let data;
-    try {
-      data = await request.json();
-      console.log('[v0] Successfully parsed JSON data:', JSON.stringify(data, null, 2));
-    } catch (jsonError) {
-      console.error('[v0] Failed to parse JSON:', jsonError);
+    // Try to get the body as text first to see what's there
+    const bodyText = await request.text();
+    console.log('[v0] Raw body text:', bodyText);
+    console.log('[v0] Body text length:', bodyText.length);
+    console.log('[v0] Body is empty:', bodyText === '');
+    
+    if (!bodyText || bodyText.trim() === '') {
+      console.error('[v0] Request body is empty!');
       return new Response(JSON.stringify({ 
         success: false, 
-        message: `Failed to parse JSON: ${jsonError instanceof Error ? jsonError.message : 'Unknown error'}` 
+        message: 'Request body is empty' 
+      }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+    
+    // Parse JSON
+    let data;
+    try {
+      data = JSON.parse(bodyText);
+      console.log('[v0] Successfully parsed JSON data');
+    } catch (parseError) {
+      console.error('[v0] JSON parse failed:', parseError);
+      console.error('[v0] Failed to parse text:', bodyText.substring(0, 100));
+      return new Response(JSON.stringify({ 
+        success: false, 
+        message: `Failed to parse JSON: ${parseError instanceof Error ? parseError.message : 'Unknown error'}` 
       }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' }
