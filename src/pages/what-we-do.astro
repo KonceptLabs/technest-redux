@@ -163,15 +163,16 @@ import Footer from '../components/Footer.astro';
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 100vh;
+    grid-auto-rows: auto;
   }
 
   .services-column {
     padding: 4rem 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 1.5rem;
+    align-content: center;
   }
 
   .services-column-light {
@@ -191,9 +192,10 @@ import Footer from '../components/Footer.astro';
     font-size: 2.5rem;
     font-weight: 700;
     line-height: 1.2;
-    margin: 0 0 1.5rem 0;
+    margin: 0;
     text-transform: uppercase;
     letter-spacing: -0.02em;
+    text-align: center;
   }
 
   .services-column-light h2 {
@@ -207,7 +209,8 @@ import Footer from '../components/Footer.astro';
   .services-column p {
     font-size: 1.125rem;
     line-height: 1.7;
-    margin: 0 0 2rem 0;
+    margin: 0;
+    text-align: center;
   }
 
   .services-column-light p {
@@ -221,7 +224,7 @@ import Footer from '../components/Footer.astro';
 
   .services-column ul {
     list-style-position: inside;
-    margin: 0 0 2.5rem 0;
+    margin: 0;
     padding: 0;
     display: inline-block;
     text-align: left;
