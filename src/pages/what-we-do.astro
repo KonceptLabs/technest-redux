@@ -27,6 +27,35 @@ import Footer from '../components/Footer.astro';
     </div>
   </section>
 
+  <section class="services-comparison">
+    <div class="services-column services-column-light">
+      <h2>Home Services</h2>
+      <p>Your home should feel comfortable, secure, and easy to manage. TechNest helps homeowners across Chicagoland design and install smart home technology that works reliably and fits naturally into everyday life.</p>
+      <ul>
+        <li>Smart home security with cameras and alarms</li>
+        <li>Strong, reliable whole home WiFi and network improvements</li>
+        <li>Home automation for lighting, comfort, and convenience</li>
+        <li>Whole home audio and clean entertainment setups</li>
+        <li>Clear guidance, professional installation, and long term local support</li>
+      </ul>
+      <a href="/contact" class="services-button services-button-primary">Learn More</a>
+    </div>
+
+    <div class="services-column services-column-blue">
+      <h2>Small Business Services</h2>
+      <p>Running a small business is demanding. TechNest supports businesses across Chicagoland with reliable, cost effective technology that improves security, strengthens connectivity, and keeps daily operations running smoothly.</p>
+      <ul>
+        <li>Business security systems and surveillance cameras</li>
+        <li>Access control for doors and restricted areas</li>
+        <li>Network and WiFi upgrades for reliable performance</li>
+        <li>Point of sale connectivity and system support</li>
+        <li>Smart automation to reduce manual tasks</li>
+        <li>Friendly, professional installation, and responsive local support</li>
+      </ul>
+      <a href="/contact" class="services-button services-button-secondary">Learn More</a>
+    </div>
+  </section>
+
   <section class="page-content">
     <div class="content-container">
       <div class="content-grid">
@@ -149,7 +178,7 @@ import Footer from '../components/Footer.astro';
 
   .what-we-do-container {
     max-width: 700px;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
   }
 
@@ -163,6 +192,118 @@ import Footer from '../components/Footer.astro';
 
   .what-we-do-container p:last-child {
     margin-bottom: 0;
+  }
+
+  .services-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+  }
+
+  .services-column {
+    padding: 4rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .services-column-light {
+    background-color: #f5f7fa;
+    background-image: url('/background-shapes.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .services-column-blue {
+    background-color: #0072cc;
+  }
+
+  .services-column h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 1.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .services-column-light h2 {
+    color: #0072cc;
+  }
+
+  .services-column-blue h2 {
+    color: #fafafa;
+  }
+
+  .services-column p {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin: 0 0 2rem 0;
+  }
+
+  .services-column-light p {
+    color: #0072cc;
+    font-weight: 500;
+  }
+
+  .services-column-blue p {
+    color: #fafafa;
+  }
+
+  .services-column ul {
+    list-style-position: inside;
+    margin: 0 0 2.5rem 0;
+    padding: 0;
+  }
+
+  .services-column li {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    margin: 0 0 1rem 0;
+  }
+
+  .services-column-light li {
+    color: #0072cc;
+    font-weight: 500;
+  }
+
+  .services-column-blue li {
+    color: #fafafa;
+  }
+
+  .services-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.0625rem;
+    transition: background-color 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+    text-align: center;
+    width: fit-content;
+  }
+
+  .services-button-primary {
+    background-color: #0072cc;
+    color: #fafafa;
+  }
+
+  .services-button-primary:hover {
+    background-color: #0052a3;
+  }
+
+  .services-button-secondary {
+    background-color: #fafafa;
+    color: #0072cc;
+    border-color: #fafafa;
+  }
+
+  .services-button-secondary:hover {
+    background-color: #f0f0f0;
   }
 
   .page-content {
@@ -209,6 +350,27 @@ import Footer from '../components/Footer.astro';
 
     .hero-content-overlay p {
       font-size: 1rem;
+    }
+
+    .services-comparison {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .services-column {
+      padding: 3rem 1.5rem;
+    }
+
+    .services-column h2 {
+      font-size: 1.75rem;
+    }
+
+    .services-column p {
+      font-size: 1rem;
+    }
+
+    .services-column li {
+      font-size: 0.9375rem;
     }
 
     .what-we-do-info {
