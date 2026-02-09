@@ -1,13 +1,30 @@
 export async function POST({ request }) {
   try {
-    // Parse the request body
+    // Clone the request to safely read the body
+    const clonedRequest = request.clone();
+    const text = await clonedRequest.text();
+    console.log('[v0] Request body length:', text.length);
+    console.log('[v0] Request body (first 100 chars):', text.substring(0, 100));
+    
+    if (!text || text.trim() === '') {
+      console.error('[v0] Request body is empty');
+      return new Response(JSON.stringify({ 
+        success: false, 
+        message: 'Request body is empty' 
+      }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+    
+    // Parse JSON
     let data;
     try {
-      const text = await request.text();
-      console.log('[v0] Request body received, length:', text.length);
       data = JSON.parse(text);
+      console.log('[v0] Successfully parsed JSON');
     } catch (parseError) {
-      console.error('[v0] Failed to parse request body:', parseError);
+      console.error('[v0] JSON parse error:', parseError);
+      console.error('[v0] Failed text:', text);
       return new Response(JSON.stringify({ 
         success: false, 
         message: 'Invalid JSON in request body' 
