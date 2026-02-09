@@ -36,16 +36,13 @@ export async function POST({ request }: { request: Request }): Promise<Response>
 
     // Validate all required fields
     const requiredFields = [
-      'applicantType',
-      'fullName',
-      'email',
-      'phone',
-      'address',
-      'city',
-      'state',
-      'zip',
-      'whySmartStart',
-      'spaceType',
+      'yourName',
+      'yourEmail',
+      'yourPhone',
+      'hearAbout',
+      'theirName',
+      'theirCity',
+      'whyNominating',
       'privacyConsent'
     ];
 
@@ -105,7 +102,7 @@ export async function POST({ request }: { request: Request }): Promise<Response>
       return new Response(
         JSON.stringify({ 
           success: false, 
-          message: 'Failed to submit application to Zapier' 
+          message: 'Failed to submit nomination to Zapier' 
         }),
         { 
           status: 500,
@@ -121,7 +118,7 @@ export async function POST({ request }: { request: Request }): Promise<Response>
     return new Response(
       JSON.stringify({ 
         success: true, 
-        message: 'Application submitted successfully' 
+        message: 'Nomination submitted successfully' 
       }),
       { 
         status: 200,

@@ -6,102 +6,112 @@ import Footer from '../components/Footer.astro';
 <Layout>
   <section class="form-hero">
     <div class="form-hero-content">
-      <h1 class="form-title">Smart Start Application</h1>
-      <p class="form-subtitle">Enter or nominate someone to receive a complimentary smart technology upgrade</p>
+      <h1 class="form-title">Smart Start Nomination</h1>
+      <p class="form-subtitle">Complete a short form about yourself or someone you would like to nominate and explain how a smart upgrade would make everyday life easier.</p>
     </div>
   </section>
 
   <section class="form-section">
     <div class="form-container">
       <form class="smart-start-form" onsubmit="return handleSubmit(event)">
-        <div class="form-group">
-          <label for="applicant-type">I am applying as:</label>
-          <select id="applicant-type" name="applicant-type" required>
-            <option value="">Select one...</option>
-            <option value="individual">Individual</option>
-            <option value="couple">Couple</option>
-            <option value="family">Family</option>
-            <option value="business">Small Business</option>
-          </select>
-        </div>
+        <!-- About You Section -->
+        <div class="form-section-block">
+          <h2 class="section-title">About You</h2>
+          <div class="section-divider"></div>
 
-        <div class="form-group">
-          <label for="full-name">Full Name *</label>
-          <input type="text" id="full-name" name="full-name" required />
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email Address *</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-
-        <div class="form-group">
-          <label for="phone">Phone Number *</label>
-          <input type="tel" id="phone" name="phone" required />
-        </div>
-
-        <div class="form-group">
-          <label for="address">Address *</label>
-          <input type="text" id="address" name="address" required />
-        </div>
-
-        <div class="form-group">
-          <label for="city">City *</label>
-          <input type="text" id="city" name="city" required />
-        </div>
-
-        <div class="form-row">
           <div class="form-group">
-            <label for="state">State *</label>
-            <input type="text" id="state" name="state" maxlength="2" required />
+            <label for="your-name">Your Name <span class="required">*</span></label>
+            <input type="text" id="your-name" name="your-name" required />
+            <div class="error-message"></div>
           </div>
+
           <div class="form-group">
-            <label for="zip">Zip Code *</label>
-            <input type="text" id="zip" name="zip" maxlength="5" required />
+            <label for="your-email">Your Email <span class="required">*</span></label>
+            <input type="email" id="your-email" name="your-email" required />
+            <div class="error-message"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="your-phone">Your Phone <span class="required">*</span></label>
+            <input type="tel" id="your-phone" name="your-phone" required />
+            <div class="error-message"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="hear-about">Where did you hear about TechNest? <span class="required">*</span></label>
+            <select id="hear-about" name="hear-about" required>
+              <option value="">Select one...</option>
+              <option value="social-media">Social Media</option>
+              <option value="word-of-mouth">Word of Mouth</option>
+              <option value="website">Website</option>
+              <option value="community-event">Community Event</option>
+              <option value="local-partner">Local Partner</option>
+              <option value="search-engine">Search Engine</option>
+              <option value="other">Other</option>
+            </select>
+            <div class="error-message"></div>
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="nominating">Are you nominating someone?</label>
-          <select id="nominating" name="nominating">
-            <option value="no">No, I am applying for myself</option>
-            <option value="yes">Yes, I am nominating someone</option>
-          </select>
+        <!-- About Them Section -->
+        <div class="form-section-block">
+          <h2 class="section-title">About Them</h2>
+          <div class="section-divider"></div>
+
+          <div class="form-group">
+            <label for="their-name">Their Name <span class="required">*</span></label>
+            <input type="text" id="their-name" name="their-name" required />
+            <div class="error-message"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="their-city">Their City <span class="required">*</span></label>
+            <input type="text" id="their-city" name="their-city" required />
+            <div class="error-message"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="why-nominating">Why are you nominating this person/company? <span class="required">*</span></label>
+            <textarea id="why-nominating" name="why-nominating" rows="6" required></textarea>
+            <div class="error-message"></div>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="nominee-name">Nominee Name (if applicable)</label>
-          <input type="text" id="nominee-name" name="nominee-name" />
+        <!-- Consent Section -->
+        <div class="form-section-block">
+          <div class="form-group checkbox">
+            <input type="checkbox" id="privacy-consent" name="privacy-consent" required />
+            <label for="privacy-consent">I agree to TechNest's <a href="/privacy-policy">Privacy Policy</a> and understand my information will be used to review my application. <span class="required">*</span></label>
+            <div class="error-message"></div>
+          </div>
+
+          <div class="form-group checkbox">
+            <input type="checkbox" id="share-story" name="share-story" />
+            <label for="share-story">I give permission for TechNest to share my story and photos (if selected) to showcase the impact of the Smart Start program.</label>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="why-smart-start">Why would a smart technology upgrade make a difference in your life or someone else's? *</label>
-          <textarea id="why-smart-start" name="why-smart-start" rows="6" required></textarea>
-        </div>
+        <button type="submit" class="submit-button" id="submit-button">Submit Nomination</button>
+      </form>
 
-        <div class="form-group">
-          <label for="space-type">What type of space do you need help with? *</label>
-          <select id="space-type" name="space-type" required>
-            <option value="">Select one...</option>
-            <option value="home">Home</option>
-            <option value="apartment">Apartment</option>
-            <option value="office">Office/Workspace</option>
-            <option value="retail">Retail Space</option>
-            <option value="other">Other</option>
-          </select>
+      <!-- Modal for success/error messages -->
+      <div id="form-modal" class="modal hidden">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 id="modal-title" class="modal-title"></h2>
+            <button type="button" class="modal-close" onclick="closeModal()">×</button>
+          </div>
+          <p id="modal-message" class="modal-message"></p>
+          <button type="button" class="modal-button" onclick="closeModal()">Close</button>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="form-group checkbox">
-          <input type="checkbox" id="privacy-consent" name="privacy-consent" required />
-          <label for="privacy-consent">I agree to TechNest's <a href="/privacy-policy">Privacy Policy</a> and understand my information will be used to review my application. *</label>
-        </div>
+  <Footer />
 
-        <div class="form-group checkbox">
-          <input type="checkbox" id="share-story" name="share-story" />
-          <label for="share-story">I give permission for TechNest to share my story and photos (if selected) to showcase the impact of the Smart Start program.</label>
-        </div>
-
-        <button type="submit" class="submit-button" id="submit-button">Submit Application</button>
+      <form class="smart-start-form" onsubmit="return handleSubmit(event)">
       </form>
 
       <!-- Modal for success/error messages -->
@@ -175,7 +185,28 @@ import Footer from '../components/Footer.astro';
   .smart-start-form {
     display: flex;
     flex-direction: column;
+    gap: 2rem;
+  }
+
+  .form-section-block {
+    display: flex;
+    flex-direction: column;
     gap: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    color: #1a2a3a;
+    margin: 0;
+    font-family: 'Anek Latin', sans-serif;
+    font-weight: 700;
+  }
+
+  .section-divider {
+    height: 3px;
+    background: #0072cc;
+    margin: 0.5rem 0 0 0;
+    width: 100%;
   }
 
   .form-group {
@@ -195,6 +226,10 @@ import Footer from '../components/Footer.astro';
     font-weight: 600;
     color: #1a2a3a;
     font-family: 'Anek Latin', sans-serif;
+  }
+
+  .required {
+    color: #ef4444;
   }
 
   .form-group input,
@@ -421,16 +456,13 @@ import Footer from '../components/Footer.astro';
 <script is:inline>
   // Form validation rules
   const validationRules = {
-    'applicant-type': (value) => value !== '',
-    'full-name': (value) => value.trim().length > 0,
-    'email': (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
-    'phone': (value) => /^\d{10}$|^\d{3}-\d{3}-\d{4}$/.test(value.replace(/\D/g, '')),
-    'address': (value) => value.trim().length > 0,
-    'city': (value) => value.trim().length > 0,
-    'state': (value) => /^[A-Z]{2}$|^[a-z]{2}$/.test(value),
-    'zip': (value) => /^\d{5}$/.test(value),
-    'why-smart-start': (value) => value.trim().length > 10,
-    'space-type': (value) => value !== '',
+    'your-name': (value) => value.trim().length > 0,
+    'your-email': (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+    'your-phone': (value) => /^\d{10}$|^\d{3}-\d{3}-\d{4}$/.test(value.replace(/\D/g, '')),
+    'hear-about': (value) => value !== '',
+    'their-name': (value) => value.trim().length > 0,
+    'their-city': (value) => value.trim().length > 0,
+    'why-nominating': (value) => value.trim().length > 10,
     'privacy-consent': (checked) => checked,
   };
 
@@ -478,16 +510,13 @@ import Footer from '../components/Footer.astro';
     
     // Validate each field
     const fields = [
-      'applicant-type',
-      'full-name',
-      'email',
-      'phone',
-      'address',
-      'city',
-      'state',
-      'zip',
-      'why-smart-start',
-      'space-type',
+      'your-name',
+      'your-email',
+      'your-phone',
+      'hear-about',
+      'their-name',
+      'their-city',
+      'why-nominating',
       'privacy-consent'
     ];
 
@@ -504,35 +533,26 @@ import Footer from '../components/Footer.astro';
         let errorMsg = '';
         
         switch (fieldName) {
-          case 'applicant-type':
-            errorMsg = 'Please select an applicant type';
+          case 'your-name':
+            errorMsg = 'Your name is required';
             break;
-          case 'full-name':
-            errorMsg = 'Full name is required';
-            break;
-          case 'email':
+          case 'your-email':
             errorMsg = 'Please enter a valid email address';
             break;
-          case 'phone':
+          case 'your-phone':
             errorMsg = 'Please enter a valid phone number';
             break;
-          case 'address':
-            errorMsg = 'Address is required';
+          case 'hear-about':
+            errorMsg = 'Please select how you heard about TechNest';
             break;
-          case 'city':
-            errorMsg = 'City is required';
+          case 'their-name':
+            errorMsg = 'Their name is required';
             break;
-          case 'state':
-            errorMsg = 'Please enter a valid 2-letter state code';
+          case 'their-city':
+            errorMsg = 'Their city is required';
             break;
-          case 'zip':
-            errorMsg = 'Please enter a valid 5-digit zip code';
-            break;
-          case 'why-smart-start':
+          case 'why-nominating':
             errorMsg = 'Please provide more details (at least 10 characters)';
-            break;
-          case 'space-type':
-            errorMsg = 'Please select a space type';
             break;
           case 'privacy-consent':
             errorMsg = 'You must agree to the privacy policy';
@@ -586,18 +606,13 @@ import Footer from '../components/Footer.astro';
       // Collect form data
       const formData = new FormData(form);
       const data = {
-        applicantType: formData.get('applicant-type'),
-        fullName: formData.get('full-name'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-        address: formData.get('address'),
-        city: formData.get('city'),
-        state: formData.get('state'),
-        zip: formData.get('zip'),
-        nominating: formData.get('nominating'),
-        nomineeName: formData.get('nominee-name') || '',
-        whySmartStart: formData.get('why-smart-start'),
-        spaceType: formData.get('space-type'),
+        yourName: formData.get('your-name'),
+        yourEmail: formData.get('your-email'),
+        yourPhone: formData.get('your-phone'),
+        hearAbout: formData.get('hear-about'),
+        theirName: formData.get('their-name'),
+        theirCity: formData.get('their-city'),
+        whyNominating: formData.get('why-nominating'),
         privacyConsent: formData.get('privacy-consent') === 'on',
         shareStory: formData.get('share-story') === 'on',
         submittedAt: new Date().toISOString()
@@ -630,14 +645,14 @@ import Footer from '../components/Footer.astro';
       }
 
       if (response.ok && result.success) {
-        showModal('success', 'Success!', 'Thank you for your application! We will review your submission and contact you soon.');
+        showModal('success', 'Success!', 'Thank you for your nomination! We will review your submission and contact you soon.');
         form.reset();
       } else {
-        showModal('error', 'Submission Error', result.message || 'There was an error submitting your application.');
+        showModal('error', 'Submission Error', result.message || 'There was an error submitting your nomination.');
       }
     } catch (error) {
       console.error('[v0] Form submission error:', error);
-      showModal('error', 'Error', 'There was an error submitting your application. Please try again.');
+      showModal('error', 'Error', 'There was an error submitting your nomination. Please try again.');
     } finally {
       submitButton.disabled = false;
       submitButton.textContent = originalText;
