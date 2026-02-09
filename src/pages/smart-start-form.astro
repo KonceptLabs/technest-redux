@@ -417,7 +417,6 @@ import Footer from '../components/Footer.astro';
     
     const form = event.target;
     const formData = new FormData(form);
-    const webhookUrl = 'https://hooks.zapier.com/hooks/catch/25458326/ueh3olu/';
     const submitButton = form.querySelector('.submit-button');
     
     // Disable submit button during submission
@@ -454,34 +453,25 @@ import Footer from '../components/Footer.astro';
       submittedAt: new Date().toISOString()
     };
     
-    // Send data to Zapier webhook
-    fetch(webhookUrl, {
+    // Send data to server API route
+    fetch('/api/submit-nomination', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(data)
     })
-      .then(response => {
-        if (response.ok) {
+      .then(response => response.json())
+      .then(result => {
+        if (result.success) {
           showModal('success', 'Thank You!', 'Your nomination has been submitted successfully. We will review your submission and contact you soon.');
           form.reset();
         } else {
-          throw new Error('Webhook response error: ' + response.status);
+          throw new Error(result.message || 'Submission failed');
         }
       })
       .catch(error => {
-        console.error('[v0] Error sending to webhook:', error);
-        showModal('error', 'Submission Error', 'There was an error submitting your nomination. Please try again.');
-      })
-      .finally(() => {
-        // Re-enable submit button
-        submitButton.disabled = false;
-        submitButton.textContent = 'Submit Nomination';
-      });
-    
-    return false;
-  }
-      })
-      .catch(error => {
-        console.error('[v0] Error sending to webhook:', error);
+        console.error('[v0] Error submitting nomination:', error);
         showModal('error', 'Submission Error', 'There was an error submitting your nomination. Please try again.');
       })
       .finally(() => {
@@ -494,7 +484,6 @@ import Footer from '../components/Footer.astro';
   }
 
   function showModal(type, title, message) {
-    console.log('[v0] Showing modal:', type);
     const modal = document.getElementById('submission-modal');
     const modalIcon = document.getElementById('modal-icon');
     const modalTitle = document.getElementById('modal-title');
