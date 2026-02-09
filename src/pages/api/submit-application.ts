@@ -1,21 +1,17 @@
+// Handle preflight OPTIONS requests
+export async function OPTIONS(): Promise<Response> {
+  return new Response(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    }
+  });
+}
+
 export async function POST({ request }: { request: Request }): Promise<Response> {
   try {
-    // Preflight check - only allow requests from same origin
-    const origin = request.headers.get('origin');
-    const host = request.headers.get('host');
-    const protocol = request.headers.get('x-forwarded-proto') || 'https';
-    const allowedOrigin = `${protocol}://${host}`;
-
-    if (origin && origin !== allowedOrigin) {
-      return new Response(
-        JSON.stringify({ success: false, message: 'CORS policy violation' }),
-        { 
-          status: 403,
-          headers: { 'Content-Type': 'application/json' }
-        }
-      );
-    }
-
     // Parse request body with proper error handling
     let data;
     try {
@@ -30,7 +26,10 @@ export async function POST({ request }: { request: Request }): Promise<Response>
         }),
         { 
           status: 400,
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          }
         }
       );
     }
@@ -59,7 +58,10 @@ export async function POST({ request }: { request: Request }): Promise<Response>
           }),
           { 
             status: 400,
-            headers: { 'Content-Type': 'application/json' }
+            headers: { 
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*'
+            }
           }
         );
       }
@@ -77,7 +79,10 @@ export async function POST({ request }: { request: Request }): Promise<Response>
         }),
         { 
           status: 500,
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          }
         }
       );
     }
@@ -104,7 +109,10 @@ export async function POST({ request }: { request: Request }): Promise<Response>
         }),
         { 
           status: 500,
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          }
         }
       );
     }
@@ -117,14 +125,17 @@ export async function POST({ request }: { request: Request }): Promise<Response>
       }),
       { 
         status: 200,
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
       }
     );
   } catch (error) {
     console.error('[v0] API error:', error);
     const message = error instanceof Error ? error.message : 'Unknown error occurred';
     
-    // Always return valid JSON
+    // Always return valid JSON with CORS headers
     return new Response(
       JSON.stringify({ 
         success: false, 
@@ -132,7 +143,10 @@ export async function POST({ request }: { request: Request }): Promise<Response>
       }),
       { 
         status: 500,
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
       }
     );
   }

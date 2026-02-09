@@ -606,6 +606,8 @@ import Footer from '../components/Footer.astro';
       // Submit to API
       const response = await fetch('/api/submit-application', {
         method: 'POST',
+        mode: 'cors',
+        credentials: 'same-origin',
         headers: {
           'Content-Type': 'application/json',
         },
