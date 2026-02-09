@@ -3,16 +3,17 @@ export async function POST({ request }) {
     console.log('[v0] POST request received');
     console.log('[v0] Request method:', request.method);
     console.log('[v0] Request URL:', request.url);
-    console.log('[v0] Content-Type:', request.headers.get('content-type'));
     
-    // Try to get the body as text first to see what's there
-    const bodyText = await request.text();
-    console.log('[v0] Raw body text:', bodyText);
-    console.log('[v0] Body text length:', bodyText.length);
-    console.log('[v0] Body is empty:', bodyText === '');
+    // Clone the request to safely read the body
+    const clonedRequest = request.clone();
+    
+    // Try to get the body
+    const bodyText = await clonedRequest.text();
+    console.log('[v0] Body text received, length:', bodyText.length);
+    console.log('[v0] Body content (first 200 chars):', bodyText.substring(0, 200));
     
     if (!bodyText || bodyText.trim() === '') {
-      console.error('[v0] Request body is empty!');
+      console.error('[v0] Request body is empty');
       return new Response(JSON.stringify({ 
         success: false, 
         message: 'Request body is empty' 
@@ -26,10 +27,9 @@ export async function POST({ request }) {
     let data;
     try {
       data = JSON.parse(bodyText);
-      console.log('[v0] Successfully parsed JSON data');
+      console.log('[v0] Successfully parsed JSON');
     } catch (parseError) {
-      console.error('[v0] JSON parse failed:', parseError);
-      console.error('[v0] Failed to parse text:', bodyText.substring(0, 100));
+      console.error('[v0] JSON parse error:', parseError);
       return new Response(JSON.stringify({ 
         success: false, 
         message: `Failed to parse JSON: ${parseError instanceof Error ? parseError.message : 'Unknown error'}` 
@@ -42,7 +42,7 @@ export async function POST({ request }) {
     const webhookUrl = 'https://hooks.zapier.com/hooks/catch/25458326/ueh3olu/';
     console.log('[v0] Sending to Zapier webhook...');
     
-    // Send data to Zapier webhook from server
+    // Send data to Zapier webhook
     const response = await fetch(webhookUrl, {
       method: 'POST',
       headers: {
@@ -52,8 +52,8 @@ export async function POST({ request }) {
     });
 
     console.log('[v0] Zapier response status:', response.status);
-    const zapierResponse = await response.text();
-    console.log('[v0] Zapier response text:', zapierResponse);
+    const zapierText = await response.text();
+    console.log('[v0] Zapier response:', zapierText.substring(0, 200));
 
     if (response.ok) {
       console.log('[v0] Successfully submitted to Zapier');
@@ -62,14 +62,15 @@ export async function POST({ request }) {
         headers: { 'Content-Type': 'application/json' }
       });
     } else {
-      throw new Error(`Zapier webhook returned ${response.status}: ${zapierResponse}`);
+      throw new Error(`Zapier returned ${response.status}`);
     }
   } catch (error) {
-    console.error('[v0] Error in submit-nomination API:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('[v0] Error in API:', error);
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    console.error('[v0] Error message:', message);
     return new Response(JSON.stringify({ 
       success: false, 
-      message: errorMessage
+      message: message
     }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
