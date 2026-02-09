@@ -461,7 +461,21 @@ import Footer from '../components/Footer.astro';
       },
       body: JSON.stringify(data)
     })
-      .then(response => response.json())
+      .then(async response => {
+        const text = await response.text();
+        console.log('[v0] API Response Status:', response.status);
+        console.log('[v0] API Response Text:', text);
+        
+        if (!response.ok) {
+          throw new Error(`API Error: ${response.status} - ${text}`);
+        }
+        
+        try {
+          return JSON.parse(text);
+        } catch (e) {
+          throw new Error(`Invalid JSON response: ${text}`);
+        }
+      })
       .then(result => {
         if (result.success) {
           showModal('success', 'Thank You!', 'Your nomination has been submitted successfully. We will review your submission and contact you soon.');
