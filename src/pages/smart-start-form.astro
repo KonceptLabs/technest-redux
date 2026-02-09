@@ -453,13 +453,17 @@ import Footer from '../components/Footer.astro';
       submittedAt: new Date().toISOString()
     };
     
+    const body = JSON.stringify(data);
+    console.log('[v0] Sending data:', body);
+    console.log('[v0] Body length:', body.length);
+    
     // Send data to server API route
     fetch('/api/submit-nomination', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
+      body: body
     })
       .then(async response => {
         const text = await response.text();
