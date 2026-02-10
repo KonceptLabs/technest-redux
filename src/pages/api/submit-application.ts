@@ -10,7 +10,7 @@ export async function OPTIONS(): Promise<Response> {
   });
 }
 
-export async function POST({ request }: { request: Request }): Promise<Response> {
+export async function POST({ request, locals }: { request: Request, locals: any }): Promise<Response> {
   try {
     // Parse request body with proper error handling
     let data;
@@ -105,7 +105,7 @@ export async function POST({ request }: { request: Request }): Promise<Response>
     });
 
     // Get Zapier webhook URL from environment
-    const zapierWebhookUrl = import.meta.env.ZAPIER_WEBHOOK_URL;
+    const zapierWebhookUrl = locals.runtime.env.ZAPIER_WEBHOOK_URL;
     
     if (!zapierWebhookUrl) {
       console.error('[v0] ZAPIER_WEBHOOK_URL not configured');
