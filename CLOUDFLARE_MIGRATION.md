@@ -9,17 +9,17 @@
 
 Run the following commands to remove Vercel adapter and install Cloudflare adapter:
 
-```bash
+\`\`\`bash
 npm uninstall @astrojs/vercel @vercel/analytics
 npm install @astrojs/cloudflare
-```
+\`\`\`
 
 or with pnpm:
 
-```bash
+\`\`\`bash
 pnpm remove @astrojs/vercel @vercel/analytics
 pnpm add @astrojs/cloudflare
-```
+\`\`\`
 
 ## Step 2: Configuration Files Updated
 
@@ -53,7 +53,7 @@ Both routes use standard Web Request/Response interfaces that work seamlessly wi
 
 For local development with Cloudflare Pages, create a `wrangler.toml` file:
 
-```toml
+\`\`\`toml
 name = "technest-redux"
 type = "javascript"
 account_id = "YOUR_ACCOUNT_ID"
@@ -64,11 +64,11 @@ vars = { ENVIRONMENT = "development", ZAPIER_WEBHOOK_URL = "YOUR_WEBHOOK_URL", Z
 
 [env.production]
 vars = { ENVIRONMENT = "production", ZAPIER_WEBHOOK_URL = "YOUR_WEBHOOK_URL", ZAPIER_WEBHOOK_CONTACT_US = "YOUR_CONTACT_WEBHOOK_URL" }
-```
+\`\`\`
 
 ## Step 6: Build and Deploy
 
-```bash
+\`\`\`bash
 # Build for production
 npm run build
 
@@ -78,7 +78,7 @@ npm run preview
 # Deploy to Cloudflare Pages
 # Push to your repository branch connected to Cloudflare Pages, or use Wrangler:
 npx wrangler pages deploy dist
-```
+\`\`\`
 
 ## Differences from Vercel
 
