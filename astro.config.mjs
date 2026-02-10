@@ -1,9 +1,11 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel/serverless';
+import cloudflare from '@astrojs/cloudflare'; // The new adapter we just installed
 
-// https://astro.build/config
 export default defineConfig({
   output: 'server',
-  adapter: vercel()
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true,
+    },
+  }),
 });
