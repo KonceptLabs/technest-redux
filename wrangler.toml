@@ -1,0 +1,7 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "technest-redux"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "SESSION"  # This is the name you use in your code (e.g., locals.runtime.env.SESSION)
+id = "0879ee7bbbdb4a8a9bcd1d2cd1781a41"

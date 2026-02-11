@@ -7,7 +7,9 @@
     "astro": "astro",
     "build": "astro build",
     "dev": "astro dev",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "cf-login": "wrangler login",
+    "logs": "wrangler pages deployment tail"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
@@ -27,7 +29,8 @@
     "@types/react-dom": "19.2.3",
     "postcss": "8.5.6",
     "tailwindcss": "4.1.18",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "wrangler": "^4.64.0"
   },
   "engines": {
     "node": ">=22.12.0"
