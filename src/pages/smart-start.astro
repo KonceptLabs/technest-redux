@@ -10,7 +10,7 @@ import Footer from '../components/Footer.astro';
         <img src="/images/smart-start-header.jpg" alt="Multi-generational family" class="family-image" />
       </div>
       <div class="smart-start-branding">
-        <img src="/images/smart-start-logo-white.png" alt="Smart Start" class="smart-start-logo" />
+        <img src="/smart-start-logo-white.svg" alt="Smart Start" class="smart-start-logo" />
       </div>
     </div>
   </section>
@@ -701,20 +701,31 @@ import Footer from '../components/Footer.astro';
       gap: 1.5rem;
     }
 
+    /* Logo as section title above the picture, one line */
+    .smart-start-branding {
+      order: -1;
+      width: 100%;
+      margin-bottom: 0.25rem;
+    }
+
+    .smart-start-logo {
+      display: block;
+      width: 100%;
+      max-width: 280px;
+      max-height: 44px;
+      height: auto;
+      object-fit: contain;
+      object-position: left center;
+      margin: 0 auto;
+    }
+
     .smart-start-image-wrapper {
+      order: 0;
       max-width: 300px;
     }
 
     .family-image {
       max-width: 100%;
-    }
-
-    .smart-start-branding {
-      width: 100%;
-    }
-
-    .smart-start-logo {
-      max-width: 400px;
     }
 
     .smart-start-description {
@@ -835,14 +846,15 @@ import Footer from '../components/Footer.astro';
   document.querySelectorAll('.faq-toggle').forEach(button => {
     button.addEventListener('click', () => {
       const item = button.parentElement;
+      if (!item) return; // Safeguard if parentElement is null
       const isActive = item.classList.contains('active');
-      
+
       document.querySelectorAll('.faq-item.active').forEach(activeItem => {
         activeItem.classList.remove('active');
         activeItem.querySelector('.faq-toggle')?.setAttribute('aria-expanded', 'false');
       });
       
-      if (!isActive) {
+      if (item && !isActive) {
         item.classList.add('active');
         button.setAttribute('aria-expanded', 'true');
       }

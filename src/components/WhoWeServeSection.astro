@@ -57,8 +57,8 @@ const serveItems: ServeItem[] = [
   .who-we-serve-title {
     font-size: 36px;
     color: #fafafa;
-    text-align: center;
-    margin: 0 0 4rem 0;
+    text-align: left;
+    margin: 0 0 1.5rem 0;
     font-weight: 700;
     letter-spacing: 0.05em;
   }
@@ -72,8 +72,8 @@ const serveItems: ServeItem[] = [
   .serve-item {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     cursor: pointer;
     transition: transform 0.3s ease;
   }
@@ -85,7 +85,7 @@ const serveItems: ServeItem[] = [
   .serve-image {
     width: 100%;
     height: 250px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     border-radius: 0.5rem;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -109,9 +109,9 @@ const serveItems: ServeItem[] = [
   }
 
   .serve-description {
-    font-size: 14px;
+    font-size: 17px;
     color: #fafafa;
-    line-height: 1.7;
+    line-height: 1.8;
     margin: 0;
     font-weight: 400;
   }
@@ -128,6 +128,10 @@ const serveItems: ServeItem[] = [
   }
 
   @media (max-width: 640px) {
+    .who-we-serve {
+      padding: 3rem 1rem;
+    }
+
     .serve-grid {
       grid-template-columns: 1fr;
       gap: 2rem;
@@ -135,7 +139,7 @@ const serveItems: ServeItem[] = [
 
     .who-we-serve-title {
       font-size: 28px;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
 
     .serve-image {
@@ -143,7 +147,7 @@ const serveItems: ServeItem[] = [
     }
 
     .serve-description {
-      font-size: 13px;
+      font-size: 15px;
     }
   }
 </style>

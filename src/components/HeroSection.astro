@@ -319,14 +319,65 @@ let currentSlide = 0;
     }
   }
 
-  @media (max-width: 640px) {
+  /* Mobile: reduce gap between nav and hero, start content from top; hide carousel controls (swipe to change slides) */
+  @media (max-width: 768px) {
+    .carousel-hero {
+      min-height: 85vh;
+      align-items: flex-start;
+      margin-top: 56px;
+      padding-top: 0.5rem;
+    }
+
     .carousel-slide {
-      padding: 1.5rem;
+      align-items: flex-start;
+      padding-top: 0.5rem;
+      justify-content: flex-start;
+    }
+
+    .slide-content {
+      align-items: center;
+      text-align: center;
+      gap: 1.25rem;
+    }
+
+    .slide-content .btn {
+      align-self: center;
+      margin-top: 0.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .carousel-controls {
+      display: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .carousel-hero {
+      min-height: 80vh;
+      margin-top: 52px;
+      padding-top: 0.5rem;
+    }
+
+    .carousel-slide {
+      padding: 1rem 1.5rem;
       gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .slide-content {
+      align-items: center;
+      text-align: center;
+      gap: 1.25rem;
+    }
+
+    .slide-content .btn {
+      align-self: center;
+      margin-top: 0.25rem;
+      margin-bottom: 1.5rem;
     }
 
     .slide-image {
-      min-height: 250px;
+      min-height: 220px;
     }
 
     .slide-image img {
@@ -339,21 +390,6 @@ let currentSlide = 0;
 
     .slide-content p {
       font-size: 1rem;
-    }
-
-    .carousel-controls {
-      bottom: 1rem;
-      gap: 1rem;
-    }
-
-    .carousel-btn {
-      width: 40px;
-      height: 40px;
-      font-size: 1rem;
-    }
-
-    .dot.active {
-      width: 24px;
     }
   }
 </style>
