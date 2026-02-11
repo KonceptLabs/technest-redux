@@ -14,12 +14,15 @@ const navItems: NavItem[] = [
 const currentPath = new URL(Astro.request.url).pathname;
 ---
 
-<nav class="navbar">
+<nav class="navbar" id="main-nav">
   <div class="nav-container">
     <a href="/" class="logo">
       <img src="/technest-logo.svg" alt="TechNest" class="logo-image" />
     </a>
-    <ul class="nav-menu">
+    <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+    </button>
+    <ul class="nav-menu" id="nav-menu">
       {navItems.map((item) => (
         <li class="nav-item">
           {item.label === 'Resources' ? (
@@ -43,6 +46,24 @@ const currentPath = new URL(Astro.request.url).pathname;
     <a href="/contact" class="lets-chat-button">Let's Chat</a>
   </div>
 </nav>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  const toggle = document.querySelector('.nav-toggle');
+  if (nav && toggle) {
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    // Close on escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        nav?.classList.remove('is-open');
+        toggle?.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>
 
 <style>
   .navbar {
@@ -179,22 +200,106 @@ const currentPath = new URL(Astro.request.url).pathname;
     background-color: #003366;
   }
 
+  /* Hamburger: hidden on desktop */
+  .nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: transparent;
+    border: 2px solid #1f3e59;
+    border-radius: 0.25rem;
+    color: #1f3e59;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  .nav-toggle-icon {
+    position: relative;
+    width: 22px;
+    height: 2px;
+    background: currentColor;
+  }
+
+  .nav-toggle-icon::before,
+  .nav-toggle-icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 2px;
+    background: currentColor;
+    transition: transform 0.2s ease;
+  }
+
+  .nav-toggle-icon::before {
+    top: -7px;
+  }
+
+  .nav-toggle-icon::after {
+    top: 7px;
+  }
+
+  .navbar.is-open .nav-toggle-icon {
+    background: transparent;
+  }
+
+  .navbar.is-open .nav-toggle-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .navbar.is-open .nav-toggle-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
   @media (max-width: 768px) {
     .nav-container {
       padding: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-toggle {
+      display: flex;
+      margin-left: auto;
     }
 
     .nav-menu {
-      gap: 1rem;
-      font-size: 0.9rem;
+      display: none;
+      width: 100%;
+      order: 3;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1rem 0 0;
+      font-size: 1rem;
     }
 
-    .logo {
-      font-size: 1.25rem;
+    .navbar.is-open .nav-menu {
+      display: flex;
     }
 
-    .logo-icon {
-      font-size: 1.5rem;
+    .nav-item {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .nav-item:last-child {
+      border-bottom: none;
+    }
+
+    .lets-chat-button {
+      display: none;
+      order: 4;
+      width: 100%;
+      margin: 1rem 0 0;
+      text-align: center;
+    }
+
+    .navbar.is-open .lets-chat-button {
+      display: inline-block;
     }
   }
 </style>

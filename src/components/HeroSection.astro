@@ -15,28 +15,28 @@ const slides: Slide[] = [
     description: 'Discreet, reliable smart technology that blends into your life and works without effort.',
     buttonText: 'Learn More',
     buttonHref: '/what-we-do',
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WEB%20Homepage%20Header%20carousel%201-uuWKTY0d2m6eK415s19BODgWZIQ6wR.jpg',
+    image: '/images/hero-1.jpg',
   },
   {
     title: 'MODERN COMFORT MADE SIMPLE',
     description: 'Easy to use technology that helps you feel secure at home and connected to the people you love.',
     buttonText: 'Learn More',
     buttonHref: '/what-we-do',
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WEB%20Homepage%20Header%20carousel%202-2tINmeiswBOB6xhtJclVjbLuC3Dv0m.jpg',
+    image: '/images/hero-2.jpg',
   },
   {
     title: 'SMART TECH THAT WORKS AS HARD AS YOU DO',
     description: 'Simple, reliable solutions that improve security, save time and keep your business running smoothly.',
     buttonText: 'Learn More',
     buttonHref: '/what-we-do',
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WEB%20Homepage%20Header%20carousel%203.JPG-GIs29BYjOm0Ox5hZ73eM4CRj3SSffz.jpeg',
+    image: '/images/hero-3.jpg',
   },
   {
     title: 'SUPPORT THAT HELPS YOU STAY INDEPENDENT',
     description: 'Safety, accessibility and monitoring solutions that adapt to your needs and help you live confidently at home.',
     buttonText: 'Learn More',
     buttonHref: '/what-we-do',
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WEB%20Homepage%20header%20carousel%204-uO9NAsp0sLJjQkf2FYGSgpqxZ1PWYO.jpg',
+    image: '/images/hero-4.jpg',
   },
 ];
 
@@ -130,8 +130,9 @@ let currentSlide = 0;
     background-attachment: fixed;
     margin: 0;
     padding: 0;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
     margin-top: 70px;
   }
 

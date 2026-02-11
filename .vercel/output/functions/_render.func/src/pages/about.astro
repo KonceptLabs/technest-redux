@@ -1,0 +1,396 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PillarsSection from '../components/PillarsSection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <h1>About Us</h1>
+    </div>
+  </section>
+
+  <section class="about-story">
+    <div class="story-container">
+      <p>TechNest was built on a simple belief that smart technology should make everyday life easier, not more complicated. For more than twenty years, founder Dave Kedzior worked with technology in homes, businesses, and community spaces across Chicagoland. He saw people asking for modern solutions but ending up frustrated by confusing systems, poor quality products, and companies focused on selling rather than support. TechNest was created to offer a better experience.</p>
+
+      <p>Our mission is to bring comfort, security, and ease to homes and small businesses through thoughtful design, clear guidance, and reliable installation. We believe in listening first, explaining things clearly, and creating solutions that fit how people actually live and work. That might mean stronger Wi Fi, safer entry points, better sound for entertaining, or smoother daily operations.</p>
+
+      <p>Today, the TechNest team shares a customer first approach rooted in the local community. We focus on clean installations, fair pricing, and dependable support long after the work is done. Every space is different, and we take pride in tailoring technology that feels simple, reliable, and empowering for our neighbors across the Chicagoland area.</p>
+    </div>
+  </section>
+
+  <section class="our-values">
+    <div class="values-container">
+      <h2>Our Values</h2>
+      
+      <div class="value-item">
+        <h3>Authenticity and reliability</h3>
+        <p>We show up as real people who do what we say we will. Every installation, recommendation and interaction is built on honesty, consistency and trust.</p>
+      </div>
+
+      <div class="value-item">
+        <h3>Simplicity and clarity</h3>
+        <p>We make technology feel easy to understand and simple to live with. No jargon, no confusion, just clear guidance and solutions that work.</p>
+      </div>
+
+      <div class="value-item">
+        <h3>Genuine care and empathy</h3>
+        <p>We treat every job as if it was our own home or business. We take the time to patiently listen, understand and support people at every level of tech comfort.</p>
+      </div>
+
+      <div class="value-item">
+        <h3>Local and community focused</h3>
+        <p>Chicago is our home, and we take pride in serving our neighbors. Our work strengthens the community and supports the people who make it special.</p>
+      </div>
+
+      <div class="value-item">
+        <h3>Technology and service excellence</h3>
+        <p>We hold ourselves to high standards. From workmanship to customer care, we focus on quality, attention to detail and long term support.</p>
+      </div>
+    </div>
+  </section>
+
+  <PillarsSection />
+
+  <section class="smart-start">
+    <div class="smart-start-container">
+      <div class="smart-start-image-wrapper">
+        <div class="smart-start-frame"></div>
+        <img src="/smart-start-about-image.jpg" alt="Smart Start - Community support program" />
+      </div>
+      
+      <div class="smart-start-content">
+        <div class="smart-start-logo">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo_Smart%20Start%20-%20Blue-Gray%402x-W2NJw6V57nfVhvXJ58LBqYSHKmvDtA.png" alt="Smart Start Logo" />
+        </div>
+        
+        <div class="smart-start-text">
+          <p>Smart Start is our way of supporting the community we live in and helping more people enjoy technology that feels simple, reliable and easy to trust every day.</p>
+          
+          <p>Each month we choose one local household or small business to receive a complimentary smart technology upgrade that makes everyday life a little easier, safer or more enjoyable.</p>
+          
+          <p>Anyone can enter.</p>
+        </div>
+        
+        <a href="/smart-start" class="btn btn-primary">Enter or Nominate</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #0072cc;
+    background-image: url('/background-shapes-blue.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 4rem 2rem 4rem 5rem;
+    margin-top: 70px;
+  }
+
+  .page-hero-content {
+    text-align: left;
+    max-width: 600px;
+  }
+
+  .page-hero-content h1 {
+    font-size: 4.5rem;
+    margin: 0;
+    color: #fafafa;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .page-hero-content p {
+    display: none;
+  }
+
+  .about-story {
+    background-color: #f5f7fa;
+    background-image: url('/background-shapes.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 5rem 2rem;
+  }
+
+  .story-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .story-container p {
+    font-size: 1.125rem;
+    color: #0072cc;
+    line-height: 1.8;
+    margin: 0 0 2.5rem 0;
+    font-weight: 500;
+  }
+
+  .story-container p:last-child {
+    margin-bottom: 0;
+  }
+
+  .our-values {
+    background-color: #0072cc;
+    background-image: url('/background-shapes-blue.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 5rem 2rem;
+  }
+
+  .values-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .values-container h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fafafa;
+    margin: 0 0 1.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .value-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .value-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .value-item h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fafafa;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .value-item p {
+    font-size: 1.0625rem;
+    color: #fafafa;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .smart-start {
+    background-color: #f5f5f5;
+    background-image: url('/background-shapes.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 5rem 2rem;
+  }
+
+  .smart-start-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+
+  .smart-start-image-wrapper {
+    flex: 0 0 auto;
+    position: relative;
+    width: 294.9px;
+    height: 479.9px;
+  }
+
+  .smart-start-frame {
+    position: absolute;
+    bottom: -25.15px;
+    left: -11.35px;
+    width: 272.2px;
+    height: 530.2px;
+    background-color: #0072cc;
+    z-index: 0;
+  }
+
+  .smart-start-image-wrapper img {
+    position: relative;
+    width: 294.9px;
+    height: 479.9px;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .smart-start-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    padding-top: 0;
+  }
+
+  .smart-start-logo {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .smart-start-logo img {
+    max-width: 220px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .smart-start-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex: 1;
+  }
+
+  .smart-start-text p {
+    font-size: 18px;
+    color: #0072cc;
+    line-height: 1.7;
+    margin: 0;
+    font-family: 'Anek Latin', sans-serif;
+    font-weight: 400;
+  }
+
+  .btn {
+    padding: 1rem 2.5rem;
+    font-size: 19px;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Anek Latin', sans-serif;
+    align-self: center;
+    margin-top: auto;
+  }
+
+  .btn-primary {
+    background-color: #0072cc;
+    color: #fafafa;
+  }
+
+  .btn-primary:hover {
+    background-color: #004499;
+  }
+
+  @media (max-width: 1024px) {
+    .smart-start-container {
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .smart-start-image-wrapper {
+      flex: 1;
+      width: 100%;
+      max-width: 400px;
+      height: 450px;
+    }
+
+    .smart-start-content {
+      flex: 1;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      min-height: 50vh;
+      padding: 3rem 1.5rem;
+      justify-content: center;
+    }
+
+    .page-hero-content {
+      text-align: center;
+    }
+
+    .page-hero-content h1 {
+      font-size: 2.5rem;
+    }
+
+    .about-story {
+      padding: 3rem 1.5rem;
+    }
+
+    .story-container p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .our-values {
+      padding: 3rem 1.5rem;
+    }
+
+    .values-container h2 {
+      font-size: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .value-item {
+      margin-bottom: 2rem;
+    }
+
+    .value-item h3 {
+      font-size: 1.125rem;
+    }
+
+    .value-item p {
+      font-size: 1rem;
+    }
+
+    .smart-start {
+      padding: 2rem 1rem;
+    }
+
+    .smart-start-container {
+      gap: 2rem;
+    }
+
+    .smart-start-image-wrapper {
+      height: 350px;
+      max-width: 100%;
+    }
+
+    .smart-start-frame {
+      top: 20px;
+      left: 20px;
+    }
+
+    .smart-start-logo {
+      height: 70px;
+    }
+
+    .smart-start-logo img {
+      max-width: 240px;
+    }
+
+    .smart-start-text p {
+      font-size: 16px;
+    }
+
+    .btn {
+      font-size: 17px;
+      padding: 0.875rem 2rem;
+    }
+  }
+</style>

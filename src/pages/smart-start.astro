@@ -7,10 +7,10 @@ import Footer from '../components/Footer.astro';
   <section class="smart-start-hero">
     <div class="smart-start-hero-content">
       <div class="smart-start-image-wrapper">
-        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Website%20Smart%20start%20header-o3O0F42PMslRXtuA00yX6sTZGZdpeL.jpg" alt="Multi-generational family" class="family-image" />
+        <img src="/images/smart-start-header.jpg" alt="Multi-generational family" class="family-image" />
       </div>
       <div class="smart-start-branding">
-        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Logo_Smart%20Start%20-%20White%402x-XsgqCSJBhoO4brk80RcacqCWNvp7mx.png" alt="Smart Start" class="smart-start-logo" />
+        <img src="/images/smart-start-logo-white.png" alt="Smart Start" class="smart-start-logo" />
       </div>
     </div>
   </section>
@@ -68,7 +68,7 @@ import Footer from '../components/Footer.astro';
   <section class="cta-section">
     <div class="cta-container">
       <div class="cta-image-wrapper">
-        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Website%20Smart%20Start%20CTA%20section%20Lady-glIVbcp2zGFhhmGK3p1SFHAxQjADek.jpg" alt="Woman in craft studio" class="cta-image" />
+        <img src="/images/smart-start-cta-lady.jpg" alt="Woman in craft studio" class="cta-image" />
       </div>
       <div class="cta-content">
         <h2 class="cta-title">Nominate an individual,<br/>family or small business</h2>
@@ -193,7 +193,7 @@ import Footer from '../components/Footer.astro';
         <a href="/smart-start-form" class="second-cta-button">Nominate</a>
       </div>
       <div class="second-cta-image-wrapper">
-        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Website%20Smart%20Start%202nd%20CTA%20image-WcUesh6JAm2yjyWEDqm6X5W3kAaT4B.jpg" alt="Happy couple in modern kitchen" class="second-cta-image" />
+        <img src="/images/smart-start-cta-couple.jpg" alt="Happy couple in modern kitchen" class="second-cta-image" />
       </div>
     </div>
   </section>
@@ -210,8 +210,9 @@ import Footer from '../components/Footer.astro';
     background: linear-gradient(135deg, #0072cc 0%, #0052a3 100%);
     padding: 4rem 2rem;
     margin: 0;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
     margin-top: 70px;
   }
 
@@ -288,8 +289,9 @@ import Footer from '../components/Footer.astro';
     background-repeat: no-repeat;
     background-attachment: fixed;
     padding: 6rem 2rem;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
   }
 
   .how-it-works-container {
@@ -454,8 +456,9 @@ import Footer from '../components/Footer.astro';
     background-repeat: no-repeat;
     background-attachment: fixed;
     padding: 6rem 2rem;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
   }
 
   .faqs-container {
@@ -774,15 +777,6 @@ import Footer from '../components/Footer.astro';
       font-size: 1.75rem;
     }
 
-    .faqs-logo {
-      position: relative;
-      top: auto;
-      right: auto;
-      width: 90px;
-      margin-top: 1rem;
-      display: block;
-    }
-
     .faq-item {
       padding-bottom: 1.5rem;
     }
@@ -845,7 +839,7 @@ import Footer from '../components/Footer.astro';
       
       document.querySelectorAll('.faq-item.active').forEach(activeItem => {
         activeItem.classList.remove('active');
-        activeItem.querySelector('.faq-toggle').setAttribute('aria-expanded', 'false');
+        activeItem.querySelector('.faq-toggle')?.setAttribute('aria-expanded', 'false');
       });
       
       if (!isActive) {

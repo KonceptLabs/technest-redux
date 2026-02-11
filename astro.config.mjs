@@ -4,6 +4,7 @@ import cloudflare from '@astrojs/cloudflare'; // The new adapter we just install
 export default defineConfig({
   output: 'server',
   adapter: cloudflare({
+    imageService: 'compile',
     platformProxy: {
       enabled: true,
     },
